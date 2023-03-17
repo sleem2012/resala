@@ -21,6 +21,8 @@ abstract class Di {
   }
 
   static DioClientImpl get dioClient => _i.get<DioClientImpl>();
+
   static ApiClientBloc get apiClientBloc => _i.get<ApiClientBloc>();
+
   static SettingsBloc get settingsBloc => _i.get<SettingsBloc>();
 }
