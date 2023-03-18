@@ -24,10 +24,7 @@ class KThemeData {
     return ThemeData(
       visualDensity: VisualDensity.adaptivePlatformDensity,
       scaffoldBackgroundColor: KColors.backgroundL,
-      // textTheme: TextTheme(
-      //   bodyLarge: TextStyle(),
-      //
-      // ),
+
       appBarTheme: const AppBarTheme(
         color: KColors.backgroundL,
         systemOverlayStyle: _lightOverLay,

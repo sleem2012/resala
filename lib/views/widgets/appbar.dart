@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import '../../shared/localization/trans.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:resala/shared/theme/helper.dart';
 import '../../shared/theme/text_theme.dart';
-import 'theme_toggle_btn.dart';
 
 class KAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const KAppBar({Key? key}) : super(key: key);
-
+  const KAppBar({Key? key,  this.title=''}) : super(key: key);
+final String title;
   @override
   Size get preferredSize => const Size.fromHeight(50);
 
@@ -14,13 +14,15 @@ class KAppBar extends StatelessWidget implements PreferredSizeWidget {
     return Hero(
       tag: 'appBar',
       child: AppBar(
-        title: Text(Tr.get.appTitle),
+        title: Text(title,style: KTextStyle.of(context).title,),
         centerTitle: true,
         titleTextStyle: KTextStyle.of(context).appBar,
-        leading: const ThemeToggleBtn(),
-        actions: const [
-          // LangSwitch(),
-        ],
+        leading: Padding(
+          padding:  EdgeInsets.only(right: KHelper.hPadding),
+          child: SvgPicture.asset("assets/image/Resala Logo.svg",),
+        ),
+       leadingWidth: 100,
+       elevation: .5,
       ),
     );
   }

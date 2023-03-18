@@ -22,5 +22,8 @@
   "login": "تسجيل الدخول",
   "dont_have_acc": "ليس لديك حساب؟ ",
   "sign_up": "إنضم الينا",
-  "create_account": "انشاء حساب"
+  "create_account": "انشاء حساب",
+  "already_have_an_account": "لديك حساب ؟ ",
+  "register": "إنشاء حساب",
+  "phone": "رقم الموبايل"
 }

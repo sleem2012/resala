@@ -6,7 +6,7 @@ abstract class KColors {
   }
 
   //Light
-  static const Color backgroundL = Color(0xffF5F5F5);
+  static const Color backgroundL = Color(0xFFF5F5F5);
   static const Color elevatedBoxL = Color(0xFFffffff);
   static const Color navBarL = Color(0xFFF8F8F8);
   static const Color actionBTNL = Color(0xFF05B646);
@@ -100,7 +100,7 @@ class ColorsGetter extends KColors {
   }
 
   Color get border {
-    return Theme.of(_context!).brightness == Brightness.light ? KColors.backgroundD.withOpacity(.2) : KColors.backgroundL.withOpacity(.2);
+    return Theme.of(_context!).brightness == Brightness.dark ? KColors.backgroundD.withOpacity(.2) : KColors.backgroundL;
   }
 
   Color get trackColor {

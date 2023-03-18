@@ -38,12 +38,16 @@ class KTextStyle {
       color: Theme.of(_context!).brightness == Brightness.light ? mainL : mainD,
       fontSize: 15,
       fontFamily: fontFamily,
+
+
     );
   }
   TextStyle get logo {
     return TextStyle(
+
       color: KColors.of(_context!).accentColor,
       fontSize: 20,
+
       fontFamily: fontFamily,
       fontWeight: FontWeight.w500
     );
@@ -102,7 +106,7 @@ class KTextStyle {
   TextStyle get title {
     return TextStyle(
       color: KColors.of(_context!).primary,
-      fontSize: 16,
+      fontSize: 22,
       fontFamily: fontFamily,
       fontWeight: FontWeight.w800
     );
@@ -117,12 +121,13 @@ class KTextStyle {
     );
   }
 
-  TextStyle get title2 {
+  TextStyle get subtitle {
     return TextStyle(
-      color: Theme.of(_context!).brightness == Brightness.light ? mainL : mainD,
-      fontSize: 14,
-      fontFamily: fontFamily,
-      fontWeight: FontWeight.bold,
+        color: KColors.of(_context!).primary,
+        fontSize: 16,
+        fontFamily: fontFamily,
+        fontWeight: FontWeight.bold
+
     );
   }
 

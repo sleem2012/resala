@@ -1,15 +1,11 @@
 {
   "ar": [
-    "job_title",
-    "phone",
-    "register",
     "gender",
     "male",
     "female",
     "new_account",
     "by_creating_an_account",
     "add_profile_picture",
-    "already_have_an_account",
     "next",
     "terms_and_conditions"
   ]

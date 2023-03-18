@@ -17,7 +17,6 @@
   "full_name": "Full Name",
   "email": "Email",
   "password": "Password",
-  "job_title": "Jop Title",
   "phone": "Phone Number",
   "login": "Log in",
   "register": "Register",

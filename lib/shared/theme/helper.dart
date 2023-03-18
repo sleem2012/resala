@@ -3,6 +3,10 @@ import 'package:get/get.dart';
 
 import 'colors.dart';
 
+
+String get dummyNetImg => "https://www.mogazmasr.com/wp-content/uploads/2020/12/%D8%A7%D8%B3%D8%AA%D9%85%D8%A7%D8%B1%D8%A9-%D8%AC%D9%85%D8%B9%D9%8A%D8%A9-%D8%B1%D8%B3%D8%A7%D9%84%D8%A9-%D8%A7%D9%84%D8%AE%D9%8A%D8%B1%D9%8A%D8%A9-%D9%88%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A7%D8%AA-%D8%A7%D9%84%D8%AA%D9%8A-%D8%AA%D9%82%D8%AF%D9%85%D9%87%D8%A7-%D9%84%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%A9-%D8%A7%D9%84%D9%85%D8%AD%D8%AA%D8%A7%D8%AC%D9%8A%D9%86-550x286.jpg";
+String get dummyAssetImg => "assets/image/homeslider.png";
+
 class KHelper {
   static BuildContext? _context;
   static KHelper? _instance;
@@ -19,8 +23,8 @@ class KHelper {
   static const IconData phone = Icons.phone_rounded;
   static const IconData home = Icons.home;
 
-  static const double btnRadius = 6.0;
-  static  double hPadding = Get.width*.09;
+  static const double btnRadius = 8.0;
+  static  double hPadding = 10;
   static  double listPadding = 15;
 
   static ShapeBorder btnShape = RoundedRectangleBorder(borderRadius: BorderRadius.circular(btnRadius));
@@ -31,7 +35,13 @@ class KHelper {
       borderRadius: BorderRadius.circular(btnRadius),
     );
   }
-
+  BoxDecoration get elevatedBox {
+    return BoxDecoration(
+      color: KColors.of(_context!).elevatedBox.withOpacity(.6),
+      borderRadius: BorderRadius.circular(KHelper.btnRadius),
+      border: Border.all(color: KColors.of(_context!).border)
+    );
+  }
   Gradient get shimmerGradient {
     return LinearGradient(
       colors: [

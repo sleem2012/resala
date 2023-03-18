@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:resala/shared/localization/trans.dart';
 import 'package:resala/shared/theme/helper.dart';
 import 'package:resala/shared/theme/text_theme.dart';
+import 'package:resala/views/main_screen/main_screen.dart';
 import 'package:resala/views/widgets/text_field.dart';
 
 import '../../widgets/custom_button.dart';
@@ -15,14 +16,6 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text(Tr.get.login, style: KTextStyle.of(context).appBar),
-      //   centerTitle: true,
-      //   leading: RawMaterialButton(
-      //     onPressed: () {},
-      //     child: Icon(Icons.arrow_back_ios_new_rounded, color: KColors.of(context).icons),
-      //   ),
-      // ),
 
       body: SingleChildScrollView(
         padding:  EdgeInsets.symmetric(horizontal: KHelper.hPadding).copyWith(top:200 ),
@@ -51,13 +44,15 @@ class LoginView extends StatelessWidget {
             const SizedBox(height: 34),
             KButton(
               title: Tr.get.login,
-              onPressed: () {},
+              onPressed: () {
+                Get.offAll(MainNavPages());
+              },
             ),
             const SizedBox(height: 140),
             GestureDetector(
               onTap: () {
                 ///TODO
-                Get.to(() => const RegisterLanding());
+                Get.to(() => const RegisterView());
               },
               child: Text.rich(
                 TextSpan(

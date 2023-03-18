@@ -22,6 +22,10 @@ dependencies:
   dartz:
   dio: '4.0.6'
   flutter_svg:
+  animated_bottom_navigation_bar:
+  carousel_slider:
+  cached_network_image:
+
 
 
 
