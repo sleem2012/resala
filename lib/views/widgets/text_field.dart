@@ -67,6 +67,7 @@ class KTextFormField extends StatelessWidget {
           hintText: hintText,
           filled: true,
           fillColor: KColors.of(context).textField,
+
           hintStyle: KTextStyle.of(context).hint,
           contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
           errorStyle: KTextStyle.of(context).error,

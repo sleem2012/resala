@@ -1,18 +1,13 @@
 {
   "ar": [
-    "password",
     "job_title",
     "phone",
-    "login",
     "register",
     "gender",
     "male",
     "female",
     "new_account",
     "by_creating_an_account",
-    "forget_password",
-    "dont_have_acc",
-    "create_account",
     "add_profile_picture",
     "already_have_an_account",
     "next",

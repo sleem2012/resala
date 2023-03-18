@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:resala/shared/localization/trans.dart';
-import 'package:resala/shared/theme/colors.dart';
 import 'package:resala/shared/theme/helper.dart';
 import 'package:resala/shared/theme/text_theme.dart';
 import 'package:resala/views/widgets/text_field.dart';
@@ -15,61 +15,64 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(Tr.get.login, style: KTextStyle.of(context).appBar),
-        centerTitle: true,
-        leading: RawMaterialButton(
-          onPressed: () {},
-          child: Icon(Icons.arrow_back_ios_new_rounded, color: KColors.of(context).icons),
-        ),
-      ),
-      body: Column(
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(horizontal: KHelper.hPadding),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 100),
-                  KTextFormField(
-                    hintText: Tr.get.full_name,
-                  ),
-                  const SizedBox(height: 10),
-                  KTextFormField(
-                    hintText: Tr.get.phone,
-                  ),
-                  const SizedBox(height: 20),
-                  Text(Tr.get.forget_password, style: KTextStyle.of(context).body2),
-                  const SizedBox(height: 20),
-                  KButton(
-                    title: Tr.get.login,
-                    onPressed: () {},
-                  ),
-                  const SizedBox(height: 20),
-                  GestureDetector(
-                    onTap: () {
-                      ///TODO
-                      Get.to(() => const RegisterLanding());
-                    },
-                    child: Text.rich(
-                      TextSpan(
-                        children: [
-                          TextSpan(text: Tr.get.dont_have_acc + ' ', style: KTextStyle.of(context).body2),
-                          TextSpan(
-                            text: Tr.get.create_account,
-                            style: KTextStyle.of(context).body3,
-                          ),
-                        ],
-                      ),
+      // appBar: AppBar(
+      //   title: Text(Tr.get.login, style: KTextStyle.of(context).appBar),
+      //   centerTitle: true,
+      //   leading: RawMaterialButton(
+      //     onPressed: () {},
+      //     child: Icon(Icons.arrow_back_ios_new_rounded, color: KColors.of(context).icons),
+      //   ),
+      // ),
+
+      body: SingleChildScrollView(
+        padding:  EdgeInsets.symmetric(horizontal: KHelper.hPadding).copyWith(top:200 ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SvgPicture.asset("assets/image/Resala Logo.svg"),
+            const SizedBox(height: 18),
+
+            Text("متعـــــــــــة العطــــــــاء",style: KTextStyle.of(context).logo,),
+            const SizedBox(height: 44),
+            KTextFormField(
+              hintText: Tr.get.full_name,
+              prefixIcon: const Icon(Icons.person),
+            ),
+             SizedBox(height: KHelper.listPadding),
+            KTextFormField(
+              hintText: Tr.get.password,
+              prefixIcon: const Icon(Icons.lock),
+              suffixIcon: const Icon(Icons.visibility_off),
+
+            ),
+             SizedBox(height: KHelper.listPadding),
+            Align (alignment: Alignment.bottomRight ,child: Text(Tr.get.forget_password,style: KTextStyle.of(context).body,)),
+            const SizedBox(height: 34),
+            KButton(
+              title: Tr.get.login,
+              onPressed: () {},
+            ),
+            const SizedBox(height: 140),
+            GestureDetector(
+              onTap: () {
+                ///TODO
+                Get.to(() => const RegisterLanding());
+              },
+              child: Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(text: Tr.get.dont_have_acc + ' ', style: KTextStyle.of(context).body2),
+                    TextSpan(
+                      text: Tr.get.create_account,
+                      style: KTextStyle.of(context).title,
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

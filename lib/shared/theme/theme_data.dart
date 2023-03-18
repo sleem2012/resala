@@ -6,9 +6,11 @@ import 'colors.dart';
 class KThemeData {
   static BuildContext? _context;
   static KThemeData? _instance;
+
   KThemeData._internal() {
     _instance = this;
   }
+
   static KThemeData of(BuildContext context) {
     _context = context;
     return _instance ?? KThemeData._internal();
@@ -22,6 +24,10 @@ class KThemeData {
     return ThemeData(
       visualDensity: VisualDensity.adaptivePlatformDensity,
       scaffoldBackgroundColor: KColors.backgroundL,
+      // textTheme: TextTheme(
+      //   bodyLarge: TextStyle(),
+      //
+      // ),
       appBarTheme: const AppBarTheme(
         color: KColors.backgroundL,
         systemOverlayStyle: _lightOverLay,
@@ -29,7 +35,7 @@ class KThemeData {
         actionsIconTheme: IconThemeData(color: KColors.accentColorL),
       ),
       shadowColor: KColors.shadowL,
-      inputDecorationTheme: inputDecorationTheme(color: const Color(0xffA4ACAD)),
+      inputDecorationTheme: inputDecorationTheme(color:  const Color(0xff3649b7)),
       iconTheme: const IconThemeData(color: KColors.accentColorL),
       elevatedButtonTheme: elevatedBtnTheme(shadow: KColors.shadowL, background: KColors.elevatedBoxL),
     );

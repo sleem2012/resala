@@ -10,7 +10,7 @@ import 'shared/error/failuers.dart';
 import 'shared/theme/helper.dart';
 import 'shared/localization/trans.dart';
 import 'shared/theme/theme_data.dart';
-import 'views/widgets/onbording/on_boarding_screen.dart';
+import 'views/auth/login/login_view.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -41,13 +41,13 @@ class MyApp extends StatelessWidget {
                 return SettingsBloc.of(context).locale;
               },
               theme: KThemeData.light,
-              darkTheme: KThemeData.dark,
+              // darkTheme: KThemeData.dark,
               themeMode: SettingsBloc.of(context).themeMode,
               home: Builder(
                 builder: (context) {
                   return AnnotatedRegion<SystemUiOverlayStyle>(
                     value: KThemeData.of(context).overlayStyle,
-                    child: const OnBoarding(),
+                    child: const LoginView(),
                   );
                 },
               ),

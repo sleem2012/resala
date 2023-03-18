@@ -19,8 +19,9 @@ class KHelper {
   static const IconData phone = Icons.phone_rounded;
   static const IconData home = Icons.home;
 
-  static const double btnRadius = 12.0;
-  static const double hPadding = 12.0;
+  static const double btnRadius = 6.0;
+  static  double hPadding = Get.width*.09;
+  static  double listPadding = 15;
 
   static ShapeBorder btnShape = RoundedRectangleBorder(borderRadius: BorderRadius.circular(btnRadius));
 

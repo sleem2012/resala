@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../shared/theme/colors.dart';
-import '../../shared/theme/helper.dart';
 import '../../shared/theme/text_theme.dart';
 
 class KButton extends StatelessWidget {
@@ -16,27 +15,39 @@ class KButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: width ?? Get.width,
-      height: hieght ?? 48,
-      child: RawMaterialButton(
-        onPressed: isLoading ?? false ? null : onPressed,
-        fillColor: kFillColor ?? KColors.of(context).accentColor,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(KHelper.btnRadius)),
-        elevation: 0,
-        child: isLoading!
-            ? FittedBox(
-                child: SizedBox(
-                  height: (hieght ?? 45) - 10,
-                  child: const CircularProgressIndicator(
-                    valueColor: AlwaysStoppedAnimation(Colors.white),
-                  ),
-                ),
-              )
-            : Text(
-                title,
-                style: KTextStyle.of(context).btnTitle,
+    return ElevatedButton(
+      onPressed: isLoading ?? false ? null : onPressed,
+      style: ElevatedButton.styleFrom(
+        padding: const EdgeInsets.all(0.0), backgroundColor: Colors.transparent,
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight:  Radius.circular(15),topLeft: Radius.circular(15))),
+      ),
+      child: Ink(
+        decoration:   const BoxDecoration(
+            gradient: LinearGradient(colors: [KColors.linearOne, KColors.accentColorL],
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+
+            ),
+            borderRadius: BorderRadius.only(bottomRight: Radius.circular(15),topLeft: Radius.circular(15))
+        ),
+        child: Container(
+          width: width?? Get.width/1.1,
+          height: hieght?? 50,
+          alignment: Alignment.center,
+          child: isLoading!
+              ? FittedBox(
+            child: SizedBox(
+              height: (hieght ?? 45) - 10,
+              child: const CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation(Colors.white),
               ),
+            ),
+          )
+              : Text(
+            title,
+            style: KTextStyle.of(context).btnTitle,
+          ),
+        ),
       ),
     );
   }

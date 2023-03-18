@@ -45,7 +45,7 @@ class RegisterView extends StatelessWidget {
         children: [
           Expanded(
             child: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(horizontal: KHelper.hPadding),
+              padding:  EdgeInsets.symmetric(horizontal: KHelper.hPadding),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -154,7 +154,7 @@ class AddProfilePicView extends StatelessWidget {
           children: [
             Expanded(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(horizontal: KHelper.hPadding),
+                padding:  EdgeInsets.symmetric(horizontal: KHelper.hPadding),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -163,9 +163,9 @@ class AddProfilePicView extends StatelessWidget {
                     SizedBox(height: height * .05),
                     Row(
                       mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(Tr.get.add_profile_picture, style: KTextStyle.of(context).reAppBar),
-                        const Icon(Icons.edit_note, color: Colors.white, size: 28)
+                      children: const [
+                        // Text(Tr.get.add_profile_picture, style: KTextStyle.of(context).reAppBar),
+                        Icon(Icons.edit_note, color: Colors.white, size: 28)
                       ],
                     ),
                     SizedBox(height: height * .2),

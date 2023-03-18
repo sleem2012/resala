@@ -6,7 +6,7 @@ abstract class KColors {
   }
 
   //Light
-  static const Color backgroundL = Color(0xfff8f8f8);
+  static const Color backgroundL = Color(0xffF5F5F5);
   static const Color elevatedBoxL = Color(0xFFffffff);
   static const Color navBarL = Color(0xFFF8F8F8);
   static const Color actionBTNL = Color(0xFF05B646);
@@ -17,8 +17,10 @@ abstract class KColors {
   static const Color errorL = Color(0xFFBE0202);
   static const Color shadowL = Color(0x20000000);
   static const Color cursorL = Color(0xFFBE0202);
-  static const Color accentColorL = Color(0xff037EEE);
-  static const Color textFieldL = Color(0xffE6E9EA);
+  static const Color accentColorL = Color(0xff05569B);
+  static const Color textFieldL = Color(0xffEAECF0);
+  static const Color linearOne = Color(0xff189fab);
+  static const Color primary = Color(0xFFCF3339);
 
   //Dark
   static const Color backgroundD = Color(0xff2F2E41);
@@ -54,7 +56,7 @@ class ColorsGetter extends KColors {
   }
 
   Color get textField {
-    return Theme.of(_context!).brightness == Brightness.dark ? KColors.textFieldL : KColors.textFieldD;
+    return Theme.of(_context!).brightness == Brightness.dark ? KColors.textFieldD : KColors.textFieldL;
   }
 
   Color get actionBTN {
@@ -123,5 +125,7 @@ class ColorsGetter extends KColors {
 
   Color get accentColor {
     return Theme.of(_context!).brightness == Brightness.light ? KColors.accentColorL : KColors.accentColorD;
+  }Color get primary {
+    return Theme.of(_context!).brightness == Brightness.light ? KColors.primary : KColors.primary;
   }
 }

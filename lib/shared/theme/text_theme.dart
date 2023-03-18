@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resala/shared/theme/colors.dart';
 
 class KTextStyle {
   static BuildContext? _context;
@@ -11,7 +12,7 @@ class KTextStyle {
     return _instance ?? KTextStyle._internal();
   }
 
-  static const String fontFamily = 'font';
+  static const String fontFamily = 'BalooBhaijaan2';
 
   //Light
   static const Color mainL = Color(0xFF161616);
@@ -29,28 +30,22 @@ class KTextStyle {
     );
   }
 
-  TextStyle get reAppBar {
-    return TextStyle(
-      color: Theme.of(_context!).brightness != Brightness.light ? Colors.black : Colors.white,
-      fontSize: 20,
-      fontWeight: FontWeight.bold,
-      fontFamily: fontFamily,
-    );
-  }
 
-  TextStyle get langSwitch {
-    return TextStyle(
-      color: Theme.of(_context!).brightness == Brightness.light ? mainL : mainD,
-      fontSize: 15,
-      fontFamily: fontFamily,
-    );
-  }
+
 
   TextStyle get body {
     return TextStyle(
       color: Theme.of(_context!).brightness == Brightness.light ? mainL : mainD,
       fontSize: 15,
       fontFamily: fontFamily,
+    );
+  }
+  TextStyle get logo {
+    return TextStyle(
+      color: KColors.of(_context!).accentColor,
+      fontSize: 20,
+      fontFamily: fontFamily,
+      fontWeight: FontWeight.w500
     );
   }
 
@@ -106,25 +101,26 @@ class KTextStyle {
 
   TextStyle get title {
     return TextStyle(
-      color: Theme.of(_context!).brightness == Brightness.light ? mainL : mainD,
+      color: KColors.of(_context!).primary,
       fontSize: 16,
       fontFamily: fontFamily,
+      fontWeight: FontWeight.w800
     );
   }
 
   TextStyle get btnTitle {
-    return TextStyle(
-      color: Theme.of(_context!).brightness != Brightness.light ? mainL : mainD,
+    return const TextStyle(
+      color: Colors.white,
       fontSize: 16,
       fontFamily: fontFamily,
-      fontWeight: FontWeight.bold,
+      fontWeight: FontWeight.w500,
     );
   }
 
   TextStyle get title2 {
     return TextStyle(
       color: Theme.of(_context!).brightness == Brightness.light ? mainL : mainD,
-      fontSize: 16,
+      fontSize: 14,
       fontFamily: fontFamily,
       fontWeight: FontWeight.bold,
     );

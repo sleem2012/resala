@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../shared/localization/trans.dart';
 import '../../shared/theme/text_theme.dart';
-import 'lalng_switch.dart';
 import 'theme_toggle_btn.dart';
 
 class KAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -20,7 +19,7 @@ class KAppBar extends StatelessWidget implements PreferredSizeWidget {
         titleTextStyle: KTextStyle.of(context).appBar,
         leading: const ThemeToggleBtn(),
         actions: const [
-          LangSwitch(),
+          // LangSwitch(),
         ],
       ),
     );
