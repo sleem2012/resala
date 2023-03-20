@@ -3,12 +3,15 @@ class CardItemsModel {
    String title;
    String desc;
   String btnTitle;
+    Function() onPressed;
 
-  CardItemsModel({
+
+   CardItemsModel( {
     required this.image,
     required this.btnTitle,
     required this.title,
     required this.desc,
+    required this.onPressed,
   });
 }
 

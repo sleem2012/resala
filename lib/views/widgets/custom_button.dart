@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:resala/shared/theme/helper.dart';
 
 import '../../shared/theme/colors.dart';
 import '../../shared/theme/text_theme.dart';
@@ -36,7 +35,7 @@ class KButton extends StatelessWidget {
                 borderRadius: BorderRadius.only(bottomRight: Radius.circular(15), topLeft: Radius.circular(15)),
               )
             : BoxDecoration(
-                color: KColors.of(context).primary,
+                color: kFillColor??KColors.of(context).primary,
                 borderRadius: BorderRadius.circular(4),
               ),
         child: Container(

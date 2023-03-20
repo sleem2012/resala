@@ -45,7 +45,7 @@ class LoginView extends StatelessWidget {
             KButton(
               title: Tr.get.login,
               onPressed: () {
-                Get.offAll(MainNavPages());
+                Get.offAll(()=> const MainNavPages());
               },
             ),
             const SizedBox(height: 140),

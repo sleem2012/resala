@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:resala/shared/theme/text_theme.dart';
+import 'package:resala/views/widgets/multi_select_dialog/multi_select_view.dart';
 
 import 'colors.dart';
 
@@ -24,7 +26,7 @@ class KHelper {
   static const IconData home = Icons.home;
 
   static const double btnRadius = 8.0;
-  static  double hPadding = 10;
+  static  double hPadding = 26;
   static  double listPadding = 15;
 
   static ShapeBorder btnShape = RoundedRectangleBorder(borderRadius: BorderRadius.circular(btnRadius));
@@ -67,6 +69,19 @@ class KHelper {
       dismissDirection: DismissDirection.horizontal,
       colorText: Colors.white,
       messageText: Text(msg, textAlign: TextAlign.center, style: const TextStyle(color: Colors.white, fontSize: 15)),
+    );
+  }
+  MultiSelectorItem<T> itemView<T>(
+      {required String itemText, required T value, Widget? icon}) {
+    return MultiSelectorItem<T>(
+      value: value,
+      searchValue: itemText,
+      icon: icon,
+      child: Text(
+        itemText,
+        style: KTextStyle.of(_context!).body,
+        overflow: TextOverflow.ellipsis,
+      ),
     );
   }
 }

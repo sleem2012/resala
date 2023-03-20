@@ -106,9 +106,10 @@ class KTextStyle {
   TextStyle get title {
     return TextStyle(
       color: KColors.of(_context!).primary,
-      fontSize: 22,
+      fontSize: 20,
       fontFamily: fontFamily,
       fontWeight: FontWeight.w800
+
     );
   }
 

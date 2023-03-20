@@ -2,6 +2,7 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:resala/views/home/home_screen.dart';
+import 'package:resala/views/your_participation/your_participation_screen.dart';
 
 import '../../logic/main_view/main_view_bloc.dart';
 import '../../shared/theme/colors.dart';
@@ -20,13 +21,14 @@ class MainNavPages extends StatelessWidget {
           return Scaffold(
             extendBodyBehindAppBar: true,
             extendBody: true,
-            appBar: const KAppBar(title: 'الرئيسية'),
+            appBar:  KAppBar(title: MainViewBloc.of(context).label[state.index]),
             body: PageView(
               controller: MainViewBloc.of(context).pageCtrl,
               physics: const NeverScrollableScrollPhysics(),
 
               children: const [
                 HomeScreen(),
+                YourParticipationScreen(),
               ],
             ),
             bottomNavigationBar: AnimatedBottomNavigationBar(

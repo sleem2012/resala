@@ -19,13 +19,25 @@ class VerticalCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(KHelper.btnRadius),
+          SizedBox(
+            height: Get.height * .17,
             child: CachedNetworkImage(
               imageUrl: dummyNetImg,
-              width: Get.width * .7,
+              imageBuilder: (BuildContext context, ImageProvider imageProvider) => Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(KHelper.btnRadius),
+                  image: DecorationImage(
+                    image: imageProvider,
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+              placeholder: (BuildContext context, String url) => const CircularProgressIndicator(),
+              errorWidget: (BuildContext context, String url, dynamic error) => const Icon(Icons.error),
             ),
           ),
+
           const SizedBox(
             height: 6,
           ),
@@ -36,11 +48,10 @@ class VerticalCard extends StatelessWidget {
           const SizedBox(
             height: 4,
           ),
-          SingleChildScrollView(
-            child: Text(
-              "كلنا في الشتاء بنحتاج لأكلة جميلة وبطانية تدفينا؟ بس غيرنا كتير مش لاقيهم وبيعانوا بسبب برد الشتاء",
-              style: KTextStyle.of(context).body,
-            ),
+          Text(
+            "كلنا في الشتاء بنحتاج لأكلة جميلة وبطانية تدفينا؟ بس غيرنا كتير مش لاقيهم وبيعانوا بسبب برد الشتاء",
+            style: KTextStyle.of(context).body,
+            softWrap: true,
           ),
           const SizedBox(
             height: 10,

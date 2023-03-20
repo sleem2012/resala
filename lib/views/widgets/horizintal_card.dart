@@ -1,6 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:resala/data/models/general/card_items_model.dart';
 import 'package:resala/shared/theme/helper.dart';
@@ -59,7 +57,9 @@ class HorizontalCard extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: KButton(
                       title: model.btnTitle,
-                      onPressed: () {},
+                      onPressed:
+                          model.onPressed,
+
                       //width: Get.width * .3,
                       hieght: Get.height * .04,
                       isFlat: true,

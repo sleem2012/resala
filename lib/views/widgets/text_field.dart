@@ -19,6 +19,7 @@ class KTextFormField extends StatelessWidget {
   final TextStyle? style;
   final List<TextInputFormatter>? formatter;
   final void Function()? onTap;
+  final Color? kFillColor;
 
   const KTextFormField({
     super.key,
@@ -40,7 +41,7 @@ class KTextFormField extends StatelessWidget {
     this.formatter,
     this.expanded = false,
     this.initVal,
-    this.style,
+    this.style, this.kFillColor,
   });
 
   @override
@@ -66,7 +67,7 @@ class KTextFormField extends StatelessWidget {
         decoration: InputDecoration(
           hintText: hintText,
           filled: true,
-          fillColor: KColors.of(context).textField,
+          fillColor: kFillColor??KColors.of(context).textField,
 
           hintStyle: KTextStyle.of(context).hint,
           contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),

@@ -1,10 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:resala/shared/theme/helper.dart';
 import 'package:resala/shared/theme/text_theme.dart';
 import 'package:resala/views/widgets/vertical_card.dart';
-import 'package:resala/views/widgets/custom_button.dart';
 
 class HumanCasesList extends StatelessWidget {
   const HumanCasesList({Key? key}) : super(key: key);

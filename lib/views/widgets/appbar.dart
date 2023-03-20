@@ -16,7 +16,7 @@ final String title;
       child: AppBar(
         title: Text(title,style: KTextStyle.of(context).title,),
         centerTitle: true,
-        titleTextStyle: KTextStyle.of(context).appBar,
+        // titleTextStyle: KTextStyle.of(context).appBar,
         leading: Padding(
           padding:  EdgeInsets.only(right: KHelper.hPadding),
           child: SvgPicture.asset("assets/image/Resala Logo.svg",),

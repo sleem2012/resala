@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:resala/shared/theme/helper.dart';
 import 'package:resala/views/home/widget/slider_img.dart';
-import 'package:resala/views/widgets/vertical_card.dart';
 
-import '../../data/models/general/card_items_model.dart';
 import '../human_cases/human_cases.dart';
 import '../widgets/horizintal_card.dart';
 import 'widget/cards_list.dart';
