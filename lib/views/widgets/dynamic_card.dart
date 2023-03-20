@@ -15,10 +15,12 @@ enum FieldTypes {
 }
 
 class DynamicCard extends StatelessWidget {
-  const DynamicCard({Key? key, required this.title, this.dropDownList, required this.type}) : super(key: key);
+  const DynamicCard({Key? key, required this.title, this.dropDownList, required this.type, this.showSuffix = false,  this.kTextController}) : super(key: key);
   final String title;
   final List<String>? dropDownList;
   final FieldTypes type;
+  final bool showSuffix;
+  final TextEditingController? kTextController;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,8 @@ class DynamicCard extends StatelessWidget {
         if (type == FieldTypes.textFiled)
           KTextFormField(
             kFillColor: KColors.of(context).elevatedBox,
-            suffixIcon: const Icon(Icons.monetization_on_rounded),
+            suffixIcon: showSuffix ?const Icon(Icons.monetization_on_rounded):null,
+            controller: kTextController,
           )
         else if (type == FieldTypes.datePicker)
           GestureDetector(
@@ -69,65 +72,10 @@ class DynamicCard extends StatelessWidget {
           KDropdownBtn<String>(
             onChanged: (p0) {},
             items: dropDownList?.map((e) => KHelper.of(context).itemView<String>(itemText: e, value: e)).toList() ?? [],
-            hint: "مندوب",
+            hint: "اختر",
             // value: CurrenciesBloc.of(context).selectedCurrency,
           )
       ],
     );
   }
 }
-
-// class Cases extends StatelessWidget {
-//   const Cases({Key? key, required this.type, required this.dropDownList}) : super(key: key);
-//   final FieldTypes type;
-//   final List<String> dropDownList;
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     switch (type) {
-//       case FieldTypes.dropDown:
-//         KDropdownBtn<String>(
-//           onChanged: (p0) {},
-//           items: dropDownList.map((e) => KHelper.of(context).itemView<String>(itemText: e, value: e)).toList(),
-//           hint: "مندوب",
-//           // value: CurrenciesBloc.of(context).selectedCurrency,
-//         );
-//         break;
-//       case FieldTypes.datePicker:
-//         GestureDetector(
-//           onTap: () async {
-//             final date = await SfDatePicker.showDateTimePickerHG(
-//               context,
-//               type: KDateTimePickerType.dateGregorian,
-//               start: DateTime.now(),
-//               initial: DateTime.now(),
-//               end: DateTime(2030),
-//             );
-//             if (date == null) return;
-//             dateController.text = date;
-//             // widget.onChanged(date);
-//           },
-//           child: KTextFormField(
-//             hintText: DateTime.now().toString().substring(0, 10),
-//             controller: dateController,
-//             kFillColor: KColors.of(context).elevatedBox,
-//             enabled: false,
-//             suffixIcon: const Icon(Icons.date_range),
-//             // errorText: "widget.error",
-//             style: KTextStyle.of(context).body2,
-//             validator: (p0) {
-//               if (p0!.isEmpty) {
-//                 return "الحقل مطلوب";
-//               }
-//               return null;
-//             },
-//           ),
-//         );
-//
-//         break;
-//
-//       default:
-//     }
-//     return const SizedBox();
-//   }
-// }

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:resala/shared/theme/helper.dart';
 import 'package:resala/shared/theme/text_theme.dart';
@@ -7,13 +6,13 @@ import 'package:resala/views/widgets/custom_button.dart';
 
 import 'package:resala/views/widgets/dynamic_card.dart';
 
-class MonthlyDonationScreen extends StatelessWidget {
-  const MonthlyDonationScreen({Key? key}) : super(key: key);
+class MandopScreen extends StatelessWidget {
+  const MandopScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     List<String> list = [
-      "مندوب",
+      "عيني",
       "عامل",
     ];
     return Scaffold(
@@ -30,41 +29,41 @@ class MonthlyDonationScreen extends StatelessWidget {
             Align(
               alignment: Alignment.center,
               child: Text(
-                "استمارة التبرع الشهري",
+                "طلب مندوب تحصيل",
                 style: KTextStyle.of(context).title,
               ),
             ),
             SizedBox(
               height: KHelper.listPadding,
             ),
-            Image.asset("assets/image/monthly_rectangle.png"),
+            Image.asset("assets/image/mandop_rect.png"),
             SizedBox(
               height: KHelper.listPadding,
             ),
             Row(
               children: [
                 const Expanded(
-                  child: DynamicCard(title: "قيمة الإستمارة", type: FieldTypes.textFiled,showSuffix: true,),
+                  child: DynamicCard(title: "قيمة المبلغ", type: FieldTypes.textFiled,showSuffix: true,),
                 ),
                 SizedBox(
                   width: KHelper.listPadding,
                 ),
-                const Expanded(
-                  child: DynamicCard(title: "موعد التحصيل الشهري", type: FieldTypes.datePicker),
+                Expanded(
+                  child: DynamicCard(title: "التحصيل", type: FieldTypes.dropDown, dropDownList: list),
                 ),
               ],
             ),
             SizedBox(
               width: KHelper.listPadding,
             ),
-            DynamicCard(title: "جهة توجية الإستمار", type: FieldTypes.dropDown,dropDownList: list),
+            const DynamicCard(title: "ملاحظان عن التبرع", type: FieldTypes.textFiled),
             const SizedBox(
               height: 40,
             ),
             KButton(
-              title: "أضف تبرع",
+              title: "طلب مندوب",
               onPressed: () {},
-              icon: Icons.credit_card,
+              icon: Icons.fire_truck,
             )
           ],
         ),

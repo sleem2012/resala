@@ -29,10 +29,11 @@ class KDropdownBtn<T> extends StatelessWidget {
         title: hint,
         onChanged: onChanged,
         validator: validator,
-        type:type ,
+        type:SelectorViewType.sheet ,
         popupDecoration: KHelper.of(context).elevatedBox,
         btnDecoration: KHelper.of(context).elevatedBox,
         error: error
+
     );
   }
 }

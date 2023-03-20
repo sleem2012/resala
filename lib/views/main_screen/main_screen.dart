@@ -1,6 +1,8 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:resala/shared/theme/helper.dart';
+import 'package:resala/views/calculate/calculate_zakaa_screen.dart';
 import 'package:resala/views/home/home_screen.dart';
 import 'package:resala/views/your_participation/your_participation_screen.dart';
 
@@ -21,24 +23,37 @@ class MainNavPages extends StatelessWidget {
           return Scaffold(
             extendBodyBehindAppBar: true,
             extendBody: true,
-            appBar:  KAppBar(title: MainViewBloc.of(context).label[state.index]),
+            appBar: KAppBar(title: MainViewBloc.of(context).label[state.index]),
             body: PageView(
               controller: MainViewBloc.of(context).pageCtrl,
               physics: const NeverScrollableScrollPhysics(),
-
               children: const [
                 HomeScreen(),
                 YourParticipationScreen(),
+
+                CalculateZakaaScreen(),
+
+
               ],
             ),
+            floatingActionButton: FloatingActionButton(
+              backgroundColor: KColors.of(context).accentColor,
+
+              onPressed: () {
+                MainViewBloc.of(context).navTaped(2);
+
+              },
+              child: const Icon(KHelper.calculate,),
+            ),
+            floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
             bottomNavigationBar: AnimatedBottomNavigationBar(
               height: 50,
               icons: MainViewBloc.of(context).navItems,
               activeIndex: state.index,
               shadow: Shadow(color: KColors.of(context).shadow, blurRadius: 10),
               backgroundColor: KColors.of(context).background,
-              gapLocation: GapLocation.center,
-              notchSmoothness: NotchSmoothness.softEdge,
+              gapLocation: GapLocation.none,
+              notchSmoothness: NotchSmoothness.defaultEdge,
               onTap: MainViewBloc.of(context).navTaped,
               activeColor: KColors.of(context).primary,
               inactiveColor: KColors.of(context).accentColor,

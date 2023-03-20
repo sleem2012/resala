@@ -7,8 +7,8 @@ import 'package:resala/views/widgets/custom_button.dart';
 
 import 'package:resala/views/widgets/dynamic_card.dart';
 
-class MonthlyDonationScreen extends StatelessWidget {
-  const MonthlyDonationScreen({Key? key}) : super(key: key);
+class VolunteeringFormScreen extends StatelessWidget {
+  const VolunteeringFormScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,41 +30,41 @@ class MonthlyDonationScreen extends StatelessWidget {
             Align(
               alignment: Alignment.center,
               child: Text(
-                "استمارة التبرع الشهري",
+                "استمارة التطوع",
                 style: KTextStyle.of(context).title,
               ),
             ),
             SizedBox(
               height: KHelper.listPadding,
             ),
-            Image.asset("assets/image/monthly_rectangle.png"),
+            Image.asset("assets/image/voulnter_rectangle.png"),
             SizedBox(
               height: KHelper.listPadding,
             ),
             Row(
               children: [
                 const Expanded(
-                  child: DynamicCard(title: "قيمة الإستمارة", type: FieldTypes.textFiled,showSuffix: true,),
+                  child: DynamicCard(title: "العمر", type: FieldTypes.textFiled,),
                 ),
                 SizedBox(
                   width: KHelper.listPadding,
                 ),
                 const Expanded(
-                  child: DynamicCard(title: "موعد التحصيل الشهري", type: FieldTypes.datePicker),
+                  child: DynamicCard(title: "الكلية", type: FieldTypes.textFiled),
                 ),
               ],
             ),
             SizedBox(
               width: KHelper.listPadding,
             ),
-            DynamicCard(title: "جهة توجية الإستمار", type: FieldTypes.dropDown,dropDownList: list),
+            DynamicCard(title: "النشاط", type: FieldTypes.dropDown,dropDownList: list),
             const SizedBox(
               height: 40,
             ),
             KButton(
-              title: "أضف تبرع",
+              title: "ارسل الإستمارة",
               onPressed: () {},
-              icon: Icons.credit_card,
+              icon: Icons.sticky_note_2_sharp,
             )
           ],
         ),

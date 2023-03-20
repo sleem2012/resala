@@ -25,6 +25,6 @@ class MainViewBloc extends Cubit<MainViewState> {
     emit(MainViewState(index: page));
   }
 
-  List<IconData> navItems = [KHelper.home,  KHelper.person];
-  List<String> label = ["الرئيسية",  "بصمتـــك"];
+  List<IconData> navItems = [KHelper.home,  KHelper.fingerprint];
+  List<String> label = ["الرئيسية",  "بصمتـــك","احسب زكاتك"];
 }

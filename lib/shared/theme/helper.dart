@@ -21,8 +21,8 @@ class KHelper {
   }
 
   /// Icons data *****************************
-  static const IconData person = Icons.person;
-  static const IconData phone = Icons.phone_rounded;
+  static const IconData calculate = Icons.calculate_outlined;
+  static const IconData fingerprint = Icons.local_fire_department_outlined;
   static const IconData home = Icons.home;
 
   static const double btnRadius = 8.0;
