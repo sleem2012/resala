@@ -48,8 +48,8 @@ class MandopScreen extends StatelessWidget {
                 SizedBox(
                   width: KHelper.listPadding,
                 ),
-                Expanded(
-                  child: DynamicCard(title: "التحصيل", type: FieldTypes.dropDown, dropDownList: list),
+                const Expanded(
+                  child: DynamicCard(title: "التحصيل", type: FieldTypes.textFiled),
                 ),
               ],
             ),

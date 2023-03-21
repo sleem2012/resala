@@ -69,12 +69,12 @@ class KTextStyle {
     );
   }
 
-  TextStyle get body3 {
+  TextStyle get boldBody {
     return TextStyle(
       color: Theme.of(_context!).brightness == Brightness.light ? mainL : mainD,
-      fontSize: 12.5,
+      fontSize: 12,
       fontFamily: fontFamily,
-      fontWeight: FontWeight.bold,
+      fontWeight: FontWeight.w600,
     );
   }
 

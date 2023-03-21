@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:resala/data/models/general/card_items_model.dart';
+import 'package:resala/views/digital_donation/digital_donation_screen.dart';
 import 'package:resala/views/donation_faces/donation_faces_screen.dart';
 import 'package:resala/views/form_screens/monthly_donation_screen.dart';
 import 'package:resala/views/form_screens/volunteering_form_screen.dart';
@@ -14,7 +15,10 @@ class CardsList {
         title: "التبرع الإلكتروني",
         btnTitle: "أضف تبرع",
         desc: "بعض الجمل التفصيلية عن فكرة التبرع الإلكتروني للجمعية",
-        onPressed: () {}),
+        onPressed: () {
+          return Get.to(() => const DigitalDonationScreen());
+
+        }),
     CardItemsModel(
         image: "assets/image/mandop.png",
         title: "طلب مندوب تحصيل",

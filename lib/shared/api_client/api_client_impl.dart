@@ -21,10 +21,10 @@ class DioClientImpl {
       ..add(PrettyDioLogger(
         compact: true,
         request: true,
-        requestBody: false,
+        requestBody: true,
         requestHeader: false,
-        responseBody: false,
-        responseHeader: false,
+        responseBody: true,
+        responseHeader: true,
         error: true,
       ));
     if (baseOptions != null) {

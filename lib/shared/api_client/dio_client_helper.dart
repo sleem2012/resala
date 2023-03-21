@@ -13,7 +13,7 @@ abstract class ApiClientHelper {
     if (await ConnectivityCheck.call()) {
       try {
         final response = await func;
-        if (response.statusCode == 200) {
+        if (response.statusCode == 200||response.statusCode == 201) {
           if (response.data['status'] == 'error') {
             KHelper.showSnackBar(response.data['message']);
           }

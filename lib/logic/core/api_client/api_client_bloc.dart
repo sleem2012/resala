@@ -45,8 +45,8 @@ class ApiClientBloc extends Cubit<ApiClientState> {
   }
 
   onRequestCallBack(RequestOptions request) {
-    final token = KStorage.i.getToken;
-    final language = KStorage.i.getLang ?? "en";
+    final token = "KStorage.i.getToken";
+    final language =  "en";
     request.headers.addAll({'Authorization': "Bearer $token"});
     request.headers.addAll({"lang": language});
   }

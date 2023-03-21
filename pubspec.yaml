@@ -17,6 +17,8 @@ dependencies:
   get:
   get_it:
   get_storage:
+  webview_flutter: ^3.0.4
+
   flutter_bloc:
   connectivity_plus:
   dartz:
