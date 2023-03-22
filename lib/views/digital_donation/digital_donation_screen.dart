@@ -51,24 +51,24 @@ class DigitalDonationScreen extends StatelessWidget {
                 javascriptMode: JavascriptMode.unrestricted,
 
                 onPageFinished:(url) async {
-                  if (url.contains('forallfa')) {
+                  // if (url.contains('forallfa')) {
                     //   Get.to(OnSuccessView(msg: Tr.get.payment_added_successfully, doubleBack: true));
                     //   MyPaymentsBloc.of(context).getMyPayments();
                     // } else if (url.contains("fail")) {
                     //   Nav.of(context).replace(OnErrorView(msg: Tr.get.error_card, doubleBack: true));
                     debugPrint('url => $url');
-                    Get.back() ;
-                  }
+                    // Get.back() ;
+                  // }
                 } ,
                 onPageStarted: (url) async {
-                  if (url.contains('webhook')) {
+                  // if (url.contains('webhook')) {
                   //   Get.to(OnSuccessView(msg: Tr.get.payment_added_successfully, doubleBack: true));
                   //   MyPaymentsBloc.of(context).getMyPayments();
                   // } else if (url.contains("fail")) {
                   //   Nav.of(context).replace(OnErrorView(msg: Tr.get.error_card, doubleBack: true));
                   debugPrint('url => $url');
-                  Get.back() ;
-                  }
+                  // Get.back() ;
+                  // }
                 },
               ),
             ),
