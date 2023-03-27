@@ -1,7 +1,5 @@
-import 'dart:io';
 import 'dart:math' as math;
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 
 class UserInterceptor extends Interceptor {
   final void Function(RequestOptions)? onRequestCallback;
@@ -26,10 +24,11 @@ class UserInterceptor extends Interceptor {
   @override
   Future<void> onError(DioError err, ErrorInterceptorHandler handler) async {
     onErrorCallback?.call(err);
-    if (err.type == DioErrorType.other && err.error != null && err.error is SocketException) {
-      debugPrint('****************** Error ( Wating for connection)... ');
-      return handler.resolve(await onRetry(err.requestOptions));
-    }
+
+    /// if (err.type == DioErrorType.unknown && err.error != null && err.error is SocketException) {
+    ///   debugPrint('****************** Error ( Waiting for connection)... ');
+    ///   return handler.resolve(await onRetry(err.requestOptions));
+    /// }
     if (err.response != null) {
       return handler.next(err);
     } else {
@@ -54,11 +53,11 @@ class PrettyDioLogger extends Interceptor {
   PrettyDioLogger({
     this.request = true,
     this.requestHeader = false,
-    this.requestBody = true,
+    this.requestBody = false,
     this.responseHeader = false,
-    this.responseBody = true,
+    this.responseBody = false,
     this.error = true,
-    this.maxWidth = 500,
+    this.maxWidth = 120,
     this.compact = true,
     this.logPrint = print,
   });
@@ -100,16 +99,15 @@ class PrettyDioLogger extends Interceptor {
   @override
   void onError(DioError err, ErrorInterceptorHandler handler) {
     if (error) {
-      if (err.type == DioErrorType.response) {
+      if (err.type == DioErrorType.badResponse) {
         final uri = err.response?.requestOptions.uri;
         _printBoxed(header: 'DioError ║ Status: ${err.response?.statusCode} ${err.response?.statusMessage}', text: uri.toString());
         if (err.response != null && err.response?.data != null) {
           logPrint('╔ ${_trimString(err.type.toString())}');
           _printResponse(err.response!);
         }
-
-        /// _printLine('╚');
-        /// logPrint('');
+        _printLine('╚');
+        logPrint('');
       } else {
         _printBoxed(header: 'DioError ║ ${err.type}', text: err.message);
       }
@@ -184,7 +182,7 @@ class PrettyDioLogger extends Interceptor {
   }
 
   void _printBlock(String msg) {
-    final lines = (msg.length / maxWidth).ceil();
+    final lines = (msg.length / maxWidth).ceil() > 200 ? 200 : (msg.length / maxWidth).ceil();
     for (var i = 0; i < lines; ++i) {
       logPrint((i >= 0 ? '║ ' : '') + msg.substring(i * maxWidth, math.min<int>(i * maxWidth + maxWidth, msg.length)));
     }
@@ -233,7 +231,7 @@ class PrettyDioLogger extends Interceptor {
         final indent = _indent(tabs);
         final linWidth = maxWidth - indent.length;
         if (msg.length + indent.length > linWidth) {
-          final lines = (msg.length / linWidth).ceil();
+          final lines = (msg.length / maxWidth).ceil() > 200 ? 200 : (msg.length / maxWidth).ceil();
           for (var i = 0; i < lines; ++i) {
             logPrint('║${_indent(tabs)} ${msg.substring(i * linWidth, math.min<int>(i * linWidth + linWidth, msg.length))}');
           }

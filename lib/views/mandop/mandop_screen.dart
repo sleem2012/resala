@@ -11,10 +11,7 @@ class MandopScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<String> list = [
-      "عيني",
-      "عامل",
-    ];
+
     return Scaffold(
       appBar: const KAppBar(
         title: "",

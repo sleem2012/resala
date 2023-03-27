@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:resala/payment/data/model/order_params.dart';
 import 'package:resala/payment/data/model/payment_key_params.dart';
 import 'package:resala/payment/data/payment_repo.dart';
-import 'package:resala/shared/api_client/endpoints.dart';
+import 'package:resala/shared/api_client/api_client/endpoints.dart';
 import 'package:resala/shared/error/failuers.dart';
 
 

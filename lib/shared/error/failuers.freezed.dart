@@ -26,6 +26,8 @@ mixin _$KFailure {
     required TResult Function() locationDisabled,
     required TResult Function() locationDeniedPermanently,
     required TResult Function() someThingWrongPleaseTryAgain,
+    required TResult Function(String error) error401,
+    required TResult Function(Error422Model error422model) error422,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,8 @@ mixin _$KFailure {
     TResult? Function()? locationDisabled,
     TResult? Function()? locationDeniedPermanently,
     TResult? Function()? someThingWrongPleaseTryAgain,
+    TResult? Function(String error)? error401,
+    TResult? Function(Error422Model error422model)? error422,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,8 @@ mixin _$KFailure {
     TResult Function()? locationDisabled,
     TResult Function()? locationDeniedPermanently,
     TResult Function()? someThingWrongPleaseTryAgain,
+    TResult Function(String error)? error401,
+    TResult Function(Error422Model error422model)? error422,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -65,6 +71,8 @@ mixin _$KFailure {
         locationDeniedPermanently,
     required TResult Function(KFailureSomeThingWrongPleaseTryAgain value)
         someThingWrongPleaseTryAgain,
+    required TResult Function(KFailureError401 value) error401,
+    required TResult Function(KFailureError422 value) error422,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -79,6 +87,8 @@ mixin _$KFailure {
         locationDeniedPermanently,
     TResult? Function(KFailureSomeThingWrongPleaseTryAgain value)?
         someThingWrongPleaseTryAgain,
+    TResult? Function(KFailureError401 value)? error401,
+    TResult? Function(KFailureError422 value)? error422,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -93,6 +103,8 @@ mixin _$KFailure {
         locationDeniedPermanently,
     TResult Function(KFailureSomeThingWrongPleaseTryAgain value)?
         someThingWrongPleaseTryAgain,
+    TResult Function(KFailureError401 value)? error401,
+    TResult Function(KFailureError422 value)? error422,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -187,6 +199,8 @@ class _$KFailureError implements KFailureError {
     required TResult Function() locationDisabled,
     required TResult Function() locationDeniedPermanently,
     required TResult Function() someThingWrongPleaseTryAgain,
+    required TResult Function(String error) error401,
+    required TResult Function(Error422Model error422model) error422,
   }) {
     return error(this.error);
   }
@@ -202,6 +216,8 @@ class _$KFailureError implements KFailureError {
     TResult? Function()? locationDisabled,
     TResult? Function()? locationDeniedPermanently,
     TResult? Function()? someThingWrongPleaseTryAgain,
+    TResult? Function(String error)? error401,
+    TResult? Function(Error422Model error422model)? error422,
   }) {
     return error?.call(this.error);
   }
@@ -217,6 +233,8 @@ class _$KFailureError implements KFailureError {
     TResult Function()? locationDisabled,
     TResult Function()? locationDeniedPermanently,
     TResult Function()? someThingWrongPleaseTryAgain,
+    TResult Function(String error)? error401,
+    TResult Function(Error422Model error422model)? error422,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -238,6 +256,8 @@ class _$KFailureError implements KFailureError {
         locationDeniedPermanently,
     required TResult Function(KFailureSomeThingWrongPleaseTryAgain value)
         someThingWrongPleaseTryAgain,
+    required TResult Function(KFailureError401 value) error401,
+    required TResult Function(KFailureError422 value) error422,
   }) {
     return error(this);
   }
@@ -255,6 +275,8 @@ class _$KFailureError implements KFailureError {
         locationDeniedPermanently,
     TResult? Function(KFailureSomeThingWrongPleaseTryAgain value)?
         someThingWrongPleaseTryAgain,
+    TResult? Function(KFailureError401 value)? error401,
+    TResult? Function(KFailureError422 value)? error422,
   }) {
     return error?.call(this);
   }
@@ -272,6 +294,8 @@ class _$KFailureError implements KFailureError {
         locationDeniedPermanently,
     TResult Function(KFailureSomeThingWrongPleaseTryAgain value)?
         someThingWrongPleaseTryAgain,
+    TResult Function(KFailureError401 value)? error401,
+    TResult Function(KFailureError422 value)? error422,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -336,6 +360,8 @@ class _$KFailureServer implements KFailureServer {
     required TResult Function() locationDisabled,
     required TResult Function() locationDeniedPermanently,
     required TResult Function() someThingWrongPleaseTryAgain,
+    required TResult Function(String error) error401,
+    required TResult Function(Error422Model error422model) error422,
   }) {
     return server();
   }
@@ -351,6 +377,8 @@ class _$KFailureServer implements KFailureServer {
     TResult? Function()? locationDisabled,
     TResult? Function()? locationDeniedPermanently,
     TResult? Function()? someThingWrongPleaseTryAgain,
+    TResult? Function(String error)? error401,
+    TResult? Function(Error422Model error422model)? error422,
   }) {
     return server?.call();
   }
@@ -366,6 +394,8 @@ class _$KFailureServer implements KFailureServer {
     TResult Function()? locationDisabled,
     TResult Function()? locationDeniedPermanently,
     TResult Function()? someThingWrongPleaseTryAgain,
+    TResult Function(String error)? error401,
+    TResult Function(Error422Model error422model)? error422,
     required TResult orElse(),
   }) {
     if (server != null) {
@@ -387,6 +417,8 @@ class _$KFailureServer implements KFailureServer {
         locationDeniedPermanently,
     required TResult Function(KFailureSomeThingWrongPleaseTryAgain value)
         someThingWrongPleaseTryAgain,
+    required TResult Function(KFailureError401 value) error401,
+    required TResult Function(KFailureError422 value) error422,
   }) {
     return server(this);
   }
@@ -404,6 +436,8 @@ class _$KFailureServer implements KFailureServer {
         locationDeniedPermanently,
     TResult? Function(KFailureSomeThingWrongPleaseTryAgain value)?
         someThingWrongPleaseTryAgain,
+    TResult? Function(KFailureError401 value)? error401,
+    TResult? Function(KFailureError422 value)? error422,
   }) {
     return server?.call(this);
   }
@@ -421,6 +455,8 @@ class _$KFailureServer implements KFailureServer {
         locationDeniedPermanently,
     TResult Function(KFailureSomeThingWrongPleaseTryAgain value)?
         someThingWrongPleaseTryAgain,
+    TResult Function(KFailureError401 value)? error401,
+    TResult Function(KFailureError422 value)? error422,
     required TResult orElse(),
   }) {
     if (server != null) {
@@ -506,6 +542,8 @@ class _$KFailureOffline implements KFailureOffline {
     required TResult Function() locationDisabled,
     required TResult Function() locationDeniedPermanently,
     required TResult Function() someThingWrongPleaseTryAgain,
+    required TResult Function(String error) error401,
+    required TResult Function(Error422Model error422model) error422,
   }) {
     return offline(option);
   }
@@ -521,6 +559,8 @@ class _$KFailureOffline implements KFailureOffline {
     TResult? Function()? locationDisabled,
     TResult? Function()? locationDeniedPermanently,
     TResult? Function()? someThingWrongPleaseTryAgain,
+    TResult? Function(String error)? error401,
+    TResult? Function(Error422Model error422model)? error422,
   }) {
     return offline?.call(option);
   }
@@ -536,6 +576,8 @@ class _$KFailureOffline implements KFailureOffline {
     TResult Function()? locationDisabled,
     TResult Function()? locationDeniedPermanently,
     TResult Function()? someThingWrongPleaseTryAgain,
+    TResult Function(String error)? error401,
+    TResult Function(Error422Model error422model)? error422,
     required TResult orElse(),
   }) {
     if (offline != null) {
@@ -557,6 +599,8 @@ class _$KFailureOffline implements KFailureOffline {
         locationDeniedPermanently,
     required TResult Function(KFailureSomeThingWrongPleaseTryAgain value)
         someThingWrongPleaseTryAgain,
+    required TResult Function(KFailureError401 value) error401,
+    required TResult Function(KFailureError422 value) error422,
   }) {
     return offline(this);
   }
@@ -574,6 +618,8 @@ class _$KFailureOffline implements KFailureOffline {
         locationDeniedPermanently,
     TResult? Function(KFailureSomeThingWrongPleaseTryAgain value)?
         someThingWrongPleaseTryAgain,
+    TResult? Function(KFailureError401 value)? error401,
+    TResult? Function(KFailureError422 value)? error422,
   }) {
     return offline?.call(this);
   }
@@ -591,6 +637,8 @@ class _$KFailureOffline implements KFailureOffline {
         locationDeniedPermanently,
     TResult Function(KFailureSomeThingWrongPleaseTryAgain value)?
         someThingWrongPleaseTryAgain,
+    TResult Function(KFailureError401 value)? error401,
+    TResult Function(KFailureError422 value)? error422,
     required TResult orElse(),
   }) {
     if (offline != null) {
@@ -656,6 +704,8 @@ class _$KFailureUserNotFound implements KFailureUserNotFound {
     required TResult Function() locationDisabled,
     required TResult Function() locationDeniedPermanently,
     required TResult Function() someThingWrongPleaseTryAgain,
+    required TResult Function(String error) error401,
+    required TResult Function(Error422Model error422model) error422,
   }) {
     return userNotFound();
   }
@@ -671,6 +721,8 @@ class _$KFailureUserNotFound implements KFailureUserNotFound {
     TResult? Function()? locationDisabled,
     TResult? Function()? locationDeniedPermanently,
     TResult? Function()? someThingWrongPleaseTryAgain,
+    TResult? Function(String error)? error401,
+    TResult? Function(Error422Model error422model)? error422,
   }) {
     return userNotFound?.call();
   }
@@ -686,6 +738,8 @@ class _$KFailureUserNotFound implements KFailureUserNotFound {
     TResult Function()? locationDisabled,
     TResult Function()? locationDeniedPermanently,
     TResult Function()? someThingWrongPleaseTryAgain,
+    TResult Function(String error)? error401,
+    TResult Function(Error422Model error422model)? error422,
     required TResult orElse(),
   }) {
     if (userNotFound != null) {
@@ -707,6 +761,8 @@ class _$KFailureUserNotFound implements KFailureUserNotFound {
         locationDeniedPermanently,
     required TResult Function(KFailureSomeThingWrongPleaseTryAgain value)
         someThingWrongPleaseTryAgain,
+    required TResult Function(KFailureError401 value) error401,
+    required TResult Function(KFailureError422 value) error422,
   }) {
     return userNotFound(this);
   }
@@ -724,6 +780,8 @@ class _$KFailureUserNotFound implements KFailureUserNotFound {
         locationDeniedPermanently,
     TResult? Function(KFailureSomeThingWrongPleaseTryAgain value)?
         someThingWrongPleaseTryAgain,
+    TResult? Function(KFailureError401 value)? error401,
+    TResult? Function(KFailureError422 value)? error422,
   }) {
     return userNotFound?.call(this);
   }
@@ -741,6 +799,8 @@ class _$KFailureUserNotFound implements KFailureUserNotFound {
         locationDeniedPermanently,
     TResult Function(KFailureSomeThingWrongPleaseTryAgain value)?
         someThingWrongPleaseTryAgain,
+    TResult Function(KFailureError401 value)? error401,
+    TResult Function(KFailureError422 value)? error422,
     required TResult orElse(),
   }) {
     if (userNotFound != null) {
@@ -800,6 +860,8 @@ class _$KFailureLocationDenied implements KFailureLocationDenied {
     required TResult Function() locationDisabled,
     required TResult Function() locationDeniedPermanently,
     required TResult Function() someThingWrongPleaseTryAgain,
+    required TResult Function(String error) error401,
+    required TResult Function(Error422Model error422model) error422,
   }) {
     return locationDenied();
   }
@@ -815,6 +877,8 @@ class _$KFailureLocationDenied implements KFailureLocationDenied {
     TResult? Function()? locationDisabled,
     TResult? Function()? locationDeniedPermanently,
     TResult? Function()? someThingWrongPleaseTryAgain,
+    TResult? Function(String error)? error401,
+    TResult? Function(Error422Model error422model)? error422,
   }) {
     return locationDenied?.call();
   }
@@ -830,6 +894,8 @@ class _$KFailureLocationDenied implements KFailureLocationDenied {
     TResult Function()? locationDisabled,
     TResult Function()? locationDeniedPermanently,
     TResult Function()? someThingWrongPleaseTryAgain,
+    TResult Function(String error)? error401,
+    TResult Function(Error422Model error422model)? error422,
     required TResult orElse(),
   }) {
     if (locationDenied != null) {
@@ -851,6 +917,8 @@ class _$KFailureLocationDenied implements KFailureLocationDenied {
         locationDeniedPermanently,
     required TResult Function(KFailureSomeThingWrongPleaseTryAgain value)
         someThingWrongPleaseTryAgain,
+    required TResult Function(KFailureError401 value) error401,
+    required TResult Function(KFailureError422 value) error422,
   }) {
     return locationDenied(this);
   }
@@ -868,6 +936,8 @@ class _$KFailureLocationDenied implements KFailureLocationDenied {
         locationDeniedPermanently,
     TResult? Function(KFailureSomeThingWrongPleaseTryAgain value)?
         someThingWrongPleaseTryAgain,
+    TResult? Function(KFailureError401 value)? error401,
+    TResult? Function(KFailureError422 value)? error422,
   }) {
     return locationDenied?.call(this);
   }
@@ -885,6 +955,8 @@ class _$KFailureLocationDenied implements KFailureLocationDenied {
         locationDeniedPermanently,
     TResult Function(KFailureSomeThingWrongPleaseTryAgain value)?
         someThingWrongPleaseTryAgain,
+    TResult Function(KFailureError401 value)? error401,
+    TResult Function(KFailureError422 value)? error422,
     required TResult orElse(),
   }) {
     if (locationDenied != null) {
@@ -945,6 +1017,8 @@ class _$KFailureLocationDisabled implements KFailureLocationDisabled {
     required TResult Function() locationDisabled,
     required TResult Function() locationDeniedPermanently,
     required TResult Function() someThingWrongPleaseTryAgain,
+    required TResult Function(String error) error401,
+    required TResult Function(Error422Model error422model) error422,
   }) {
     return locationDisabled();
   }
@@ -960,6 +1034,8 @@ class _$KFailureLocationDisabled implements KFailureLocationDisabled {
     TResult? Function()? locationDisabled,
     TResult? Function()? locationDeniedPermanently,
     TResult? Function()? someThingWrongPleaseTryAgain,
+    TResult? Function(String error)? error401,
+    TResult? Function(Error422Model error422model)? error422,
   }) {
     return locationDisabled?.call();
   }
@@ -975,6 +1051,8 @@ class _$KFailureLocationDisabled implements KFailureLocationDisabled {
     TResult Function()? locationDisabled,
     TResult Function()? locationDeniedPermanently,
     TResult Function()? someThingWrongPleaseTryAgain,
+    TResult Function(String error)? error401,
+    TResult Function(Error422Model error422model)? error422,
     required TResult orElse(),
   }) {
     if (locationDisabled != null) {
@@ -996,6 +1074,8 @@ class _$KFailureLocationDisabled implements KFailureLocationDisabled {
         locationDeniedPermanently,
     required TResult Function(KFailureSomeThingWrongPleaseTryAgain value)
         someThingWrongPleaseTryAgain,
+    required TResult Function(KFailureError401 value) error401,
+    required TResult Function(KFailureError422 value) error422,
   }) {
     return locationDisabled(this);
   }
@@ -1013,6 +1093,8 @@ class _$KFailureLocationDisabled implements KFailureLocationDisabled {
         locationDeniedPermanently,
     TResult? Function(KFailureSomeThingWrongPleaseTryAgain value)?
         someThingWrongPleaseTryAgain,
+    TResult? Function(KFailureError401 value)? error401,
+    TResult? Function(KFailureError422 value)? error422,
   }) {
     return locationDisabled?.call(this);
   }
@@ -1030,6 +1112,8 @@ class _$KFailureLocationDisabled implements KFailureLocationDisabled {
         locationDeniedPermanently,
     TResult Function(KFailureSomeThingWrongPleaseTryAgain value)?
         someThingWrongPleaseTryAgain,
+    TResult Function(KFailureError401 value)? error401,
+    TResult Function(KFailureError422 value)? error422,
     required TResult orElse(),
   }) {
     if (locationDisabled != null) {
@@ -1093,6 +1177,8 @@ class _$KFailureLocationDeniedPermanently
     required TResult Function() locationDisabled,
     required TResult Function() locationDeniedPermanently,
     required TResult Function() someThingWrongPleaseTryAgain,
+    required TResult Function(String error) error401,
+    required TResult Function(Error422Model error422model) error422,
   }) {
     return locationDeniedPermanently();
   }
@@ -1108,6 +1194,8 @@ class _$KFailureLocationDeniedPermanently
     TResult? Function()? locationDisabled,
     TResult? Function()? locationDeniedPermanently,
     TResult? Function()? someThingWrongPleaseTryAgain,
+    TResult? Function(String error)? error401,
+    TResult? Function(Error422Model error422model)? error422,
   }) {
     return locationDeniedPermanently?.call();
   }
@@ -1123,6 +1211,8 @@ class _$KFailureLocationDeniedPermanently
     TResult Function()? locationDisabled,
     TResult Function()? locationDeniedPermanently,
     TResult Function()? someThingWrongPleaseTryAgain,
+    TResult Function(String error)? error401,
+    TResult Function(Error422Model error422model)? error422,
     required TResult orElse(),
   }) {
     if (locationDeniedPermanently != null) {
@@ -1144,6 +1234,8 @@ class _$KFailureLocationDeniedPermanently
         locationDeniedPermanently,
     required TResult Function(KFailureSomeThingWrongPleaseTryAgain value)
         someThingWrongPleaseTryAgain,
+    required TResult Function(KFailureError401 value) error401,
+    required TResult Function(KFailureError422 value) error422,
   }) {
     return locationDeniedPermanently(this);
   }
@@ -1161,6 +1253,8 @@ class _$KFailureLocationDeniedPermanently
         locationDeniedPermanently,
     TResult? Function(KFailureSomeThingWrongPleaseTryAgain value)?
         someThingWrongPleaseTryAgain,
+    TResult? Function(KFailureError401 value)? error401,
+    TResult? Function(KFailureError422 value)? error422,
   }) {
     return locationDeniedPermanently?.call(this);
   }
@@ -1178,6 +1272,8 @@ class _$KFailureLocationDeniedPermanently
         locationDeniedPermanently,
     TResult Function(KFailureSomeThingWrongPleaseTryAgain value)?
         someThingWrongPleaseTryAgain,
+    TResult Function(KFailureError401 value)? error401,
+    TResult Function(KFailureError422 value)? error422,
     required TResult orElse(),
   }) {
     if (locationDeniedPermanently != null) {
@@ -1242,6 +1338,8 @@ class _$KFailureSomeThingWrongPleaseTryAgain
     required TResult Function() locationDisabled,
     required TResult Function() locationDeniedPermanently,
     required TResult Function() someThingWrongPleaseTryAgain,
+    required TResult Function(String error) error401,
+    required TResult Function(Error422Model error422model) error422,
   }) {
     return someThingWrongPleaseTryAgain();
   }
@@ -1257,6 +1355,8 @@ class _$KFailureSomeThingWrongPleaseTryAgain
     TResult? Function()? locationDisabled,
     TResult? Function()? locationDeniedPermanently,
     TResult? Function()? someThingWrongPleaseTryAgain,
+    TResult? Function(String error)? error401,
+    TResult? Function(Error422Model error422model)? error422,
   }) {
     return someThingWrongPleaseTryAgain?.call();
   }
@@ -1272,6 +1372,8 @@ class _$KFailureSomeThingWrongPleaseTryAgain
     TResult Function()? locationDisabled,
     TResult Function()? locationDeniedPermanently,
     TResult Function()? someThingWrongPleaseTryAgain,
+    TResult Function(String error)? error401,
+    TResult Function(Error422Model error422model)? error422,
     required TResult orElse(),
   }) {
     if (someThingWrongPleaseTryAgain != null) {
@@ -1293,6 +1395,8 @@ class _$KFailureSomeThingWrongPleaseTryAgain
         locationDeniedPermanently,
     required TResult Function(KFailureSomeThingWrongPleaseTryAgain value)
         someThingWrongPleaseTryAgain,
+    required TResult Function(KFailureError401 value) error401,
+    required TResult Function(KFailureError422 value) error422,
   }) {
     return someThingWrongPleaseTryAgain(this);
   }
@@ -1310,6 +1414,8 @@ class _$KFailureSomeThingWrongPleaseTryAgain
         locationDeniedPermanently,
     TResult? Function(KFailureSomeThingWrongPleaseTryAgain value)?
         someThingWrongPleaseTryAgain,
+    TResult? Function(KFailureError401 value)? error401,
+    TResult? Function(KFailureError422 value)? error422,
   }) {
     return someThingWrongPleaseTryAgain?.call(this);
   }
@@ -1327,6 +1433,8 @@ class _$KFailureSomeThingWrongPleaseTryAgain
         locationDeniedPermanently,
     TResult Function(KFailureSomeThingWrongPleaseTryAgain value)?
         someThingWrongPleaseTryAgain,
+    TResult Function(KFailureError401 value)? error401,
+    TResult Function(KFailureError422 value)? error422,
     required TResult orElse(),
   }) {
     if (someThingWrongPleaseTryAgain != null) {
@@ -1339,4 +1447,381 @@ class _$KFailureSomeThingWrongPleaseTryAgain
 abstract class KFailureSomeThingWrongPleaseTryAgain implements KFailure {
   const factory KFailureSomeThingWrongPleaseTryAgain() =
       _$KFailureSomeThingWrongPleaseTryAgain;
+}
+
+/// @nodoc
+abstract class _$$KFailureError401CopyWith<$Res> {
+  factory _$$KFailureError401CopyWith(
+          _$KFailureError401 value, $Res Function(_$KFailureError401) then) =
+      __$$KFailureError401CopyWithImpl<$Res>;
+  @useResult
+  $Res call({String error});
+}
+
+/// @nodoc
+class __$$KFailureError401CopyWithImpl<$Res>
+    extends _$KFailureCopyWithImpl<$Res, _$KFailureError401>
+    implements _$$KFailureError401CopyWith<$Res> {
+  __$$KFailureError401CopyWithImpl(
+      _$KFailureError401 _value, $Res Function(_$KFailureError401) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+  }) {
+    return _then(_$KFailureError401(
+      error: null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$KFailureError401 implements KFailureError401 {
+  const _$KFailureError401({required this.error});
+
+  @override
+  final String error;
+
+  @override
+  String toString() {
+    return 'KFailure.error401(error: $error)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$KFailureError401 &&
+            (identical(other.error, error) || other.error == error));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, error);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$KFailureError401CopyWith<_$KFailureError401> get copyWith =>
+      __$$KFailureError401CopyWithImpl<_$KFailureError401>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String error) error,
+    required TResult Function() server,
+    required TResult Function(RequestOptions? option) offline,
+    required TResult Function() userNotFound,
+    required TResult Function() locationDenied,
+    required TResult Function() locationDisabled,
+    required TResult Function() locationDeniedPermanently,
+    required TResult Function() someThingWrongPleaseTryAgain,
+    required TResult Function(String error) error401,
+    required TResult Function(Error422Model error422model) error422,
+  }) {
+    return error401(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String error)? error,
+    TResult? Function()? server,
+    TResult? Function(RequestOptions? option)? offline,
+    TResult? Function()? userNotFound,
+    TResult? Function()? locationDenied,
+    TResult? Function()? locationDisabled,
+    TResult? Function()? locationDeniedPermanently,
+    TResult? Function()? someThingWrongPleaseTryAgain,
+    TResult? Function(String error)? error401,
+    TResult? Function(Error422Model error422model)? error422,
+  }) {
+    return error401?.call(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String error)? error,
+    TResult Function()? server,
+    TResult Function(RequestOptions? option)? offline,
+    TResult Function()? userNotFound,
+    TResult Function()? locationDenied,
+    TResult Function()? locationDisabled,
+    TResult Function()? locationDeniedPermanently,
+    TResult Function()? someThingWrongPleaseTryAgain,
+    TResult Function(String error)? error401,
+    TResult Function(Error422Model error422model)? error422,
+    required TResult orElse(),
+  }) {
+    if (error401 != null) {
+      return error401(this.error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(KFailureError value) error,
+    required TResult Function(KFailureServer value) server,
+    required TResult Function(KFailureOffline value) offline,
+    required TResult Function(KFailureUserNotFound value) userNotFound,
+    required TResult Function(KFailureLocationDenied value) locationDenied,
+    required TResult Function(KFailureLocationDisabled value) locationDisabled,
+    required TResult Function(KFailureLocationDeniedPermanently value)
+        locationDeniedPermanently,
+    required TResult Function(KFailureSomeThingWrongPleaseTryAgain value)
+        someThingWrongPleaseTryAgain,
+    required TResult Function(KFailureError401 value) error401,
+    required TResult Function(KFailureError422 value) error422,
+  }) {
+    return error401(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(KFailureError value)? error,
+    TResult? Function(KFailureServer value)? server,
+    TResult? Function(KFailureOffline value)? offline,
+    TResult? Function(KFailureUserNotFound value)? userNotFound,
+    TResult? Function(KFailureLocationDenied value)? locationDenied,
+    TResult? Function(KFailureLocationDisabled value)? locationDisabled,
+    TResult? Function(KFailureLocationDeniedPermanently value)?
+        locationDeniedPermanently,
+    TResult? Function(KFailureSomeThingWrongPleaseTryAgain value)?
+        someThingWrongPleaseTryAgain,
+    TResult? Function(KFailureError401 value)? error401,
+    TResult? Function(KFailureError422 value)? error422,
+  }) {
+    return error401?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(KFailureError value)? error,
+    TResult Function(KFailureServer value)? server,
+    TResult Function(KFailureOffline value)? offline,
+    TResult Function(KFailureUserNotFound value)? userNotFound,
+    TResult Function(KFailureLocationDenied value)? locationDenied,
+    TResult Function(KFailureLocationDisabled value)? locationDisabled,
+    TResult Function(KFailureLocationDeniedPermanently value)?
+        locationDeniedPermanently,
+    TResult Function(KFailureSomeThingWrongPleaseTryAgain value)?
+        someThingWrongPleaseTryAgain,
+    TResult Function(KFailureError401 value)? error401,
+    TResult Function(KFailureError422 value)? error422,
+    required TResult orElse(),
+  }) {
+    if (error401 != null) {
+      return error401(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class KFailureError401 implements KFailure {
+  const factory KFailureError401({required final String error}) =
+      _$KFailureError401;
+
+  String get error;
+  @JsonKey(ignore: true)
+  _$$KFailureError401CopyWith<_$KFailureError401> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$KFailureError422CopyWith<$Res> {
+  factory _$$KFailureError422CopyWith(
+          _$KFailureError422 value, $Res Function(_$KFailureError422) then) =
+      __$$KFailureError422CopyWithImpl<$Res>;
+  @useResult
+  $Res call({Error422Model error422model});
+}
+
+/// @nodoc
+class __$$KFailureError422CopyWithImpl<$Res>
+    extends _$KFailureCopyWithImpl<$Res, _$KFailureError422>
+    implements _$$KFailureError422CopyWith<$Res> {
+  __$$KFailureError422CopyWithImpl(
+      _$KFailureError422 _value, $Res Function(_$KFailureError422) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error422model = null,
+  }) {
+    return _then(_$KFailureError422(
+      error422model: null == error422model
+          ? _value.error422model
+          : error422model // ignore: cast_nullable_to_non_nullable
+              as Error422Model,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$KFailureError422 implements KFailureError422 {
+  const _$KFailureError422({required this.error422model});
+
+  @override
+  final Error422Model error422model;
+
+  @override
+  String toString() {
+    return 'KFailure.error422(error422model: $error422model)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$KFailureError422 &&
+            (identical(other.error422model, error422model) ||
+                other.error422model == error422model));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, error422model);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$KFailureError422CopyWith<_$KFailureError422> get copyWith =>
+      __$$KFailureError422CopyWithImpl<_$KFailureError422>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String error) error,
+    required TResult Function() server,
+    required TResult Function(RequestOptions? option) offline,
+    required TResult Function() userNotFound,
+    required TResult Function() locationDenied,
+    required TResult Function() locationDisabled,
+    required TResult Function() locationDeniedPermanently,
+    required TResult Function() someThingWrongPleaseTryAgain,
+    required TResult Function(String error) error401,
+    required TResult Function(Error422Model error422model) error422,
+  }) {
+    return error422(error422model);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String error)? error,
+    TResult? Function()? server,
+    TResult? Function(RequestOptions? option)? offline,
+    TResult? Function()? userNotFound,
+    TResult? Function()? locationDenied,
+    TResult? Function()? locationDisabled,
+    TResult? Function()? locationDeniedPermanently,
+    TResult? Function()? someThingWrongPleaseTryAgain,
+    TResult? Function(String error)? error401,
+    TResult? Function(Error422Model error422model)? error422,
+  }) {
+    return error422?.call(error422model);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String error)? error,
+    TResult Function()? server,
+    TResult Function(RequestOptions? option)? offline,
+    TResult Function()? userNotFound,
+    TResult Function()? locationDenied,
+    TResult Function()? locationDisabled,
+    TResult Function()? locationDeniedPermanently,
+    TResult Function()? someThingWrongPleaseTryAgain,
+    TResult Function(String error)? error401,
+    TResult Function(Error422Model error422model)? error422,
+    required TResult orElse(),
+  }) {
+    if (error422 != null) {
+      return error422(error422model);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(KFailureError value) error,
+    required TResult Function(KFailureServer value) server,
+    required TResult Function(KFailureOffline value) offline,
+    required TResult Function(KFailureUserNotFound value) userNotFound,
+    required TResult Function(KFailureLocationDenied value) locationDenied,
+    required TResult Function(KFailureLocationDisabled value) locationDisabled,
+    required TResult Function(KFailureLocationDeniedPermanently value)
+        locationDeniedPermanently,
+    required TResult Function(KFailureSomeThingWrongPleaseTryAgain value)
+        someThingWrongPleaseTryAgain,
+    required TResult Function(KFailureError401 value) error401,
+    required TResult Function(KFailureError422 value) error422,
+  }) {
+    return error422(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(KFailureError value)? error,
+    TResult? Function(KFailureServer value)? server,
+    TResult? Function(KFailureOffline value)? offline,
+    TResult? Function(KFailureUserNotFound value)? userNotFound,
+    TResult? Function(KFailureLocationDenied value)? locationDenied,
+    TResult? Function(KFailureLocationDisabled value)? locationDisabled,
+    TResult? Function(KFailureLocationDeniedPermanently value)?
+        locationDeniedPermanently,
+    TResult? Function(KFailureSomeThingWrongPleaseTryAgain value)?
+        someThingWrongPleaseTryAgain,
+    TResult? Function(KFailureError401 value)? error401,
+    TResult? Function(KFailureError422 value)? error422,
+  }) {
+    return error422?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(KFailureError value)? error,
+    TResult Function(KFailureServer value)? server,
+    TResult Function(KFailureOffline value)? offline,
+    TResult Function(KFailureUserNotFound value)? userNotFound,
+    TResult Function(KFailureLocationDenied value)? locationDenied,
+    TResult Function(KFailureLocationDisabled value)? locationDisabled,
+    TResult Function(KFailureLocationDeniedPermanently value)?
+        locationDeniedPermanently,
+    TResult Function(KFailureSomeThingWrongPleaseTryAgain value)?
+        someThingWrongPleaseTryAgain,
+    TResult Function(KFailureError401 value)? error401,
+    TResult Function(KFailureError422 value)? error422,
+    required TResult orElse(),
+  }) {
+    if (error422 != null) {
+      return error422(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class KFailureError422 implements KFailure {
+  const factory KFailureError422({required final Error422Model error422model}) =
+      _$KFailureError422;
+
+  Error422Model get error422model;
+  @JsonKey(ignore: true)
+  _$$KFailureError422CopyWith<_$KFailureError422> get copyWith =>
+      throw _privateConstructorUsedError;
 }

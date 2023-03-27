@@ -1,16 +1,15 @@
-import 'package:resala/di.dart';
 import 'package:resala/payment/data/model/order_params.dart';
 import 'package:resala/payment/data/model/order_response_model.dart';
 import 'package:resala/payment/data/model/payment_auth_response_model.dart';
 import 'package:resala/payment/data/model/payment_key_params.dart';
 import 'package:resala/payment/data/model/payment_key_response.dart';
-import 'package:resala/shared/api_client/dio_client_helper.dart';
+import 'package:resala/shared/api_client/api_client/dio_client_helper.dart';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:resala/shared/api_client/api_client/interceptor.dart';
 
-import '../../../../../shared/api_client/endpoints.dart';
-import '../../shared/api_client/interceptor.dart';
+import '../../shared/api_client/api_client/endpoints.dart';
 import '../../shared/error/failuers.dart';
 
 
@@ -25,9 +24,9 @@ class PaymentRepoImp implements PaymentRepoAbs {
   static BaseOptions options = BaseOptions(
     baseUrl: KEndPoints.baseUrl,
     contentType: 'application/json',
-    connectTimeout: 60000,
-    receiveTimeout: 60000,
-    sendTimeout: 60000,
+    connectTimeout: const Duration(seconds: 30),
+    receiveTimeout: const Duration(seconds: 30),
+    sendTimeout: const Duration(seconds: 30),
     validateStatus: (status) => status! < 500,
   );
 
@@ -40,7 +39,7 @@ class PaymentRepoImp implements PaymentRepoAbs {
       KEndPoints.getAuthToken,
       options: Options(
         contentType: 'application/json',
-        sendTimeout: 60000,
+        sendTimeout: const Duration(seconds:20),
         validateStatus: (status) => status! < 500,
         headers: {},
       ),

@@ -1,5 +1,6 @@
 import 'dart:async';
-import '../../logic/core/api_client/api_client_bloc.dart';
+import 'package:resala/logic/core/api_client/api_client_bloc.dart';
+
 import 'endpoints.dart';
 import 'interceptor.dart';
 import 'package:dio/dio.dart';
@@ -18,15 +19,7 @@ class DioClientImpl {
         onRetry: apiClientBloc.scheduleRetry,
       ))
       ..addAll(otherInterceptors)
-      ..add(PrettyDioLogger(
-        compact: true,
-        request: true,
-        requestBody: true,
-        requestHeader: false,
-        responseBody: true,
-        responseHeader: true,
-        error: true,
-      ));
+      ..add(PrettyDioLogger());
     if (baseOptions != null) {
       options = baseOptions!;
     }
@@ -35,19 +28,23 @@ class DioClientImpl {
   static BaseOptions options = BaseOptions(
     baseUrl: KEndPoints.baseUrl,
     contentType: 'application/json',
-    connectTimeout: 20000,
-    receiveTimeout: 6000000,
-    sendTimeout: 6000000,
+    connectTimeout: const Duration(seconds: 30),
+    receiveTimeout: const Duration(minutes: 10),
+    sendTimeout: const Duration(minutes: 10),
     validateStatus: (status) => status! < 500,
   );
 
   final _dio = Dio(options);
 
-  Future<Response> get(String path, {Map<String, dynamic>? params, Options? options}) {
+  Future<Response> get(String path, {Map<String, dynamic>? params, Options? options }) {
     return _dio.get(path, queryParameters: params, options: options);
   }
 
   Future<Response> post(String path, {Map<String, dynamic>? params, Options? options, data}) {
+    return _dio.post(path, data: data, queryParameters: params, options: options);
+  }
+
+  Future<Response> paymentPost(String path, {Map<String, dynamic>? params, Options? options, data}) {
     return _dio.post(path, data: data, queryParameters: params, options: options);
   }
 

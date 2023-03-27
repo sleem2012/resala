@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:resala/di.dart';
 import 'package:resala/payment/auth_payment/auth_payment_bloc.dart';
 import 'package:resala/payment/auth_payment/auth_payment_state.dart';
-import 'package:resala/shared/api_client/endpoints.dart';
+import 'package:resala/shared/api_client/api_client/endpoints.dart';
 import 'package:resala/shared/theme/helper.dart';
 import 'package:resala/shared/theme/text_theme.dart';
 import 'package:resala/views/widgets/appbar.dart';

@@ -4,35 +4,43 @@ import 'package:dio/dio.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:resala/data/models/error/error_422_model.dart';
+import 'package:resala/shared/error/failuers.dart';
+import 'package:resala/shared/theme/helper.dart';
 
-import '../error/failuers.dart';
-import '../theme/helper.dart';
+
 
 abstract class ApiClientHelper {
-  static Future<Either<KFailure, dynamic>> responseToModel({required Future<Response<dynamic>> func}) async {
+  static Future<Either<KFailure, dynamic>> responseToModel({Future<Response<dynamic>>? func, Response<dynamic>? res}) async {
+    assert(func != null || res != null);
     if (await ConnectivityCheck.call()) {
       try {
-        final response = await func;
-        if (response.statusCode == 200||response.statusCode == 201) {
+        final response = ((await func) ?? res)!;
+
+        if (response.statusCode == 200 || response.statusCode == 201) {
           if (response.data['status'] == 'error') {
             KHelper.showSnackBar(response.data['message']);
           }
           return right(response.data);
-        }  else if (response.statusCode == 500) {
+        } else if (response.statusCode == 500) {
           return left(KFailure.error(response.data));
+        } else if (response.statusCode == 422) {
+          return left(KFailure.error422(error422model: Error422Model.fromJson(response.data)));
+        } else if (response.statusCode == 401) {
+          return left(KFailure.error401(error: response.data['message'].toString()));
         } else {
-          return left( KFailure.error(response.data.toString()));
+          return left(KFailure.error(response.data.toString()));
         }
       } on DioError catch (e) {
-        debugPrint('=================>> DioError : ${e.message}');
+        debugPrint('=================>> DioError : ${e.message} , ${e.type} ${e.error}');
         switch (e.type) {
-          case DioErrorType.connectTimeout:
+          case DioErrorType.connectionTimeout:
             return left(const KFailure.error("Request Time out"));
           case DioErrorType.receiveTimeout:
             return left(const KFailure.error("Receive Time out"));
-          case DioErrorType.response:
-            return left(KFailure.error(e.response?.data['message']?['value'].toString() ?? ''));
-          case DioErrorType.other:
+          case DioErrorType.badResponse:
+            return left(KFailure.error(e.message ?? ''));
+          case DioErrorType.unknown:
             if (e.error != null && e.error is SocketException) {
               return left(KFailure.offline(option: e.requestOptions));
             } else {
@@ -41,7 +49,6 @@ abstract class ApiClientHelper {
             }
           default:
             debugPrint('=================> 2');
-
             return left(const KFailure.someThingWrongPleaseTryAgain());
         }
       } catch (e) {

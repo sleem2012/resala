@@ -1,5 +1,6 @@
+// ignore: depend_on_referenced_packages
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../../shared/error/failuers.dart';
+import 'package:resala/shared/error/failuers.dart';
 part 'api_client_state.freezed.dart';
 
 @freezed
