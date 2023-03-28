@@ -52,10 +52,10 @@ class PrettyDioLogger extends Interceptor {
 
   PrettyDioLogger({
     this.request = true,
-    this.requestHeader = false,
-    this.requestBody = false,
+    this.requestHeader = true,
+    this.requestBody = true,
     this.responseHeader = false,
-    this.responseBody = false,
+    this.responseBody = true,
     this.error = true,
     this.maxWidth = 120,
     this.compact = true,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:resala/views/auth/login/login_view.dart';
+import 'package:resala/views/main_screen/main_screen.dart';
 import 'di.dart';
 import 'logic/core/api_client/api_client_bloc.dart';
 import 'logic/core/api_client/api_client_state.dart';
@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
                 builder: (context) {
                   return AnnotatedRegion<SystemUiOverlayStyle>(
                     value: KThemeData.of(context).overlayStyle,
-                    child: const LoginView(),
+                    child: const MainNavPages(),
                   );
                 },
               ),

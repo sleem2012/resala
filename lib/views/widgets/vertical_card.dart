@@ -1,15 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:resala/data/models/general/common_data_model.dart';
 import 'package:resala/shared/theme/helper.dart';
 import 'package:resala/shared/theme/text_theme.dart';
 import 'package:resala/views/widgets/custom_button.dart';
 
 class VerticalCard extends StatelessWidget {
   const VerticalCard({
-    super.key,
+    super.key, required this.model,
   });
-
+final CommonData model;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,7 +23,7 @@ class VerticalCard extends StatelessWidget {
           SizedBox(
             height: Get.height * .17,
             child: CachedNetworkImage(
-              imageUrl: dummyNetImg,
+              imageUrl:model.image?? dummyNetImg,
               imageBuilder: (BuildContext context, ImageProvider imageProvider) => Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
@@ -42,20 +43,29 @@ class VerticalCard extends StatelessWidget {
             height: 6,
           ),
           Text(
-            "حالة انسانية عاجلة",
+            model.title??'',
             style: KTextStyle.of(context).subtitle,
           ),
           const SizedBox(
             height: 4,
           ),
-          Text(
-            "كلنا في الشتاء بنحتاج لأكلة جميلة وبطانية تدفينا؟ بس غيرنا كتير مش لاقيهم وبيعانوا بسبب برد الشتاء",
-            style: KTextStyle.of(context).body,
-            softWrap: true,
+          Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: SizedBox(
+              height: Get.height*.15,
+              child: Text(
+               ( model.description??''),
+                style: KTextStyle.of(context).body,
+                softWrap: true,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 4,
+              ),
+            ),
           ),
           const SizedBox(
             height: 10,
           ),
+          // Spacer(),
           KButton(
             title: "أضف تبرع",
             onPressed: () {},

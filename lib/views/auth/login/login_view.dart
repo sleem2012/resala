@@ -35,13 +35,13 @@ class LoginView extends StatelessWidget {
             );
           },
           builder: (context, state) {
-            final login =LoginBloc.of(context);
+            final login = LoginBloc.of(context);
             return KLoadingOverlay(
               isLoading: state is LoginStateLoading,
               child: SingleChildScrollView(
                 padding: EdgeInsets.symmetric(horizontal: KHelper.hPadding).copyWith(top: 200),
                 child: Form(
-                  key:_formKey ,
+                  key: _formKey,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -56,9 +56,9 @@ class LoginView extends StatelessWidget {
                       KTextFormField(
                         hintText: Tr.get.full_name,
                         prefixIcon: const Icon(Icons.person),
-                        controller:login.userNameController ,
+                        controller: login.userNameController,
                         validator: (p0) {
-                          if (p0!.isEmpty){
+                          if (p0!.isEmpty) {
                             return "أدخل  كلمة السر";
                           }
                           return null;
@@ -68,14 +68,22 @@ class LoginView extends StatelessWidget {
                       KTextFormField(
                         controller: login.passController,
                         hintText: Tr.get.password,
+                        obscureText: login.isVisible ,
                         validator: (p0) {
-                          if (p0!.isEmpty){
+                          if (p0!.isEmpty) {
                             return "أدخل الإسم";
                           }
                           return null;
                         },
+                        keyboardType: TextInputType.visiblePassword,
+
                         prefixIcon: const Icon(Icons.lock),
-                        suffixIcon: const Icon(Icons.visibility_off),
+                        suffixIcon: IconButton(
+                          icon: login.isVisible ? const Icon(Icons.visibility_off) : const Icon(Icons.visibility),
+                          onPressed: () {
+                            login.togglePassV();
+                          },
+                        ),
                       ),
                       SizedBox(height: KHelper.listPadding),
                       Align(
@@ -88,10 +96,8 @@ class LoginView extends StatelessWidget {
                       KButton(
                         title: Tr.get.login,
                         onPressed: () {
-
-                          if(_formKey.currentState!.validate()){
-                            FocusManager.instance.primaryFocus
-                                ?.unfocus();
+                          if (_formKey.currentState!.validate()) {
+                            FocusManager.instance.primaryFocus?.unfocus();
                             login.login();
                           }
                         },
