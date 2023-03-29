@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:resala/shared/cache/storage.dart';
 import 'package:resala/shared/theme/helper.dart';
 import 'package:resala/views/home/widget/slider_img.dart';
 
@@ -14,7 +16,7 @@ class HomeScreen extends StatelessWidget {
     return CustomScrollView(
       slivers: [
         SliverToBoxAdapter(
-          child: SliderImage(img: List.generate(3, (index) => dummyAssetImg)),
+          child: SliderImage(img: KStorage.i.getSetting?.data?.sliders??[]),
         ),
         const SliverToBoxAdapter(
           child: HumanCasesList(),
@@ -27,7 +29,9 @@ class HomeScreen extends StatelessWidget {
          )),
         SliverList(
           delegate: SliverChildBuilderDelegate((BuildContext context, int index) {
-            return HorizontalCard(model: CardsList.cards[index]);
+            return HorizontalCard(model: CardsList.cards[index], onPressed: () {
+              Get.to(() => CardsList.cards[index].screen );
+            },);
           }, childCount: CardsList.cards.length),
         ),
         const SliverToBoxAdapter(child: SizedBox(height: 100))

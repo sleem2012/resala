@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:resala/logic/core/theme/theme_cubit.dart';
 import 'package:resala/views/main_screen/main_screen.dart';
 import 'di.dart';
 import 'logic/core/api_client/api_client_bloc.dart';
 import 'logic/core/api_client/api_client_state.dart';
-import 'logic/core/settings/settings_cubit.dart';
 import 'shared/error/failuers.dart';
 import 'shared/theme/helper.dart';
 import 'shared/localization/trans.dart';
@@ -19,10 +19,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => Di.settingsBloc..loadSettings()),
+        BlocProvider(create: (context) => Di.themeBloc..loadSettings()),
         BlocProvider(create: (context) => Di.apiClientBloc),
+        BlocProvider(create: (context) => Di.setting..get(),lazy: false),
       ],
-      child: BlocBuilder<SettingsBloc, SettingsState>(
+      child: BlocBuilder<ThemeBloc, ThemeState>(
         builder: (context, state) {
           return BlocListener<ApiClientBloc, ApiClientState>(
             listener: (context, state) {
@@ -36,13 +37,13 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               localizationsDelegates: Tr.delegates,
               supportedLocales: Tr.supportedLocales,
-              locale: SettingsBloc.of(context).locale,
+              locale: ThemeBloc.of(context).locale,
               localeResolutionCallback: (Locale? locale, Iterable<Locale> iterable) {
-                return SettingsBloc.of(context).locale;
+                return ThemeBloc.of(context).locale;
               },
               theme: KThemeData.light,
               // darkTheme: KThemeData.dark,
-              themeMode: SettingsBloc.of(context).themeMode,
+              themeMode: ThemeBloc.of(context).themeMode,
               home: Builder(
                 builder: (context) {
                   return AnnotatedRegion<SystemUiOverlayStyle>(

@@ -1,5 +1,5 @@
 // import 'package:flutter/material.dart';
-// import '../../logic/core/settings/settings_cubit.dart';
+// import '../../logic/core/settings/theme_cubit.dart';
 // import '../../shared/localization/trans.dart';
 // import '../../shared/theme/text_theme.dart';
 //

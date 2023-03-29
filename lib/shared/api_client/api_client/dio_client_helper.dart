@@ -21,6 +21,7 @@ abstract class ApiClientHelper {
           if (response.data['status'] == 'error') {
             KHelper.showSnackBar(response.data['message']);
           }
+          // log(response.data);
           return right(response.data);
         } else if (response.statusCode == 500) {
           return left(KFailure.error(response.data));

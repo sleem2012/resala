@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:resala/shared/theme/colors.dart';
 import 'package:resala/shared/theme/helper.dart';
-import 'package:resala/views/widgets/error/error_view.dart';
 import 'package:get/get.dart';
+import 'package:resala/views/widgets/error/error_widget.dart';
 
 class KLoadingOverlay extends StatelessWidget {
   final Widget? child;
@@ -102,7 +102,7 @@ class KRequestOverlay extends StatelessWidget {
                 ),
               ),
             ),
-          if (error != null) KErrorView(error: error, onTryAgain: onTryAgain)
+          if (error != null) KErrorWidget(error: error, onTryAgain: onTryAgain)
 
 
         ],

@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:resala/shared/theme/helper.dart';
 import 'package:resala/views/calculate/calculate_zakaa_screen.dart';
 import 'package:resala/views/home/home_screen.dart';
-import 'package:resala/views/your_participation/your_participation_screen.dart';
+import 'package:resala/views/my_participation/my_participation_screen.dart';
 
 import '../../logic/main_view/main_view_bloc.dart';
 import '../../shared/theme/colors.dart';
@@ -29,7 +29,7 @@ class MainNavPages extends StatelessWidget {
               physics: const NeverScrollableScrollPhysics(),
               children: const [
                 HomeScreen(),
-                YourParticipationScreen(),
+                MyParticipationScreen(),
 
                 CalculateZakaaScreen(),
 

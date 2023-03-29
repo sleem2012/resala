@@ -2,10 +2,11 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:resala/data/models/general/setting_model.dart';
 
 class SliderImage extends StatelessWidget {
   const SliderImage({Key? key, required this.img}) : super(key: key);
-  final List<String> img;
+  final List<Sliders> img;
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +34,8 @@ class SliderImage extends StatelessWidget {
                           onTap: () {
                             // Nav.of(context).to(KPhotoView(image: e.s256px??''));
                           },
-                          child: Image.asset(
-                            e,
+                          child: Image.network(
+                            e.image??'',
                             fit: BoxFit.fill,
                             width: Get.height,
 

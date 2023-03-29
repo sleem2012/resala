@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:resala/logic/core/theme/theme_cubit.dart';
 
-import '../../logic/core/settings/settings_cubit.dart';
 import '../../shared/theme/colors.dart';
 
 class ThemeToggleBtn extends StatelessWidget {
@@ -13,7 +13,7 @@ class ThemeToggleBtn extends StatelessWidget {
         Theme.of(context).brightness == Brightness.light ? Icons.nights_stay_rounded : Icons.wb_sunny_rounded,
         color: KColors.of(context).reBackground,
       ),
-      onPressed: SettingsBloc.of(context).updateThemeMode,
+      onPressed: ThemeBloc.of(context).updateThemeMode,
     );
   }
 }

@@ -58,11 +58,9 @@ class KButton extends StatelessWidget {
                     const SizedBox(
                       width: 4,
                     ),
-                    FittedBox(
-                      child: Text(
-                        title,
-                        style: KTextStyle.of(context).btnTitle,
-                      ),
+                    Text(
+                      title,
+                      style: KTextStyle.of(context).btnTitle,
                     ),
                   ],
                 ),

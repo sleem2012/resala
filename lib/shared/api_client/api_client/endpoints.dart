@@ -7,6 +7,8 @@ abstract class KEndPoints {
    static const String register = '$baseUrl/register';
    static const String humanCases = '$baseUrl/humanCases';
    static const String donationPoints = '$baseUrl/donationpoints';
+   static const String allWork = '$baseUrl/all-work';
+   static const String settings = '$baseUrl/settings';
 
 
 

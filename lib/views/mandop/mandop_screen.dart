@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resala/shared/cache/storage.dart';
 import 'package:resala/shared/theme/helper.dart';
 import 'package:resala/shared/theme/text_theme.dart';
 import 'package:resala/views/widgets/appbar.dart';
@@ -33,7 +34,7 @@ class MandopScreen extends StatelessWidget {
             SizedBox(
               height: KHelper.listPadding,
             ),
-            Image.asset("assets/image/mandop_rect.png"),
+            Image.network(KStorage.i.getSetting?.data?.info?.mandobImage?? dummyNetImg),
             SizedBox(
               height: KHelper.listPadding,
             ),

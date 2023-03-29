@@ -1,9 +1,12 @@
+
+import 'package:flutter/widgets.dart';
+
 class CardItemsModel {
    String image;
    String title;
    String desc;
   String btnTitle;
-    Function() onPressed;
+    Widget screen;
 
 
    CardItemsModel( {
@@ -11,7 +14,7 @@ class CardItemsModel {
     required this.btnTitle,
     required this.title,
     required this.desc,
-    required this.onPressed,
+    required this.screen,
   });
 }
 
