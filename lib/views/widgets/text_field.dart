@@ -53,6 +53,7 @@ class KTextFormField extends StatelessWidget {
       controller: controller,
       autofocus: autofocus,
       enabled: enabled,
+
       onTap: onTap,
       expands: expanded,
       initialValue: controller == null ? initVal : null,

@@ -21,7 +21,10 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => Di.themeBloc..loadSettings()),
         BlocProvider(create: (context) => Di.apiClientBloc),
-        BlocProvider(create: (context) => Di.setting..get(),lazy: false),
+        BlocProvider(
+          create: (context) => Di.donationFaces..get(),
+        ),
+        BlocProvider(create: (context) => Di.setting..get(), lazy: false),
       ],
       child: BlocBuilder<ThemeBloc, ThemeState>(
         builder: (context, state) {

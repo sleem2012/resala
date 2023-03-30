@@ -15,12 +15,21 @@ enum FieldTypes {
 }
 
 class DynamicCard extends StatelessWidget {
-  const DynamicCard({Key? key, required this.title, this.dropDownList, required this.type, this.showSuffix = false,  this.kTextController}) : super(key: key);
+  const DynamicCard({
+    Key? key,
+    required this.title,
+    this.dropDownList,
+    required this.type,
+    this.showSuffix = false,
+    this.kTextController,
+     this.onChanged,
+  }) : super(key: key);
   final String title;
   final List<String>? dropDownList;
   final FieldTypes type;
   final bool showSuffix;
   final TextEditingController? kTextController;
+  final Function(String?)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +44,7 @@ class DynamicCard extends StatelessWidget {
         if (type == FieldTypes.textFiled)
           KTextFormField(
             kFillColor: KColors.of(context).elevatedBox,
-            suffixIcon: showSuffix ?const Icon(Icons.monetization_on_rounded):null,
+            suffixIcon: showSuffix ? const Icon(Icons.monetization_on_rounded) : null,
             controller: kTextController,
           )
         else if (type == FieldTypes.datePicker)
@@ -50,7 +59,7 @@ class DynamicCard extends StatelessWidget {
               );
               if (date == null) return;
               dateController.text = date;
-              // widget.onChanged(date);
+              onChanged!(date);
             },
             child: KTextFormField(
               hintText: DateTime.now().toString().substring(0, 10),

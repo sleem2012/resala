@@ -9,6 +9,11 @@ abstract class KEndPoints {
    static const String donationPoints = '$baseUrl/donationpoints';
    static const String allWork = '$baseUrl/all-work';
    static const String settings = '$baseUrl/settings';
+   static const String storeMandob = '$baseUrl/store-mandob';
+   static const String storeVolunteer = '$baseUrl/store-volunteer';
+   static const String monthlyDonations = '$baseUrl/monthly-donations';
+   static const String storeDonation = '$baseUrl/store-donation';
+   static const String storeRecycle = '$baseUrl/store-recycle';
 
 
 

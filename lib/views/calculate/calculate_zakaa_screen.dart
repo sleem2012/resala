@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:resala/logic/calculator/calculate_zakaa_bloc.dart';
 import 'package:resala/shared/theme/helper.dart';
 import 'package:resala/shared/theme/text_theme.dart';
 import 'package:resala/views/widgets/custom_button.dart';
@@ -9,125 +11,160 @@ class CalculateZakaaScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      padding: EdgeInsets.symmetric(horizontal: KHelper.hPadding, vertical: 120),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            "زكاة المال",
-            style: KTextStyle.of(context).subtitle,
-          ),
-          const DynamicCard(title: "قيمة المال الذي املكه", type: FieldTypes.textFiled, showSuffix: true),
-          SizedBox(
-            height: KHelper.hPadding,
-          ),
-          const Divider(color: Colors.grey, height: 3),
-          SizedBox(
-            height: KHelper.hPadding,
-          ),
-          Text(
-            "زكاة الأصول و الممتلكات",
-            style: KTextStyle.of(context).subtitle,
-          ),
-          const DynamicCard(title: "قيمة الأسهم التي امتلكها في السوق", type: FieldTypes.textFiled, showSuffix: true),
-          SizedBox(
-            height: KHelper.hPadding,
-          ),
-          const DynamicCard(title: "قيمة السندات التي امتلكها في السوق", type: FieldTypes.textFiled, showSuffix: true),
-          SizedBox(
-            height: KHelper.hPadding,
-          ),
-          const DynamicCard(title: "قيمة الأرباح التي حصلت عليها", type: FieldTypes.textFiled, showSuffix: true),
-          SizedBox(
-            height: KHelper.hPadding,
-          ),
-          const Divider(color: Colors.grey, height: 3),
-          SizedBox(
-            height: KHelper.hPadding,
-          ),
-          Text(
-            "زكاة الذهب",
-            style: KTextStyle.of(context).subtitle,
-          ),
-          const DynamicCard(
-            title: "وزن الذهب الذي تملكة من عيار 18",
-            type: FieldTypes.textFiled,
-          ),
-          SizedBox(
-            height: KHelper.hPadding,
-          ),
-          const DynamicCard(
-            title: "وزن الذهب الذي تملكة من عيار 21",
-            type: FieldTypes.textFiled,
-          ),
-          SizedBox(
-            height: KHelper.hPadding,
-          ),
-          const Divider(color: Colors.grey, height: 3),
-          SizedBox(
-            height: KHelper.hPadding,
-          ),
-          Text(
-            "زكاة العقارات المملوكة",
-            style: KTextStyle.of(context).subtitle,
-          ),
-          const DynamicCard(title: "قيمة إيجار العقار الشهري الذي امتلكه", type: FieldTypes.textFiled, showSuffix: true),
-          const SizedBox(
-            height: 20,
-          ),
-          KButton(
-            title: "قيمة الزكاة",
-            onPressed: () {},
-            isFlat: true,
-          ),
-          Container(
-            decoration: KHelper.of(context).elevatedBox,
+    return BlocProvider(
+      create: (context) => CalculateZakaaBloc(0),
+      child: BlocBuilder<CalculateZakaaBloc, num>(
+        builder: (context, state) {
+          final calculate = CalculateZakaaBloc.of(context);
+          return SingleChildScrollView(
+            padding: EdgeInsets.symmetric(horizontal: KHelper.hPadding, vertical: 120),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ListTile(
-                  title: Text(
-                    "زكاة المال",
-                    style: KTextStyle.of(context).body,
-                  ),
-                  trailing: const Text('0 ج.م'),
+                Text(
+                  "زكاة المال",
+                  style: KTextStyle.of(context).subtitle,
                 ),
-                ListTile(
-                  title: Text(
-                    "زكاة الأصول و الممتلكات",
-                    style: KTextStyle.of(context).body,
-                  ),
-                  trailing: const Text('0 ج.م'),
+                DynamicCard(
+                  title: "قيمة المال الذي املكه",
+                  type: FieldTypes.textFiled,
+                  showSuffix: true,
+                  kTextController: calculate.myMoneyController,
                 ),
-                ListTile(
-                  title: Text(
-                    "زكاة العقارات المملوكة",
-                    style: KTextStyle.of(context).body,
-                  ),
-                  trailing: const Text('0 ج.م'),
+                SizedBox(
+                  height: KHelper.hPadding,
                 ),
                 const Divider(color: Colors.grey, height: 3),
-                ListTile(
-                  title: Text(
-                    "إجمالي مبلغ الزكاة",
-                    style: KTextStyle.of(context).subtitle,
+                SizedBox(
+                  height: KHelper.hPadding,
+                ),
+                Text(
+                  "زكاة الأصول و الممتلكات",
+                  style: KTextStyle.of(context).subtitle,
+                ),
+                DynamicCard(
+                  title: "قيمة الأسهم التي امتلكها في السوق",
+                  type: FieldTypes.textFiled,
+                  showSuffix: true,
+                  kTextController: calculate.ashmController,
+                ),
+                SizedBox(
+                  height: KHelper.hPadding,
+                ),
+                DynamicCard(
+                  title: "قيمة السندات التي امتلكها في السوق",
+                  type: FieldTypes.textFiled,
+                  showSuffix: true,
+                  kTextController: calculate.sanadatController,
+                ),
+                SizedBox(
+                  height: KHelper.hPadding,
+                ),
+                DynamicCard(title: "قيمة الأرباح التي حصلت عليها", type: FieldTypes.textFiled, showSuffix: true, kTextController: calculate.arpahController),
+                SizedBox(
+                  height: KHelper.hPadding,
+                ),
+                const Divider(color: Colors.grey, height: 3),
+                SizedBox(
+                  height: KHelper.hPadding,
+                ),
+                Text(
+                  "زكاة الذهب",
+                  style: KTextStyle.of(context).subtitle,
+                ),
+                const DynamicCard(
+                  title: "وزن الذهب الذي تملكة من عيار 18",
+                  type: FieldTypes.textFiled,
+                ),
+                SizedBox(
+                  height: KHelper.hPadding,
+                ),
+                const DynamicCard(
+                  title: "وزن الذهب الذي تملكة من عيار 21",
+                  type: FieldTypes.textFiled,
+                ),
+                SizedBox(
+                  height: KHelper.hPadding,
+                ),
+                const Divider(color: Colors.grey, height: 3),
+                SizedBox(
+                  height: KHelper.hPadding,
+                ),
+                Text(
+                  "زكاة العقارات المملوكة",
+                  style: KTextStyle.of(context).subtitle,
+                ),
+                DynamicCard(
+                  title: "قيمة إيجار العقار الشهري الذي امتلكه",
+                  type: FieldTypes.textFiled,
+                  showSuffix: true,
+                  kTextController: calculate.ownRealStateController,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                KButton(
+                  title: "قيمة الزكاة",
+                  onPressed: () {
+                    calculate.calculateZakaa();
+                  },
+                  isFlat: true,
+                ),
+                Container(
+                  decoration: KHelper.of(context).elevatedBox,
+                  child: Column(
+                    children: [
+                      ListTile(
+                        title: Text(
+                          "زكاة المال",
+                          style: KTextStyle.of(context).body,
+                        ),
+                        trailing: Text('${calculate.moneyResult ?? '0'} ج.م'),
+                      ),
+                      ListTile(
+                        title: Text(
+                          "زكاة الأصول و الممتلكات",
+                          style: KTextStyle.of(context).body,
+                        ),
+                        trailing: Text('${calculate.propertiesResult ?? '0'} ج.م'),
+                      ),
+                      ListTile(
+                        title: Text(
+                          "زكاة الذهب",
+                          style: KTextStyle.of(context).body,
+                        ),
+                        trailing: const Text('0 ج.م'),
+                      ),
+                      ListTile(
+                        title: Text(
+                          "زكاة العقارات المملوكة",
+                          style: KTextStyle.of(context).body,
+                        ),
+                        trailing: Text('${calculate.realEstateResult ?? '0'} ج.م'),
+                      ),
+                      const Divider(color: Colors.grey, height: 3),
+                      ListTile(
+                        title: Text(
+                          "إجمالي مبلغ الزكاة",
+                          style: KTextStyle.of(context).subtitle,
+                        ),
+                        trailing: Text('${calculate.totalResult ?? '0'} ج.م'),
+                      ),
+                    ],
                   ),
-                  trailing: const Text('0 ج.م'),
+                ),
+                KButton(
+                  title: "تبرع الأن",
+                  onPressed: () {},
+                  isFlat: true,
+                ),
+                const SizedBox(
+                  height: 100,
                 ),
               ],
             ),
-          ),
-
-          KButton(
-            title: "تبرع الأن",
-            onPressed: () {},
-            isFlat: true,
-          ),
-          const SizedBox(
-            height: 100,
-          ),
-
-        ],
+          );
+        },
       ),
     );
   }

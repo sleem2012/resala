@@ -50,8 +50,8 @@ class KLoadingOverlay extends StatelessWidget {
                   ),
                   SvgPicture.asset(
                     'assets/image/Resala Logo.svg',
-                    height: 60,
-                    width: 60,
+                    height: 40,
+                    width: 40,
                   )
                 ],
               ),
@@ -96,7 +96,7 @@ class KRequestOverlay extends StatelessWidget {
                           backgroundColor: KColors.of(context).accentColor,
                         ),
                       ),
-                      SvgPicture.asset('assets/image/Resala Logo.svg', height: 60, width: 60)
+                      SvgPicture.asset('assets/image/Resala Logo.svg', height: 40, width: 40)
                     ],
                   ),
                 ),
