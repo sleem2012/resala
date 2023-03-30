@@ -119,14 +119,14 @@ class CalculateZakaaScreen extends StatelessWidget {
                           "زكاة المال",
                           style: KTextStyle.of(context).body,
                         ),
-                        trailing: Text('${calculate.moneyResult ?? '0'} ج.م'),
+                        trailing: Text('${calculate.moneyResult } ج.م'),
                       ),
                       ListTile(
                         title: Text(
                           "زكاة الأصول و الممتلكات",
                           style: KTextStyle.of(context).body,
                         ),
-                        trailing: Text('${calculate.propertiesResult ?? '0'} ج.م'),
+                        trailing: Text('${calculate.propertiesResult} ج.م'),
                       ),
                       ListTile(
                         title: Text(
@@ -140,7 +140,7 @@ class CalculateZakaaScreen extends StatelessWidget {
                           "زكاة العقارات المملوكة",
                           style: KTextStyle.of(context).body,
                         ),
-                        trailing: Text('${calculate.realEstateResult ?? '0'} ج.م'),
+                        trailing: Text('${calculate.realEstateResult } ج.م'),
                       ),
                       const Divider(color: Colors.grey, height: 3),
                       ListTile(
@@ -148,7 +148,7 @@ class CalculateZakaaScreen extends StatelessWidget {
                           "إجمالي مبلغ الزكاة",
                           style: KTextStyle.of(context).subtitle,
                         ),
-                        trailing: Text('${calculate.totalResult ?? '0'} ج.م'),
+                        trailing: Text('${calculate.totalResult } ج.م'),
                       ),
                     ],
                   ),
