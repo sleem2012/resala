@@ -12,6 +12,7 @@ import 'package:resala/shared/theme/helper.dart';
 import 'package:resala/shared/theme/text_theme.dart';
 import 'package:resala/views/widgets/appbar.dart';
 import 'package:resala/views/widgets/custom_button.dart';
+import 'package:resala/views/widgets/drop_down.dart';
 import 'package:resala/views/widgets/dynamic_card.dart';
 import 'package:resala/views/widgets/loading/loading_overlay.dart';
 import 'package:resala/views/widgets/not_loggedin.dart';
@@ -36,12 +37,12 @@ class DigitalDonationScreen extends StatelessWidget {
     //   " حضانة أطفال",
     //   "شنط غذائية"
     // ];
-    return Scaffold(
-      appBar: const KAppBar(
-        title: "",
-      ),
-      body: KNotLoggedInView(
-        child: MultiBlocProvider(
+    return KNotLoggedInView(
+      child: Scaffold(
+        appBar: const KAppBar(
+          title: "",
+        ),
+        body: MultiBlocProvider(
           providers: [
             BlocProvider(
               create: (context) => Di.payment,
@@ -91,9 +92,9 @@ class DigitalDonationScreen extends StatelessWidget {
             },
             builder: (context, state) {
               return SingleChildScrollView(
-                padding: EdgeInsets.symmetric(horizontal: KHelper.hPadding),
+                padding: EdgeInsets.symmetric(horizontal: KHelper.hPadding, vertical: 40),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(
                       height: KHelper.listPadding,
@@ -116,10 +117,10 @@ class DigitalDonationScreen extends StatelessWidget {
                     SizedBox(
                       height: KHelper.listPadding,
                     ),
-                    Text(
-                      "أوجه التبرع",
-                      style: KTextStyle.of(context).title,
-                    ),
+                    // Text(
+                    //   "أوجه التبرع",
+                    //   style: KTextStyle.of(context).title,
+                    // ),
                     SizedBox(
                       height: KHelper.listPadding,
                     ),
@@ -128,28 +129,17 @@ class DigitalDonationScreen extends StatelessWidget {
                         final donationFaces = DonationFacesBloc.of(context).commonDataModel;
 
                         return KRequestOverlay(
-                          isLoading: state.maybeWhen(orElse: () => false, loading: () => true),
-                          error: state.whenOrNull(error: (error) => error),
-                          onTryAgain: state.whenOrNull(error: (error) => DonationFacesBloc.of(context).get),
-                          child: SizedBox(
-                            height: Get.height * .4,
-                            child: GridView.builder(
-                              itemCount: donationFaces?.data?.length,
-                              padding: EdgeInsets.zero,
-                              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio: 3, crossAxisSpacing: 0),
-                              itemBuilder: (context, index) {
-                                return CheckboxListTile(
-                                  value: false,
-                                  onChanged: (value) {},
-                                  title: Text(
-                                    "${index + 1}- " + (donationFaces?.data?[index].title ?? ''),
-                                    style: KTextStyle.of(context).boldBody,
-                                  ),
-                                );
+                            isLoading: state.maybeWhen(orElse: () => false, loading: () => true),
+                            error: state.whenOrNull(error: (error) => error),
+                            onTryAgain: state.whenOrNull(error: (error) => DonationFacesBloc.of(context).get),
+                            child: DynamicCard(
+                              title: "أوجه التبرع",
+                              type: FieldTypes.dropDown,
+                              dropDownList: donationFaces?.data,
+                              onListSelected: (p0) {
+
                               },
-                            ),
-                          ),
-                        );
+                            ));
                       },
                     ),
                     // SizedBox(
@@ -159,9 +149,9 @@ class DigitalDonationScreen extends StatelessWidget {
                     //   title: "ملاحظات عن التبرع",
                     //   type: FieldTypes.textFiled,
                     // ),
-                    // SizedBox(
-                    //   height: KHelper.listPadding,
-                    // ),
+                    const SizedBox(
+                      height: 70,
+                    ),
                     KButton(
                       title: "أضف تبرع",
                       onPressed: () {

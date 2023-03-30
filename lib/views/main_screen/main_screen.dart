@@ -23,7 +23,7 @@ class MainNavPages extends StatelessWidget {
           return Scaffold(
             extendBodyBehindAppBar: true,
             extendBody: true,
-            appBar: KAppBar(title: MainViewBloc.of(context).label[state.index]),
+            appBar: KAppBar(title: MainViewBloc.of(context).label[state.index],isMainScreen: true),
             body: PageView(
               controller: MainViewBloc.of(context).pageCtrl,
               physics: const NeverScrollableScrollPhysics(),

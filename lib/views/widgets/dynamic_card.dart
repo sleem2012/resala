@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resala/data/models/general/common_data_model.dart';
 import 'package:resala/shared/theme/colors.dart';
 import 'package:resala/shared/theme/helper.dart';
 import 'package:resala/shared/theme/text_theme.dart';
@@ -22,14 +23,15 @@ class DynamicCard extends StatelessWidget {
     required this.type,
     this.showSuffix = false,
     this.kTextController,
-     this.onChanged,
+     this.onChanged, this.onListSelected,
   }) : super(key: key);
   final String title;
-  final List<String>? dropDownList;
+  final List<CommonData>? dropDownList;
   final FieldTypes type;
   final bool showSuffix;
   final TextEditingController? kTextController;
   final Function(String?)? onChanged;
+  final Function(CommonData?)? onListSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -78,9 +80,11 @@ class DynamicCard extends StatelessWidget {
             ),
           )
         else
-          KDropdownBtn<String>(
-            onChanged: (p0) {},
-            items: dropDownList?.map((e) => KHelper.of(context).itemView<String>(itemText: e, value: e)).toList() ?? [],
+          KDropdownBtn<CommonData>(
+            onChanged: (p0) {
+              onListSelected!(p0);
+            },
+            items: dropDownList?.map((e) => KHelper.of(context).itemView<CommonData>(itemText: e.title??'', value: e)).toList() ?? [],
             hint: "اختر",
             // value: CurrenciesBloc.of(context).selectedCurrency,
           )

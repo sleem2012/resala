@@ -97,6 +97,7 @@ class LoginView extends StatelessWidget {
                         title: Tr.get.login,
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
+
                             FocusManager.instance.primaryFocus?.unfocus();
                             login.login();
                           }
