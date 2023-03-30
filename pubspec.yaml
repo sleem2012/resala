@@ -28,6 +28,7 @@ dependencies:
   carousel_slider:
   cached_network_image:
   syncfusion_flutter_datepicker: '20.4.43'
+  url_launcher:
 
 
 

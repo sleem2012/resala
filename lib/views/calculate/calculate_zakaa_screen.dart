@@ -6,9 +6,14 @@ import 'package:resala/shared/theme/text_theme.dart';
 import 'package:resala/views/widgets/custom_button.dart';
 import 'package:resala/views/widgets/dynamic_card.dart';
 
-class CalculateZakaaScreen extends StatelessWidget {
+class CalculateZakaaScreen extends StatefulWidget {
   const CalculateZakaaScreen({Key? key}) : super(key: key);
 
+  @override
+  State<CalculateZakaaScreen> createState() => _CalculateZakaaScreenState();
+}
+
+class _CalculateZakaaScreenState extends State<CalculateZakaaScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -106,6 +111,9 @@ class CalculateZakaaScreen extends StatelessWidget {
                 KButton(
                   title: "قيمة الزكاة",
                   onPressed: () {
+setState(() {
+
+});
                     calculate.calculateZakaa();
                   },
                   isFlat: true,
