@@ -62,9 +62,9 @@ final CommonData model;
               ),
             ),
           ),
-          const SizedBox(
-            height: 10,
-          ),
+          //  SizedBox(
+          //   height: Get.height*.01,
+          // ),
           // Spacer(),
           KButton(
             title: "أضف تبرع",

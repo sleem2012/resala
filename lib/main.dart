@@ -4,8 +4,8 @@ import 'app.dart';
 import 'di.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await GetStorage.init();
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await GetStorage.init();
   await Di.init();
   runApp(const MyApp());
 }
