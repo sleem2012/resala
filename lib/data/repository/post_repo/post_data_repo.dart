@@ -47,7 +47,7 @@ class PostDataRepoImpl implements _PostDataRepo {
       data: {
         "age": age,
         "college": college,
-        "donationpoint_id": donationPointId,
+        "activity_id": donationPointId,
       },
     );
 

@@ -25,7 +25,7 @@ class CalculateZakaaBloc extends Cubit<double> {
   calculateZakaa() {
     moneyResult = double.parse(myMoneyController.text) * 0.025;
     realEstateResult = double.parse(ownRealStateController.text) * 0.025;
-    propertiesResult = double.parse((ashmController.text) + (sanadatController.text) + (arpahController.text)) * 0.025;
+    propertiesResult = (double.parse(ashmController.text) + double.parse(sanadatController.text) + double.parse(arpahController.text)) * 0.025;
     totalResult = (moneyResult) + (realEstateResult) + (propertiesResult);
     emit(state);
   }
