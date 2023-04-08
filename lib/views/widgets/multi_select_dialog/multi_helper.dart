@@ -84,7 +84,7 @@ class _VM {
   }
 
   InputDecoration get textFieldDecoration =>
-      const InputDecoration(contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 5), isDense: false, suffixIcon: Icon(Icons.search));
+      const InputDecoration( isDense: false, suffixIcon: Icon(Icons.search));
 
   Future<void> showMultiSelectDialog(Widget Function(BuildContext context) widget) async {
     await showDialog(

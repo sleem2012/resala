@@ -16,7 +16,7 @@ class PaymentBloc extends Cubit<PaymentState> {
   static PaymentBloc of(BuildContext context) => BlocProvider.of<PaymentBloc>(context);
 
   final PaymentRepoImp paymentRepoImp;
-final TextEditingController priceController=TextEditingController();
+ TextEditingController priceController=TextEditingController();
   Future paymentAuth() async {
     try {
       emit(const PaymentState.loading());
@@ -38,19 +38,19 @@ final TextEditingController priceController=TextEditingController();
           // var userData = KStorage.i.getUser!;
           paymentOrder(
             orderPrams: OrderPrams(
-              amountCents: (5 * 100).toString(),
+              amountCents: (priceController.text).toString(),
               authToken: r.token,
               currency: "EGP",
               deliveryNeeded: "false",
-              // merchantOrderId:
-              // shippingData: ShippingData(
-              //   email: "email@yahoo.com",
-              //   country: "egypt",
-              //   extraDescription: "gfdgdgd",
-              //   firstName:" sleem",
-              //   lastName: "ahmed",
-              //   phoneNumber: "3454354",
-              //
+            //   shippingData: ShippingData(
+            //     email: "email@yahoo.com",
+            //     country: "egypt",
+            //     extraDescription: "gfdgdgd",
+            //     firstName:" sleem",
+            //     lastName: "ahmed",
+            //     phoneNumber: "3454354",
+            //
+            // ),
             ),
             token: r.token,
           );
@@ -77,7 +77,7 @@ final TextEditingController priceController=TextEditingController();
           paymentKey(
             paymentKeyPrams: PaymentKeyPrams(
               currency: "EGP",
-              amountCents: (5 * 100).toString(),
+              amountCents: (priceController.text * 100).toString(),
               authToken: token,
               orderId: r.id.toString(),
               expiration: 3600,

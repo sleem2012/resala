@@ -130,6 +130,14 @@ class KTextStyle {
         fontWeight: FontWeight.bold
 
     );
+  }  TextStyle get smallTitle {
+    return TextStyle(
+        color: KColors.of(_context!).primary,
+        fontSize: 12,
+        fontFamily: fontFamily,
+        fontWeight: FontWeight.w600
+
+    );
   }
 
   TextStyle get reTitle {

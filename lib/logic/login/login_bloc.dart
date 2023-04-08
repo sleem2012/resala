@@ -34,15 +34,16 @@ class LoginBloc extends Cubit<LoginState> {
         (r) {
           userModel = r;
           KStorage.i.setToken(userModel?.token ?? '');
-          // KStorage.i.setUserInfo(userModel);
+          KStorage.i.setUserInfo(userModel);
           emit(LoginState.success(loginModel: userModel!));
           debugPrint('================= Login (Bloc): Success => $r ');
         },
       );
     } catch (e) {
       debugPrint('================= Login (Bloc) (catch):  $e');
-
       emit(const LoginState.error(failure: KFailure.someThingWrongPleaseTryAgain()));
+      rethrow;
+
     }
   }
 

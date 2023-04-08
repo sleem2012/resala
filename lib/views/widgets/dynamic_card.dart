@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:resala/data/models/general/common_data_model.dart';
+import 'package:resala/shared/localization/trans.dart';
 import 'package:resala/shared/theme/colors.dart';
 import 'package:resala/shared/theme/helper.dart';
 import 'package:resala/shared/theme/text_theme.dart';
@@ -23,12 +24,13 @@ class DynamicCard extends StatelessWidget {
     required this.type,
     this.showSuffix = false,
     this.kTextController,
-     this.onChanged, this.onListSelected,
+     this.onChanged, this.onListSelected,  this.enabled=true,
   }) : super(key: key);
   final String title;
   final List<CommonData>? dropDownList;
   final FieldTypes type;
   final bool showSuffix;
+  final bool enabled;
   final TextEditingController? kTextController;
   final Function(String?)? onChanged;
   final Function(CommonData?)? onListSelected;
@@ -48,6 +50,14 @@ class DynamicCard extends StatelessWidget {
             kFillColor: KColors.of(context).elevatedBox,
             suffixIcon: showSuffix ? const Icon(Icons.monetization_on_rounded) : null,
             controller: kTextController,
+            enabled: enabled,
+
+            validator: (p0) {
+              if (p0!.isEmpty) {
+                return "الحقل مطلوب";
+              }
+              return null;
+            },
           )
         else if (type == FieldTypes.datePicker)
           GestureDetector(
@@ -68,6 +78,7 @@ class DynamicCard extends StatelessWidget {
               controller: dateController,
               kFillColor: KColors.of(context).elevatedBox,
               enabled: false,
+
               suffixIcon: const Icon(Icons.date_range),
               // errorText: "widget.error",
               style: KTextStyle.of(context).body2,
@@ -86,6 +97,14 @@ class DynamicCard extends StatelessWidget {
             },
             items: dropDownList?.map((e) => KHelper.of(context).itemView<CommonData>(itemText: e.title??'', value: e)).toList() ?? [],
             hint: "اختر",
+
+            validator: (values) {
+              if (values == null) {
+                return "الحقل مطلوب";
+              } else {
+                return null;
+              }
+            },
             // value: CurrenciesBloc.of(context).selectedCurrency,
           )
       ],

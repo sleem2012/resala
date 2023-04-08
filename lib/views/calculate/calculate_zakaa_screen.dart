@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 import 'package:resala/logic/calculator/calculate_zakaa_bloc.dart';
+import 'package:resala/payment/auth_payment/auth_payment_bloc.dart';
 import 'package:resala/shared/theme/helper.dart';
 import 'package:resala/shared/theme/text_theme.dart';
+import 'package:resala/views/digital_donation/digital_donation_screen.dart';
 import 'package:resala/views/widgets/custom_button.dart';
 import 'package:resala/views/widgets/dynamic_card.dart';
 
@@ -163,7 +166,10 @@ setState(() {
                 ),
                 KButton(
                   title: "تبرع الأن",
-                  onPressed: () {},
+                  onPressed: () {
+                    PaymentBloc.of(context).priceController.text=calculate.totalResult.toString();
+                    Get.to( ()=>const DigitalDonationScreen());
+                  },
                   isFlat: true,
                 ),
                 const SizedBox(

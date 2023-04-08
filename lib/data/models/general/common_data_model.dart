@@ -29,8 +29,8 @@ class CommonData {
   String? title;
   String? description;
   String? image;
-  int? totalCost;
-  int? reamainingCost;
+  double? totalCost;
+  double? reamainingCost;
   int? sort;
   String? createdAt;
 
@@ -49,8 +49,8 @@ class CommonData {
     title = json['title'];
     description = json['description'];
     image = json['image'];
-    totalCost = json['total_cost'];
-    reamainingCost = json['reamaining_cost'];
+   if(json['total_cost']!=null) totalCost = double.parse(json['total_cost'].toString());
+    if(json['reamaining_cost']!=null) reamainingCost =double.parse (json['reamaining_cost'].toString());
     sort = json['sort'];
     createdAt = json['created_at'];
   }

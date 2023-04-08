@@ -13,6 +13,8 @@ abstract class _PostDataRepo {
 
   Future<Either<KFailure, Unit>> monthlyDonations({required String value, required String date, required int donationPointId});
 
+  Future<Either<KFailure, Unit>> postRecDonations({required int donationPointId});
+
   Future<Either<KFailure, Unit>> storeDonation({required String amount, required String transactionId, required int donationPointId});
 
   Future<Either<KFailure, Unit>> storeRecycle({required RecycleFormModel model});
@@ -90,12 +92,27 @@ class PostDataRepoImpl implements _PostDataRepo {
       (l) => left(l),
       (r) => right(unit),
     );
-  } @override
-  Future<Either<KFailure, Unit>> storeRecycle({required RecycleFormModel model}) async {
+  }
+
+  @override
+  Future<Either<KFailure, Unit>> postRecDonations({required int donationPointId}) async {
     Future<Response<dynamic>> func = Di.dioClient.post(
-      KEndPoints.storeRecycle,
-      data: model.toJson()
+      KEndPoints.recDonations,
+      data: {
+        "donationpoint_id": donationPointId,
+      },
     );
+
+    final result = await ApiClientHelper.responseToModel(func: func);
+    return result.fold(
+      (l) => left(l),
+      (r) => right(unit),
+    );
+  }
+
+  @override
+  Future<Either<KFailure, Unit>> storeRecycle({required RecycleFormModel model}) async {
+    Future<Response<dynamic>> func = Di.dioClient.post(KEndPoints.storeRecycle, data: model.toJson());
 
     final result = await ApiClientHelper.responseToModel(func: func);
     return result.fold(

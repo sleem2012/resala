@@ -26,7 +26,7 @@ class User {
   String? username;
   String? email;
   String? emailVerifiedAt;
-  String? createdBy;
+  int? createdBy;
   String? createdAt;
   String? updatedAt;
   int? monthlyDonationId;

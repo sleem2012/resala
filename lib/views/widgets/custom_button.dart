@@ -40,7 +40,7 @@ class KButton extends StatelessWidget {
               ),
         child: Container(
           width: width ?? Get.width / 1.1,
-          height: hieght ?? 50,
+          height: hieght ?? Get.height *.064,
           alignment: Alignment.center,
           child: isLoading!
               ? FittedBox(

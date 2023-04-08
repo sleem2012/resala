@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:resala/data/models/general/common_data_model.dart';
 import 'package:resala/data/repository/post_repo/post_data_repo.dart';
 import 'package:resala/logic/store_donation/store_donation_state.dart';
 import 'package:resala/shared/error/failuers.dart';
@@ -19,14 +20,13 @@ class StoreDonationBloc extends Cubit<StoreDonationState> {
   storeDonation() async {
     emit(const StoreDonationState.loading());
     try {
-      ///TODO:donationPointId
-      final result = await repoImpl.storeDonation(amount: "12", transactionId: "2323232323", donationPointId: 1);
+      final result = await repoImpl.storeDonation(amount: "12", transactionId: "2323232323", donationPointId: donationPointId??-1);
       result.fold(
-        (l) {
+            (l) {
           emit(StoreDonationState.error(failure: l));
           debugPrint('================= StoreDonation (Bloc): Failed => $l ');
         },
-        (r) {
+            (r) {
           emit(const StoreDonationState.success());
           debugPrint('================= StoreDonation (Bloc): Success => $r ');
         },
@@ -36,5 +36,11 @@ class StoreDonationBloc extends Cubit<StoreDonationState> {
 
       emit(const StoreDonationState.error(failure: KFailure.someThingWrongPleaseTryAgain()));
     }
+  }
+
+  int? donationPointId;
+
+  setDonationId({required CommonData commonData}) {
+    donationPointId = commonData.id;
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:resala/data/models/general/common_data_model.dart';
 import 'package:resala/di.dart';
 import 'package:resala/logic/donation_faces/donation_faces_bloc.dart';
 import 'package:resala/logic/donation_faces/donation_faces_state.dart';
@@ -19,6 +20,7 @@ class MonthlyDonationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
     return KNotLoggedInView(
       child: Scaffold(
@@ -31,85 +33,91 @@ class MonthlyDonationScreen extends StatelessWidget {
             listener: (context, state) {
               state.whenOrNull(
                 success: () {
-                  KHelper.showSnackBar("تم التبرع بنجاح",isTop: true);
-
+                  KHelper.showSnackBar("تم التبرع بنجاح", isTop: true);
                 },
               );
             },
             builder: (context, state) {
               return KLoadingOverlay(
-                isLoading:state is MonthlyStateLoading,
+                isLoading: state is MonthlyStateLoading,
                 child: SingleChildScrollView(
                   padding: EdgeInsets.symmetric(horizontal: KHelper.hPadding),
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: KHelper.listPadding,
-                      ),
-                      Align(
-                        alignment: Alignment.center,
-                        child: Text(
-                          "استمارة التبرع الشهري",
-                          style: KTextStyle
-                              .of(context)
-                              .title,
+                  child: Form(
+                    key: formKey,
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: KHelper.listPadding,
                         ),
-                      ),
-                      SizedBox(
-                        height: KHelper.listPadding,
-                      ),
-                      Image.asset("assets/image/monthly_rectangle.png"),
-                      SizedBox(
-                        height: KHelper.listPadding,
-                      ),
-                      Row(
-                        children: [
-                           Expanded(
-                            child: DynamicCard(title: "قيمة الإستمارة", type: FieldTypes.textFiled, showSuffix: true,kTextController: MonthlyBloc.of(context).valueController),
+                        Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            "استمارة التبرع الشهري",
+                            style: KTextStyle.of(context).title,
                           ),
-                          SizedBox(
-                            width: KHelper.listPadding,
-                          ),
-                           Expanded(
-                            child: DynamicCard(title: "موعد التحصيل الشهري", type: FieldTypes.datePicker,onChanged: (p0) {
-                              MonthlyBloc.of(context).dateController=p0;
-                            },),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        width: KHelper.listPadding,
-                      ),
-                      BlocBuilder<DonationFacesBloc, DonationFacesState>(
-                        builder: (context, state) {
-                          final donationFaces = DonationFacesBloc.of(context).commonDataModel;
-
-                          return KRequestOverlay(
-                              isLoading: state.maybeWhen(orElse: () => false, loading: () => true),
-                              error: state.whenOrNull(error: (error) => error),
-                              onTryAgain: state.whenOrNull(error: (error) => DonationFacesBloc.of(context).get),
+                        ),
+                        SizedBox(
+                          height: KHelper.listPadding,
+                        ),
+                        Image.asset("assets/image/monthly_rectangle.png"),
+                        SizedBox(
+                          height: KHelper.listPadding,
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child:
+                                  DynamicCard(title: "قيمة الإستمارة", type: FieldTypes.textFiled, showSuffix: true, kTextController: MonthlyBloc.of(context).valueController),
+                            ),
+                            SizedBox(
+                              width: KHelper.listPadding,
+                            ),
+                            Expanded(
                               child: DynamicCard(
-                                title: "جهة توجية الإستمار",
-                                type: FieldTypes.dropDown,
-                                dropDownList: donationFaces?.data,
-                                onListSelected: (p0) {
-
+                                title: "موعد التحصيل الشهري",
+                                type: FieldTypes.datePicker,
+                                onChanged: (p0) {
+                                  MonthlyBloc.of(context).dateController = p0;
                                 },
-                              ));
-                        },
-                      ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          width: KHelper.listPadding,
+                        ),
+                        BlocBuilder<DonationFacesBloc, DonationFacesState>(
+                          builder: (context, state) {
+                            final donationFaces = DonationFacesBloc.of(context).commonDataModel;
 
-                      const SizedBox(
-                        height: 40,
-                      ),
-                      KButton(
-                        title: "أضف تبرع",
-                        onPressed: () {
-                          MonthlyBloc.of(context).monthly();
-                        },
-                        icon: Icons.credit_card,
-                      )
-                    ],
+                            return KRequestOverlay(
+                                isLoading: state.maybeWhen(orElse: () => false, loading: () => true),
+                                error: state.whenOrNull(error: (error) => error),
+                                onTryAgain: state.whenOrNull(error: (error) => DonationFacesBloc.of(context).get),
+                                child: DynamicCard(
+                                  title: "جهة توجية الإستمار",
+                                  type: FieldTypes.dropDown,
+                                  dropDownList: donationFaces?.data,
+                                  onListSelected: (p0) {
+                                    MonthlyBloc.of(context).setDonationId(commonData: p0 ?? CommonData());
+                                  },
+                                ));
+                          },
+                        ),
+                        const SizedBox(
+                          height: 40,
+                        ),
+                        KButton(
+                          title: "أضف تبرع",
+                          onPressed: () {
+                            if (formKey.currentState!.validate()) {
+                              MonthlyBloc.of(context).monthly();
+                            }
+                          },
+                          icon: Icons.credit_card,
+                        )
+                      ],
+                    ),
                   ),
                 ),
               );

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:resala/di.dart';
 import 'package:resala/logic/store_recycle/store_recycle_bloc.dart';
 import 'package:resala/logic/store_recycle/store_recycle_state.dart';
+import 'package:resala/shared/constant.dart';
 import 'package:resala/shared/theme/colors.dart';
 import 'package:resala/shared/theme/helper.dart';
 import 'package:resala/shared/theme/text_theme.dart';
@@ -203,6 +204,10 @@ class RecycleFormScreen extends StatelessWidget {
                             return null;
                           },
                         ),
+                        SizedBox(
+                          height: KHelper.listPadding,
+                        ),
+                        Text(Constant.recycleDesc,style: KTextStyle.of(context).subtitle,softWrap: true),
                         const SizedBox(
                           height: 40,
                         ),

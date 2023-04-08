@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:resala/data/models/general/common_data_model.dart';
 import 'package:resala/di.dart';
+import 'package:resala/logic/activities/activities_bloc.dart';
+import 'package:resala/logic/activities/activities_state.dart';
 import 'package:resala/logic/donation_faces/donation_faces_bloc.dart';
-import 'package:resala/logic/donation_faces/donation_faces_state.dart';
 import 'package:resala/logic/store_volunteer/volunteer_bloc.dart';
 import 'package:resala/logic/store_volunteer/volunteer_state.dart';
 import 'package:resala/shared/theme/helper.dart';
@@ -19,10 +21,8 @@ class VolunteeringFormScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<String> list = [
-      "مندوب",
-      "عامل",
-    ];
+    final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
     return KNotLoggedInView(
       child: Scaffold(
         appBar: const KAppBar(
@@ -43,75 +43,81 @@ class VolunteeringFormScreen extends StatelessWidget {
                 isLoading: state is VolunteerStateLoading,
                 child: SingleChildScrollView(
                   padding: EdgeInsets.symmetric(horizontal: KHelper.hPadding),
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: KHelper.listPadding,
-                      ),
-                      Align(
-                        alignment: Alignment.center,
-                        child: Text(
-                          "استمارة التطوع",
-                          style: KTextStyle.of(context).title,
+                  child: Form(
+                    key:formKey ,
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: KHelper.listPadding,
                         ),
-                      ),
-                      SizedBox(
-                        height: KHelper.listPadding,
-                      ),
-                      Image.asset("assets/image/voulnter_rectangle.png"),
-                      SizedBox(
-                        height: KHelper.listPadding,
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: DynamicCard(title: "العمر", type: FieldTypes.textFiled, kTextController: VolunteerBloc.of(context).ageController),
+                        Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            "استمارة التطوع",
+                            style: KTextStyle.of(context).title,
                           ),
-                          SizedBox(
-                            width: KHelper.listPadding,
-                          ),
-                          Expanded(
-                            child: DynamicCard(
-                              title: "الكلية",
-                              type: FieldTypes.textFiled,
-                              kTextController: VolunteerBloc.of(context).collegeController,
+                        ),
+                        SizedBox(
+                          height: KHelper.listPadding,
+                        ),
+                        Image.asset("assets/image/voulnter_rectangle.png"),
+                        SizedBox(
+                          height: KHelper.listPadding,
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: DynamicCard(title: "العمر", type: FieldTypes.textFiled, kTextController: VolunteerBloc.of(context).ageController),
                             ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        width: KHelper.listPadding,
-                      ),
-                      BlocBuilder<DonationFacesBloc, DonationFacesState>(
-                        builder: (context, state) {
-                          final donationFaces = DonationFacesBloc.of(context).commonDataModel;
-
-                          return KRequestOverlay(
-                              isLoading: state.maybeWhen(orElse: () => false, loading: () => true),
-                              error: state.whenOrNull(error: (error) => error),
-                              onTryAgain: state.whenOrNull(error: (error) => DonationFacesBloc.of(context).get),
+                            SizedBox(
+                              width: KHelper.listPadding,
+                            ),
+                            Expanded(
                               child: DynamicCard(
-                                title: "النشاط",
-                                type: FieldTypes.dropDown,
-                                dropDownList: donationFaces?.data,
-                                onListSelected: (p0) {
+                                title: "الكلية",
+                                type: FieldTypes.textFiled,
+                                kTextController: VolunteerBloc.of(context).collegeController,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          width: KHelper.listPadding,
+                        ),
+                        BlocBuilder<ActivitiesBloc, ActivitiesState>(
+                          builder: (context, state) {
+                            final activities = ActivitiesBloc.of(context).commonDataModel;
 
-                                },
-                              ));
-                        },
-                      ),
+                            return KRequestOverlay(
+                                isLoading: state.maybeWhen(orElse: () => false, loading: () => true),
+                                error: state.whenOrNull(error: (error) => error),
+                                onTryAgain: state.whenOrNull(error: (error) => DonationFacesBloc.of(context).get),
+                                child: DynamicCard(
+                                  title: "النشاط",
+                                  type: FieldTypes.dropDown,
+                                  dropDownList: activities?.data,
+                                  onListSelected: (p0) {
+                                    VolunteerBloc.of(context).setDonationId(commonData: p0??CommonData());
+                                  },
+                                ));
+                          },
+                        ),
 
-                      const SizedBox(
-                        height: 40,
-                      ),
-                      KButton(
-                        title: "ارسل الإستمارة",
-                        onPressed: () {
-                          VolunteerBloc.of(context).volunteer();
-                        },
-                        icon: Icons.sticky_note_2_sharp,
-                      )
-                    ],
+                        const SizedBox(
+                          height: 40,
+                        ),
+                        KButton(
+                          title: "ارسل الإستمارة",
+                          onPressed: () {
+                            if(formKey.currentState!.validate()){
+                              VolunteerBloc.of(context).volunteer();
+
+                            }
+                          },
+                          icon: Icons.sticky_note_2_sharp,
+                        )
+                      ],
+                    ),
                   ),
                 ),
               );

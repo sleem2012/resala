@@ -27,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen>
         }, error: (error) {
           return KErrorView(
             error: error,
-            onTryAgain: SettingBloc.of(context).get(),
+            onTryAgain: SettingBloc.of(context).get,
           );
         }, success: (model) {
 

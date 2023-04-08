@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
 import 'package:resala/data/models/general/common_data_model.dart';
 import 'package:resala/logic/donation_faces/donation_faces_bloc.dart';
 import 'package:resala/logic/donation_faces/donation_faces_state.dart';
@@ -29,14 +28,14 @@ class DonationFacesScreen extends StatelessWidget {
               onTryAgain: state.whenOrNull(error: (error) => DonationFacesBloc.of(context).get),
 
               child: GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,crossAxisSpacing: 10,childAspectRatio: .4,),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,crossAxisSpacing: 10,childAspectRatio: .4,),
                 // shrinkWrap: true,
                 padding: EdgeInsets.symmetric(horizontal: KHelper.hPadding, vertical: 10),
                 scrollDirection: Axis.vertical,
                 itemBuilder: (BuildContext context, int index) {
                   return VerticalCard(
                     key: const ValueKey("7"),
-                    model: donationFaces?.data?[index]??CommonData(),
+                    model: donationFaces?.data?[index]??CommonData(), onPressed: () {  },
                   );
                 },
                 // separatorBuilder: (BuildContext context, int index) {

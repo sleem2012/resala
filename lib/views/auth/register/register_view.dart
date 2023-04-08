@@ -56,24 +56,46 @@ class RegisterView extends StatelessWidget {
                         hintText: Tr.get.full_name,
                         prefixIcon: const Icon(Icons.person),
                         controller: register.nameController,
+                        validator: (p0) {
+                          if (p0!.isEmpty) {
+                            return "أدخل الإسم";
+
+                          }
+                          return null;
+                        },
                       ),
                       SizedBox(height: KHelper.listPadding),
                       KTextFormField(
                         hintText: "اسم الحساب",
                         prefixIcon: const Icon(Icons.account_circle_outlined),
                         controller: register.userNameController,
+                        validator: (p0) {
+                          if (p0!.isEmpty) {
+                            return "أدخل اسم الحساب";
+
+                          }
+                          return null;
+                        },
                       ),
                       SizedBox(height: KHelper.listPadding),
                       KTextFormField(
                         hintText: Tr.get.email,
                         prefixIcon: const Icon(Icons.email),
                         controller: register.emailController,
+
                       ),
                       SizedBox(height: KHelper.listPadding),
                       KTextFormField(
                         hintText: Tr.get.phone,
                         prefixIcon: const Icon(Icons.phone),
                         controller: register.phoneController,
+                        validator: (p0) {
+                          if (p0!.isEmpty) {
+                            return "أدخل رقم الموبايل";
+
+                          }
+                          return null;
+                        },
                       ),
                       SizedBox(height: KHelper.listPadding),
                       KTextFormField(
@@ -86,6 +108,13 @@ class RegisterView extends StatelessWidget {
                             register.togglePassV();
                           },
                         ),
+                        validator: (p0) {
+                          if (p0!.isEmpty) {
+                            return "أدخل كلمة المرور";
+
+                          }
+                          return null;
+                        },
                         controller: register.passController,
                       ),
                       SizedBox(height: KHelper.listPadding),

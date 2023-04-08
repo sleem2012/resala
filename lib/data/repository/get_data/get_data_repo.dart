@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:resala/data/models/general/common_data_model.dart';
 import 'package:resala/data/models/general/setting_model.dart';
 import 'package:resala/data/models/my_participation_model.dart';
+import 'package:resala/data/models/rec_donations_model.dart';
 import 'package:resala/di.dart';
 import 'package:resala/shared/api_client/api_client/dio_client_helper.dart';
 import 'package:resala/shared/api_client/api_client/endpoints.dart';
@@ -13,8 +14,13 @@ abstract class GetDataRepoAbs {
 
   Future<Either<KFailure, CommonDataModel>> getDonationFaces();
 
+  Future<Either<KFailure, CommonDataModel>> getActivities();
+
   Future<Either<KFailure, MyParticipationModel>> getMyParticipation();
+
   Future<Either<KFailure, SettingModel>> getSetting();
+
+  Future<Either<KFailure, RecDonationsModel>> getRecDonations();
 }
 
 class GetDataRepoImp implements GetDataRepoAbs {
@@ -43,6 +49,18 @@ class GetDataRepoImp implements GetDataRepoAbs {
   }
 
   @override
+  Future<Either<KFailure, CommonDataModel>> getActivities() async {
+    Future<Response<dynamic>> func = Di.dioClient.get(
+      KEndPoints.activities,
+    );
+    final result = await ApiClientHelper.responseToModel(func: func);
+    return result.fold(
+      (l) => left(l),
+      (r) => right(CommonDataModel.fromJson(r)),
+    );
+  }
+
+  @override
   Future<Either<KFailure, MyParticipationModel>> getMyParticipation() async {
     Future<Response<dynamic>> func = Di.dioClient.get(
       KEndPoints.allWork,
@@ -53,6 +71,7 @@ class GetDataRepoImp implements GetDataRepoAbs {
       (r) => right(MyParticipationModel.fromJson(r)),
     );
   }
+
   @override
   Future<Either<KFailure, SettingModel>> getSetting() async {
     Future<Response<dynamic>> func = Di.dioClient.get(
@@ -62,6 +81,20 @@ class GetDataRepoImp implements GetDataRepoAbs {
     return result.fold(
       (l) => left(l),
       (r) => right(SettingModel.fromJson(r)),
+    );
+  }
+
+  @override
+  Future<Either<KFailure, RecDonationsModel>> getRecDonations() async {
+    Future<Response<dynamic>> func = Di.dioClient.get(
+      KEndPoints.recDonations,
+    );
+    final result = await ApiClientHelper.responseToModel(func: func);
+    return result.fold(
+      (l) => left(l),
+      (r) {
+        return right(RecDonationsModel.fromJson((r)));
+      },
     );
   }
 }

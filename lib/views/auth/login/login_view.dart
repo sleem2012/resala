@@ -59,7 +59,8 @@ class LoginView extends StatelessWidget {
                         controller: login.userNameController,
                         validator: (p0) {
                           if (p0!.isEmpty) {
-                            return "أدخل  كلمة السر";
+                            return "أدخل الإسم";
+
                           }
                           return null;
                         },
@@ -71,7 +72,8 @@ class LoginView extends StatelessWidget {
                         obscureText: login.isVisible ,
                         validator: (p0) {
                           if (p0!.isEmpty) {
-                            return "أدخل الإسم";
+                            return "أدخل  كلمة السر";
+
                           }
                           return null;
                         },
@@ -106,7 +108,6 @@ class LoginView extends StatelessWidget {
                       const SizedBox(height: 140),
                       GestureDetector(
                         onTap: () {
-                          ///TODO
                           Get.to(() => const RegisterView());
                         },
                         child: Text.rich(

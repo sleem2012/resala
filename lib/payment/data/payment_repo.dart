@@ -22,7 +22,7 @@ abstract class PaymentRepoAbs {
 class PaymentRepoImp implements PaymentRepoAbs {
 
   static BaseOptions options = BaseOptions(
-    baseUrl: KEndPoints.baseUrl,
+    baseUrl: KEndPoints.paymentBase,
     contentType: 'application/json',
     connectTimeout: const Duration(seconds: 30),
     receiveTimeout: const Duration(seconds: 30),

@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:resala/logic/core/theme/theme_cubit.dart';
-import 'package:resala/views/main_screen/main_screen.dart';
 import 'package:resala/views/splash_screen/splash_screen.dart';
 import 'di.dart';
 import 'logic/core/api_client/api_client_bloc.dart';
@@ -24,6 +23,12 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => Di.apiClientBloc),
         BlocProvider(
           create: (context) => Di.donationFaces..get(),
+        ),
+        BlocProvider(
+          create: (context) => Di.payment,
+        ),
+        BlocProvider(
+          create: (context) => Di.activities..get(),
         ),
         BlocProvider(create: (context) => Di.setting..get(), lazy: false),
       ],
