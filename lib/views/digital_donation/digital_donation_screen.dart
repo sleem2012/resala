@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/state_manager.dart';
 import 'package:resala/data/models/general/common_data_model.dart';
 import 'package:resala/di.dart';
 import 'package:resala/logic/donation_faces/donation_faces_bloc.dart';

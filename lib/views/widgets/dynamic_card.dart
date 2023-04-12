@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:resala/data/models/general/common_data_model.dart';
-import 'package:resala/shared/localization/trans.dart';
 import 'package:resala/shared/theme/colors.dart';
 import 'package:resala/shared/theme/helper.dart';
 import 'package:resala/shared/theme/text_theme.dart';

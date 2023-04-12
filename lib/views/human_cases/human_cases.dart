@@ -67,7 +67,7 @@ class HumanCasesList extends StatelessWidget {
                                     KButton(
                                       title: "تأكيد",
                                       onPressed: () {
-                                        print(human.commonDataModel?.data?[index].id);
+                                        // print(human.commonDataModel?.data?[index].id);
                                       },
                                       icon: Icons.credit_card,
                                     ),

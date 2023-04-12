@@ -24,7 +24,7 @@ abstract class KEndPoints {
   static const getOrderId = '$paymentBase/ecommerce/orders';
   static const getPaymentRequest = '$paymentBase/acceptance/payment_keys';
   static const getRefCode = '$paymentBase/acceptance/payments/pay';
-  static String visaUrl = '$paymentBase/acceptance/iframes/744904?payment_token=$finalToken';
+  static String visaUrl = '$paymentBase/acceptance/iframes/744903?payment_token=$finalToken';
   static String paymentFirstToken = '';
 
   static String paymentOrderId = '4';

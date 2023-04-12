@@ -6,7 +6,6 @@ import 'package:resala/shared/theme/colors.dart';
 import 'package:resala/shared/theme/helper.dart';
 import 'package:resala/shared/theme/text_theme.dart';
 import 'package:resala/views/widgets/custom_button.dart';
-import 'package:resala/views/widgets/text_field.dart';
 
 class VerticalCard extends StatelessWidget {
   const VerticalCard({

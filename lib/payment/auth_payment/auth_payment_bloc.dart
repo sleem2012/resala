@@ -38,7 +38,7 @@ class PaymentBloc extends Cubit<PaymentState> {
           // var userData = KStorage.i.getUser!;
           paymentOrder(
             orderPrams: OrderPrams(
-              amountCents: (priceController.text).toString(),
+              amountCents: (priceController.text*100).toString(),
               authToken: r.token,
               currency: "EGP",
               deliveryNeeded: "false",
@@ -77,7 +77,7 @@ class PaymentBloc extends Cubit<PaymentState> {
           paymentKey(
             paymentKeyPrams: PaymentKeyPrams(
               currency: "EGP",
-              amountCents: (priceController.text * 100).toString(),
+              amountCents: r.amountCents.toString(),
               authToken: token,
               orderId: r.id.toString(),
               expiration: 3600,
