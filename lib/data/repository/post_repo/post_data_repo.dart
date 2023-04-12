@@ -16,6 +16,7 @@ abstract class _PostDataRepo {
   Future<Either<KFailure, Unit>> postRecDonations({required int donationPointId});
 
   Future<Either<KFailure, Unit>> storeDonation({required String amount, required String transactionId, required int donationPointId});
+  Future<Either<KFailure, Unit>> humanCaseDonation({required int amount, required String transactionId, required int humanCaseId});
 
   Future<Either<KFailure, Unit>> storeRecycle({required RecycleFormModel model});
 }
@@ -84,6 +85,23 @@ class PostDataRepoImpl implements _PostDataRepo {
         "amount": amount,
         "transaction_id": transactionId,
         "donationpoint_id": donationPointId,
+      },
+    );
+
+    final result = await ApiClientHelper.responseToModel(func: func);
+    return result.fold(
+      (l) => left(l),
+      (r) => right(unit),
+    );
+  }
+ @override
+  Future<Either<KFailure, Unit>> humanCaseDonation({required int amount, required String transactionId, required int humanCaseId}) async {
+    Future<Response<dynamic>> func = Di.dioClient.post(
+      KEndPoints.donationHumanCases,
+      data: {
+        "amount": amount,
+        "transaction_id": transactionId,
+        "humancase_id": humanCaseId,
       },
     );
 

@@ -4,6 +4,7 @@ abstract class KEndPoints {
   static const String login = '$baseUrl/login';
   static const String register = '$baseUrl/register';
   static const String humanCases = '$baseUrl/humanCases';
+  static const String donationHumanCases = '$baseUrl/donation-humanCase';
   static const String donationPoints = '$baseUrl/donationpoints';
   static const String activities = '$baseUrl/activities';
   static const String allWork = '$baseUrl/all-work';
@@ -27,7 +28,6 @@ abstract class KEndPoints {
   static String visaUrl = '$paymentBase/acceptance/iframes/744903?payment_token=$finalToken';
   static String paymentFirstToken = '';
 
-  static String paymentOrderId = '4';
 
   static String finalToken = '';
 

@@ -17,6 +17,7 @@ import 'package:resala/logic/store_donation/store_donation_bloc.dart';
 import 'package:resala/payment/auth_payment/auth_payment_bloc.dart';
 import 'package:resala/payment/data/payment_repo.dart';
 import 'logic/core/api_client/api_client_bloc.dart';
+import 'logic/human_case_donation/human_case_donation_bloc.dart';
 import 'logic/mandop/mandop_bloc.dart';
 import 'logic/monthly_donations/monthly_bloc.dart';
 import 'logic/rec_donations/post/post_rec_donations_bloc.dart';
@@ -56,6 +57,7 @@ abstract class Di {
     _i.registerFactory(() => ActivitiesBloc(repoImp: _i()));
     _i.registerFactory(() => GetRecDonationBloc(repoImp: _i()));
     _i.registerFactory(() => PostRecDonationsBloc(repoImpl: _i()));
+    _i.registerFactory(() => HumanCaseDonationBloc(repoImpl: _i()));
 
   }
 
@@ -79,4 +81,5 @@ abstract class Di {
   static StoreRecycleBloc get storeRecycleBloc => _i.get<StoreRecycleBloc>();
   static GetRecDonationBloc get getRecDonation => _i.get<GetRecDonationBloc>();
   static PostRecDonationsBloc get postRecDonation => _i.get<PostRecDonationsBloc>();
+  static HumanCaseDonationBloc get humanCaseDonation => _i.get<HumanCaseDonationBloc>();
 }

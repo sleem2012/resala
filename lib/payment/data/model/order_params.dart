@@ -1,7 +1,7 @@
 class OrderPrams {
   String? authToken;
   String? deliveryNeeded;
-  String? amountCents;
+  int? amountCents;
   String? currency;
   int? merchantOrderId;
   List<Items>? items;
