@@ -23,7 +23,9 @@ class DynamicCard extends StatelessWidget {
     required this.type,
     this.showSuffix = false,
     this.kTextController,
-     this.onChanged, this.onListSelected,  this.enabled=true,
+    this.onChanged,
+    this.onListSelected,
+    this.enabled = true,
   }) : super(key: key);
   final String title;
   final List<CommonData>? dropDownList;
@@ -47,10 +49,10 @@ class DynamicCard extends StatelessWidget {
         if (type == FieldTypes.textFiled)
           KTextFormField(
             kFillColor: KColors.of(context).elevatedBox,
-            suffixIcon: showSuffix ? const Icon(Icons.monetization_on_rounded) : null,
+            suffixIcon:
+                showSuffix ? const Icon(Icons.monetization_on_rounded) : null,
             controller: kTextController,
             enabled: enabled,
-
             validator: (p0) {
               if (p0!.isEmpty) {
                 return "الحقل مطلوب";
@@ -94,7 +96,11 @@ class DynamicCard extends StatelessWidget {
             onChanged: (p0) {
               onListSelected!(p0);
             },
-            items: dropDownList?.map((e) => KHelper.of(context).itemView<CommonData>(itemText: e.title??'', value: e)).toList() ?? [],
+            items: dropDownList
+                    ?.map((e) => KHelper.of(context).itemView<CommonData>(
+                        itemText: e.title ?? '', value: e))
+                    .toList() ??
+                [],
             hint: "اختر",
 
             validator: (values) {

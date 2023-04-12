@@ -42,7 +42,7 @@ class TransactionParams {
 
   // String get orderIdParam => queryParameters?['order_id'] ?? '';
   String get transactionIdParam => queryParameters?['id'] ?? '';
-  String get amountParam => queryParameters?['amount_cents'] ?? '';
+  int get amountParam => int.parse(queryParameters?['amount_cents']) ;
   String get currencyParam => queryParameters?['currency'] ?? '';
   String get statusParam => queryParameters?['success'] ?? '';
 

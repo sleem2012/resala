@@ -6,7 +6,8 @@ import 'package:resala/logic/store_donation/store_donation_state.dart';
 import 'package:resala/shared/error/failuers.dart';
 
 class StoreDonationBloc extends Cubit<StoreDonationState> {
-  StoreDonationBloc({required this.repoImpl}) : super(const StoreDonationState.initial());
+  StoreDonationBloc({required this.repoImpl})
+      : super(const StoreDonationState.initial());
 
   static StoreDonationBloc of(BuildContext context) {
     return BlocProvider.of<StoreDonationBloc>(context);
@@ -17,16 +18,19 @@ class StoreDonationBloc extends Cubit<StoreDonationState> {
   final TextEditingController valueController = TextEditingController();
   String? dateController;
 
-  storeDonation() async {
+  storeDonation({required String amount, required String transactionId}) async {
     emit(const StoreDonationState.loading());
     try {
-      final result = await repoImpl.storeDonation(amount: "12", transactionId: "2323232323", donationPointId: donationPointId??-1);
+      final result = await repoImpl.storeDonation(
+          amount: amount,
+          transactionId: transactionId,
+          donationPointId: donationPointId ?? -1);
       result.fold(
-            (l) {
+        (l) {
           emit(StoreDonationState.error(failure: l));
           debugPrint('================= StoreDonation (Bloc): Failed => $l ');
         },
-            (r) {
+        (r) {
           emit(const StoreDonationState.success());
           debugPrint('================= StoreDonation (Bloc): Success => $r ');
         },
@@ -34,7 +38,8 @@ class StoreDonationBloc extends Cubit<StoreDonationState> {
     } catch (e) {
       debugPrint('================= StoreDonation (Bloc) (catch):  $e');
 
-      emit(const StoreDonationState.error(failure: KFailure.someThingWrongPleaseTryAgain()));
+      emit(const StoreDonationState.error(
+          failure: KFailure.someThingWrongPleaseTryAgain()));
     }
   }
 

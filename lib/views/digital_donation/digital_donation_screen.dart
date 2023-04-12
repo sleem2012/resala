@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 import 'package:resala/data/models/general/common_data_model.dart';
 import 'package:resala/di.dart';
 import 'package:resala/logic/donation_faces/donation_faces_bloc.dart';
@@ -30,7 +33,6 @@ class DigitalDonationScreen extends StatelessWidget {
         ),
         body: MultiBlocProvider(
           providers: [
-
             BlocProvider(
               create: (context) => Di.storeDonation,
             ),
@@ -42,36 +44,37 @@ class DigitalDonationScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => Scaffold(
+                      builder: (payContext) => Scaffold(
                         appBar: const KAppBar(),
                         body: WebView(
                           initialUrl: KEndPoints.visaUrl,
                           javascriptMode: JavascriptMode.unrestricted,
                           onPageFinished: (url) async {
                             if (url.contains('success=true')) {
-                              //   Get.to(OnSuccessView(msg: Tr.get.payment_added_successfully, doubleBack: true));
-                              //   MyPaymentsBloc.of(context).getMyPayments();
-                              // } else if (url.contains("fail")) {
-                              //   Nav.of(context).replace(OnErrorView(msg: Tr.get.error_card, doubleBack: true));
                               debugPrint('url => $url');
-                              // Get.back() ;
                               // }
                               final paymobUrl = Uri.parse(url);
-                              final transactionParams = TransactionParams.fromJson(paymobUrl.queryParameters);
-                              debugPrint('transactionParams.transactionId => ${transactionParams.transactionId}');
-                              debugPrint('transactionParams.transactionId => ${transactionParams.statusParam}');
-                              debugPrint('transactionParams.amount => ${transactionParams.amount}');
+                              final transactionParams =
+                                  TransactionParams.fromJson(
+                                      paymobUrl.queryParameters);
+                              StoreDonationBloc.of(context).storeDonation(
+                                  amount: (transactionParams.amountParam / 100)
+                                      .toString(),
+                                  transactionId:
+                                      transactionParams.transactionId ?? '');
+
+                              debugPrint(
+                                  'transactionParams.amount => ${transactionParams.amountParam}');
+
+                           Future.delayed(Duration(seconds: 2)).whenComplete(() {
+                             Get.back();
+                             KHelper.showSnackBar("تم التبرع بنجاح",
+                                 isTop: true);
+                           });
                             }
                           },
                           onPageStarted: (url) async {
-                            // if (url.contains('webhook')) {
-                            //   Get.to(OnSuccessView(msg: Tr.get.payment_added_successfully, doubleBack: true));
-                            //   MyPaymentsBloc.of(context).getMyPayments();
-                            // } else if (url.contains("fail")) {
-                            //   Nav.of(context).replace(OnErrorView(msg: Tr.get.error_card, doubleBack: true));
                             debugPrint('url => $url');
-                            // Get.back() ;
-                            // }
                           },
                         ),
                       ),
@@ -84,7 +87,8 @@ class DigitalDonationScreen extends StatelessWidget {
               final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
               return SingleChildScrollView(
-                padding: EdgeInsets.symmetric(horizontal: KHelper.hPadding, vertical: 40),
+                padding: EdgeInsets.symmetric(
+                    horizontal: KHelper.hPadding, vertical: 40),
                 child: Form(
                   key: _formKey,
                   child: Column(
@@ -106,7 +110,8 @@ class DigitalDonationScreen extends StatelessWidget {
                         title: "قيمة التبرع",
                         type: FieldTypes.textFiled,
                         showSuffix: true,
-                        kTextController: PaymentBloc.of(context).priceController,
+                        kTextController:
+                            PaymentBloc.of(context).priceController,
                       ),
                       SizedBox(
                         height: KHelper.listPadding,
@@ -117,18 +122,23 @@ class DigitalDonationScreen extends StatelessWidget {
                       ),
                       BlocBuilder<DonationFacesBloc, DonationFacesState>(
                         builder: (context, state) {
-                          final donationFaces = DonationFacesBloc.of(context).commonDataModel;
+                          final donationFaces =
+                              DonationFacesBloc.of(context).commonDataModel;
 
                           return KRequestOverlay(
-                              isLoading: state.maybeWhen(orElse: () => false, loading: () => true),
+                              isLoading: state.maybeWhen(
+                                  orElse: () => false, loading: () => true),
                               error: state.whenOrNull(error: (error) => error),
-                              onTryAgain: state.whenOrNull(error: (error) => DonationFacesBloc.of(context).get),
+                              onTryAgain: state.whenOrNull(
+                                  error: (error) =>
+                                      DonationFacesBloc.of(context).get),
                               child: DynamicCard(
                                 title: "أوجه التبرع",
                                 type: FieldTypes.dropDown,
                                 dropDownList: donationFaces?.data,
                                 onListSelected: (p0) {
-                                  StoreDonationBloc.of(context).setDonationId(commonData: p0 ?? CommonData());
+                                  StoreDonationBloc.of(context).setDonationId(
+                                      commonData: p0 ?? CommonData());
                                 },
                               ));
                         },
@@ -149,7 +159,6 @@ class DigitalDonationScreen extends StatelessWidget {
                           if (_formKey.currentState!.validate()) {
                             PaymentBloc.of(context).paymentAuth();
                           }
-                          // StoreDonationBloc.of(context).storeDonation();
                         },
                         icon: Icons.credit_card,
                       ),
