@@ -1,13 +1,14 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:resala/data/models/recyle_form_model.dart';
+import 'package:resala/data/models/store_model_model.dart';
 import 'package:resala/di.dart';
 import 'package:resala/shared/api_client/api_client/dio_client_helper.dart';
 import 'package:resala/shared/api_client/api_client/endpoints.dart';
 import 'package:resala/shared/error/failuers.dart';
 
 abstract class _PostDataRepo {
-  Future<Either<KFailure, Unit>> storeMandob({required String chievment, required String notes});
+  Future<Either<KFailure, Unit>> storeMandob({required StoreMandobModel model});
 
   Future<Either<KFailure, Unit>> storeVolunteer({required String age, required String college, required int donationPointId});
 
@@ -25,13 +26,10 @@ class PostDataRepoImpl implements _PostDataRepo {
   PostDataRepoImpl();
 
   @override
-  Future<Either<KFailure, Unit>> storeMandob({required String chievment, required String notes}) async {
+  Future<Either<KFailure, Unit>> storeMandob({required StoreMandobModel model}) async {
     Future<Response<dynamic>> func = Di.dioClient.post(
       KEndPoints.storeMandob,
-      data: {
-        "chievment": chievment,
-        "notes": notes,
-      },
+      data: model.toJson()
     );
 
     final result = await ApiClientHelper.responseToModel(func: func);

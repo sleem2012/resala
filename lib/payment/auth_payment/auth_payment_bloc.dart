@@ -4,19 +4,22 @@ import 'package:resala/payment/data/model/order_params.dart';
 import 'package:resala/payment/data/model/payment_key_params.dart';
 import 'package:resala/payment/data/payment_repo.dart';
 import 'package:resala/shared/api_client/api_client/endpoints.dart';
+import 'package:resala/shared/cache/storage.dart';
 import 'package:resala/shared/error/failuers.dart';
-
 
 import '../../../shared/localization/trans.dart';
 import 'auth_payment_state.dart';
 
 class PaymentBloc extends Cubit<PaymentState> {
-  PaymentBloc({required this.paymentRepoImp}) : super(const PaymentState.initial());
+  PaymentBloc({required this.paymentRepoImp})
+      : super(const PaymentState.initial());
 
-  static PaymentBloc of(BuildContext context) => BlocProvider.of<PaymentBloc>(context);
+  static PaymentBloc of(BuildContext context) =>
+      BlocProvider.of<PaymentBloc>(context);
 
   final PaymentRepoImp paymentRepoImp;
- TextEditingController priceController=TextEditingController();
+  TextEditingController priceController = TextEditingController();
+
   Future paymentAuth() async {
     try {
       emit(const PaymentState.loading());
@@ -24,33 +27,30 @@ class PaymentBloc extends Cubit<PaymentState> {
       result.fold(
         (l) {
           emit(PaymentState.error(error: KFailure.toError(l)));
-          debugPrint('================= PaymentBloc  paymentAuth: ${KFailure.toError(l)}');
+          debugPrint(
+              '================= PaymentBloc  paymentAuth: ${KFailure.toError(l)}');
         },
         (r) {
-
           debugPrint('=================token ${r.token} : ');
-
-
-
 
           emit(PaymentState.success(r));
           debugPrint('=================${r.token}');
           // var userData = KStorage.i.getUser!;
           paymentOrder(
             orderPrams: OrderPrams(
-              amountCents: (double.parse(priceController.text)*100).floor(),
+              amountCents: (double.parse(priceController.text) * 100).floor(),
               authToken: r.token,
               currency: "EGP",
               deliveryNeeded: "false",
-            //   shippingData: ShippingData(
-            //     email: "email@yahoo.com",
-            //     country: "egypt",
-            //     extraDescription: "gfdgdgd",
-            //     firstName:" sleem",
-            //     lastName: "ahmed",
-            //     phoneNumber: "3454354",
-            //
-            // ),
+              //   shippingData: ShippingData(
+              //     email: "email@yahoo.com",
+              //     country: "egypt",
+              //     extraDescription: "gfdgdgd",
+              //     firstName:" sleem",
+              //     lastName: "ahmed",
+              //     phoneNumber: "3454354",
+              //
+              // ),
             ),
             token: r.token,
           );
@@ -69,22 +69,23 @@ class PaymentBloc extends Cubit<PaymentState> {
       final result = await paymentRepoImp.paymentOrder(orderPrams);
       result.fold(
         (l) {
-          debugPrint('================= PaymentBloc paymentOrder : ${KFailure.toError(l)}');
+          debugPrint(
+              '================= PaymentBloc paymentOrder : ${KFailure.toError(l)}');
           emit(PaymentState.error(error: KFailure.toError(l)));
         },
         (r) {
-          // var userData = KStorage.i.getUser!;
+          var userData = KStorage.i.getUserInfo;
           paymentKey(
             paymentKeyPrams: PaymentKeyPrams(
               currency: "EGP",
-              amountCents:( r.amountCents).toString(),
+              amountCents: (r.amountCents).toString(),
               authToken: token,
               orderId: r.id.toString(),
               expiration: 3600,
               integrationId: KEndPoints.integrationIdCard,
 
               billingData: BillingData(
-                email: "userData.email",
+                email: userData?.user?.email??'uhuhu',
                 country: "userData.country",
                 state: 'asd ad',
                 apartment: 'da sdada sd ',
@@ -92,9 +93,9 @@ class PaymentBloc extends Cubit<PaymentState> {
                 city: 'gf gg f',
                 floor: 'hg hg h',
                 street: 'ewewewe',
-                firstName: "userData.name",
-                lastName: "userData.name",
-                phoneNumber: "userData.phone",
+                firstName: userData?.user?.name??'uhuhu',
+                lastName: userData?.user?.username??'uhuhu',
+                phoneNumber: userData?.user?.phone??'01067667676',
               ),
             ),
           );
@@ -114,12 +115,12 @@ class PaymentBloc extends Cubit<PaymentState> {
       final result = await paymentRepoImp.paymentKey(paymentKeyPrams);
       result.fold(
         (l) {
-          debugPrint('================= PaymentBloc  paymentKey: ${KFailure.toError(l)}');
+          debugPrint(
+              '================= PaymentBloc  paymentKey: ${KFailure.toError(l)}');
           emit(PaymentState.error(error: KFailure.toError(l)));
         },
         (r) {
           emit(PaymentState.successPaymentKey(r));
-          KEndPoints.finalToken=r.token;
           priceController.clear();
         },
       );

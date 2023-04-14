@@ -17,14 +17,15 @@ class PaymentWebView extends StatelessWidget {
   const PaymentWebView({Key? key, required this.child, required this.onSuccess})
       : super(key: key);
 
-  void navigateToWebView(BuildContext context) {
+  void navigateToWebView(BuildContext context,{required String finalToken}) {
+
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (payContext) => Scaffold(
           appBar: const KAppBar(),
           body: WebView(
-            initialUrl: KEndPoints.visaUrl,
+            initialUrl: KEndPoints.visaUrl+finalToken,
             javascriptMode: JavascriptMode.unrestricted,
             onPageFinished: (url) async {
               if (url.contains('success=true')) {
@@ -38,7 +39,7 @@ class PaymentWebView extends StatelessWidget {
                 debugPrint('amount => ${transactionParams.amountParam}');
 
                 Future.delayed(const Duration(seconds: 2)).whenComplete(() {
-                  Get.offAll(MainNavPages());
+                  Get.offAll(const MainNavPages());
                   KHelper.showSnackBar("تم التبرع بنجاح", isTop: true);
                 });
               }
@@ -57,8 +58,9 @@ class PaymentWebView extends StatelessWidget {
     return BlocConsumer<PaymentBloc, PaymentState>(
       listener: (context, state) {
         state.whenOrNull(
-          successPaymentKey: (paymentKeyResponse) {
-            navigateToWebView(context);
+          successPaymentKey: (response) {
+            // debugPrint("KEndPoints.finalToken${KEndPoints.finalToken}");
+            navigateToWebView(context, finalToken: response.token);
           },
         );
       },

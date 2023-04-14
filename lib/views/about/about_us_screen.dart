@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:resala/shared/cache/storage.dart';
 import 'package:resala/shared/constant.dart';
 import 'package:resala/shared/theme/helper.dart';
 import 'package:resala/shared/theme/text_theme.dart';
@@ -30,7 +32,7 @@ class AboutUsScreen extends StatelessWidget {
             SizedBox(
               height: KHelper.listPadding,
             ),
-            Image.asset("assets/image/about.png"),
+            CachedNetworkImage(imageUrl: KStorage.i.getSetting?.data?.info?.aboutImage??''),
             SizedBox(
               height: KHelper.listPadding,
             ),

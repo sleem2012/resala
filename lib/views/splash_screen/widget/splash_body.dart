@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:resala/shared/constant.dart';
 
 class SplashBody extends StatelessWidget {
   const SplashBody({Key? key}) : super(key: key);
@@ -10,8 +11,11 @@ class SplashBody extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SvgPicture.asset('assets/image/Resala Logo.svg'),
+            Image.asset(
+              Constant.logo,
+              fit: BoxFit.fitHeight,
 
+            ),
           ],
         ),
       ),

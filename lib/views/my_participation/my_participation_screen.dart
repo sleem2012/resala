@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 import 'package:resala/di.dart';
 import 'package:resala/logic/my_participation/my_participation_bloc.dart';
 import 'package:resala/logic/my_participation/my_participation_state.dart';
+import 'package:resala/views/widgets/gallery_dialog.dart';
 import 'package:resala/views/widgets/horizintal_card.dart';
 import 'package:resala/views/widgets/loading/loading_overlay.dart';
 import 'package:resala/views/widgets/not_loggedin.dart';
@@ -27,7 +29,11 @@ class MyParticipationScreen extends StatelessWidget {
                   const SliverToBoxAdapter(child: SizedBox(height: 100)),
                   SliverList(
                     delegate: SliverChildBuilderDelegate((BuildContext context, int index) {
-                      return HorizontalCard(model: my?.data?[index], onPressed: () {  },);
+                      return HorizontalCard(model: my?.data?[index],onPressed:(){
+                        Get.dialog(GalleryDialog(
+                          img: my?.data?[index].images??[],
+                        ));
+                      } ,  hasBtn: my?.data?[index].images?.isNotEmpty==true,);
                     }, childCount: my?.data?.length),
                   ),
                   const SliverToBoxAdapter(child: SizedBox(height: 100))

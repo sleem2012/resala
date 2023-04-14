@@ -32,7 +32,7 @@ class HomeScreen extends StatelessWidget {
               model: CardsList.cards[index],
               onPressed: () {
                 Get.to(() => CardsList.cards[index].screen);
-              },
+              }, hasBtn: true,
             );
           }, childCount: CardsList.cards.length),
         ),

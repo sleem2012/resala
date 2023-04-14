@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:resala/shared/cache/storage.dart';
+import 'package:resala/shared/constant.dart';
 import 'package:resala/shared/theme/helper.dart';
 import 'package:resala/views/about/about_us_screen.dart';
 import 'package:resala/views/auth/login/login_view.dart';
@@ -27,16 +28,16 @@ class KAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         centerTitle: true,
         // titleTextStyle: KTextStyle.of(context).appBar,
+
         leading: InkWell(
           onTap: () {
             Get.to(() => const AboutUsScreen());
 
           },
-          child: Padding(
-            padding: EdgeInsets.only(right: KHelper.hPadding),
-            child: SvgPicture.asset(
-              "assets/image/Resala Logo.svg",
-            ),
+          child: Image.asset(
+            Constant.logo,
+            fit: BoxFit.fill,
+
           ),
         ),
         leadingWidth: 100,

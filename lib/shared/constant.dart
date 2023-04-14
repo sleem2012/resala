@@ -1,6 +1,6 @@
 class Constant{
 
-  static const String logo="assets/image/logo.png";
+  static const String logo="assets/image/icon.png";
   static const String aboutDesc="جمعية رسالة للأعمال الخيرية\n"
       "فرع كفر الشيخ\n"
       "جمعية تطوعية خيرية\n"

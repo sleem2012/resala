@@ -7,20 +7,22 @@ import 'package:resala/shared/theme/text_theme.dart';
 import 'custom_button.dart';
 
 class HorizontalCard extends StatelessWidget {
-final  dynamic model;
-final Function() onPressed;
+  final dynamic model;
+  final bool hasBtn;
+  final Function()? onPressed;
 
-
-   const HorizontalCard({
+  const HorizontalCard({
     super.key,
-    required this.model, required this.onPressed,
+    required this.model,
+     this.onPressed, required this.hasBtn,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: KHelper.of(context).elevatedBox,
-      margin: EdgeInsets.symmetric(horizontal: KHelper.hPadding,vertical: 10),
+      margin: EdgeInsets.symmetric(horizontal: KHelper.hPadding, vertical: 10),
+      padding:  const EdgeInsets.symmetric( vertical: 5),
       child: LayoutBuilder(builder: (context, size) {
         return Row(
           children: [
@@ -29,7 +31,7 @@ final Function() onPressed;
               child: ClipRRect(
                   borderRadius: BorderRadius.circular(KHelper.btnRadius),
                   child: CachedNetworkImage(
-                    imageUrl:  model?.image??dummyNetImg,
+                    imageUrl: model?.image ?? dummyNetImg,
                   )),
             ),
             const SizedBox(
@@ -42,26 +44,52 @@ final Function() onPressed;
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    model?.title??' ',
+                    model?.title ?? ' ',
                     style: KTextStyle.of(context).subtitle,
                   ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Text(
-                          model?.desc??'',
+                  Text(
+                    model?.desc ?? '',
+                    style: KTextStyle.of(context).body,
+                    textAlign: TextAlign.center,
+                  ),
+                  if (model?.date != null)
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "تاريخ التبرع : ",
+                          style: KTextStyle.of(context).subtitle,
+                          textAlign: TextAlign.center,
+                        ),
+                        Text(
+                          model?.date?.substring(0, 10) ?? '',
                           style: KTextStyle.of(context).body,
                           textAlign: TextAlign.center,
                         ),
-                      ),
-                    ],
-                  ),
-                  Padding(
+                      ],
+                    ),
+                  if (model?.amount != null)
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "قيمة التبرع : ",
+                          style: KTextStyle.of(context).subtitle,
+                          textAlign: TextAlign.center,
+                        ),
+                        Text(
+                          "${model?.amount.toString()} ج ",
+                          style: KTextStyle.of(context).body,
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+
+                if(hasBtn)  Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: KButton(
-                      title: model?.btnTitle??'',
-                      onPressed:
-                          onPressed,
+                      title: model?.btnTitle ?? '',
+                      onPressed: onPressed!,
 
                       //width: Get.width * .3,
                       hieght: Get.height * .04,

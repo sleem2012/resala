@@ -1,20 +1,21 @@
-
 import 'package:flutter/widgets.dart';
 
 class CardItemsModel {
-   String image;
-   String title;
-   String desc;
+  String image;
+  String title;
+  String desc;
   String btnTitle;
-    Widget screen;
+  Widget screen;
+  String? date;
+  int? amount;
 
-
-   CardItemsModel( {
+  CardItemsModel({
     required this.image,
     required this.btnTitle,
     required this.title,
     required this.desc,
     required this.screen,
+    this.amount,
+    this.date,
   });
 }
-

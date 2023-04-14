@@ -29,6 +29,8 @@ class MyParticipationData {
   String? desc;
   String? status;
   String? type;
+  String? date;
+  int? amount;
   String? image;
   List<String>? images;
   String? btnTitle='أظهر المزيد';
@@ -41,7 +43,9 @@ class MyParticipationData {
         this.image,
         this.images,
         this.btnTitle,
-        this.onPressed
+        this.onPressed,
+        this.date,
+        this.amount,
 
 
 
@@ -53,6 +57,8 @@ class MyParticipationData {
     status = json['status'];
     type = json['type'];
     image = json['image'];
+    amount = json['amount'];
+    date = json['date'];
     images = json['images'].cast<String>();
   }
 
