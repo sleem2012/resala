@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:resala/data/models/general/common_data_model.dart';
+import 'package:resala/data/models/general/kslugmodel.dart';
 import 'package:resala/di.dart';
 import 'package:resala/logic/donation_faces/donation_faces_bloc.dart';
 import 'package:resala/logic/donation_faces/donation_faces_state.dart';
 import 'package:resala/logic/store_donation/store_donation_bloc.dart';
-import 'package:resala/payment/auth_payment/auth_payment_bloc.dart';
+import 'package:resala/payment/auth_payment/payment_bloc.dart';
+import 'package:resala/payment/auth_payment/payment_state.dart';
 import 'package:resala/payment/data/model/transaction_response_model.dart';
 import 'package:resala/payment/view/payment_webview.dart';
+import 'package:resala/shared/theme/colors.dart';
 import 'package:resala/shared/theme/helper.dart';
 import 'package:resala/shared/theme/text_theme.dart';
 import 'package:resala/views/widgets/appbar.dart';
 import 'package:resala/views/widgets/custom_button.dart';
+import 'package:resala/views/widgets/drop_down.dart';
 import 'package:resala/views/widgets/dynamic_card.dart';
 import 'package:resala/views/widgets/loading/loading_overlay.dart';
 import 'package:resala/views/widgets/not_loggedin.dart';
@@ -59,7 +63,6 @@ class DigitalDonationScreen extends StatelessWidget {
                   SizedBox(
                     height: KHelper.listPadding,
                   ),
-
                   SizedBox(
                     height: KHelper.listPadding,
                   ),
@@ -86,13 +89,56 @@ class DigitalDonationScreen extends StatelessWidget {
                           ));
                     },
                   ),
-                  // SizedBox(
-                  //   height: KHelper.listPadding,
-                  // ),
-                  // const DynamicCard(
-                  //   title: "ملاحظات عن التبرع",
-                  //   type: FieldTypes.textFiled,
-                  // ),
+                  SizedBox(
+                    height: KHelper.listPadding,
+                  ),
+                  Column(
+                    children: [
+                      KButton(
+                        title: "طريقة الدفع",
+                        onPressed: () {},
+                        isFlat: true,
+                        kFillColor: KColors.of(context).accentColor,
+                      ),
+                      KDropdownBtn<KSlugModel>(
+                        onChanged: (p0) {
+                          PaymentBloc.of(context).setPaymentType(
+                              type: p0 ?? KSlugModel(slug: '', translated: ''));
+                        },
+                        items: KSlugModel.paymentType
+                            .map((e) => KHelper.of(context)
+                                .itemView<KSlugModel>(
+                                    itemText: e.translated, value: e))
+                            .toList(),
+                        hint: "اختر",
+                        validator: (values) {
+                          if (values == null) {
+                            return "الحقل مطلوب";
+                          } else {
+                            return null;
+                          }
+                        },
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: KHelper.listPadding,
+                  ),
+                  BlocBuilder<PaymentBloc, PaymentState>(
+                    builder: (context, state) {
+                      if (PaymentBloc.of(context).isWallet) {
+                        return DynamicCard(
+                          title: "رقم المحفظه",
+                          type: FieldTypes.textFiled,
+                          keyboardType: TextInputType.phone,
+                          kTextController:
+                              PaymentBloc.of(context).walletNumberController,
+                        );
+                      } else {
+                        return const SizedBox();
+                      }
+                    },
+                  ),
                   const SizedBox(
                     height: 70,
                   ),

@@ -39,7 +39,7 @@ class LoginView extends StatelessWidget {
             return KLoadingOverlay(
               isLoading: state is LoginStateLoading,
               child: SingleChildScrollView(
-                padding: EdgeInsets.symmetric(horizontal: KHelper.hPadding).copyWith(top: 200),
+                padding: EdgeInsets.all( KHelper.hPadding),
                 child: Form(
                   key: _formKey,
                   child: Column(
@@ -88,12 +88,12 @@ class LoginView extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: KHelper.listPadding),
-                      Align(
-                          alignment: Alignment.bottomRight,
-                          child: Text(
-                            Tr.get.forget_password,
-                            style: KTextStyle.of(context).body,
-                          )),
+                      // Align(
+                      //     alignment: Alignment.bottomRight,
+                      //     child: Text(
+                      //       Tr.get.forget_password,
+                      //       style: KTextStyle.of(context).body,
+                      //     )),
                       const SizedBox(height: 34),
                       KButton(
                         title: Tr.get.login,

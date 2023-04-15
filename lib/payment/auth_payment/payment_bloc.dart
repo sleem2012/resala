@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:resala/data/models/general/kslugmodel.dart';
 import 'package:resala/payment/data/model/order_params.dart';
 import 'package:resala/payment/data/model/payment_key_params.dart';
 import 'package:resala/payment/data/payment_repo.dart';
@@ -8,7 +9,7 @@ import 'package:resala/shared/cache/storage.dart';
 import 'package:resala/shared/error/failuers.dart';
 
 import '../../../shared/localization/trans.dart';
-import 'auth_payment_state.dart';
+import 'payment_state.dart';
 
 class PaymentBloc extends Cubit<PaymentState> {
   PaymentBloc({required this.paymentRepoImp})
@@ -19,6 +20,7 @@ class PaymentBloc extends Cubit<PaymentState> {
 
   final PaymentRepoImp paymentRepoImp;
   TextEditingController priceController = TextEditingController();
+  TextEditingController walletNumberController = TextEditingController();
 
   Future paymentAuth() async {
     try {
@@ -31,10 +33,7 @@ class PaymentBloc extends Cubit<PaymentState> {
               '================= PaymentBloc  paymentAuth: ${KFailure.toError(l)}');
         },
         (r) {
-          debugPrint('=================token ${r.token} : ');
-
           emit(PaymentState.success(r));
-          debugPrint('=================${r.token}');
           // var userData = KStorage.i.getUser!;
           paymentOrder(
             orderPrams: OrderPrams(
@@ -82,10 +81,9 @@ class PaymentBloc extends Cubit<PaymentState> {
               authToken: token,
               orderId: r.id.toString(),
               expiration: 3600,
-              integrationId: KEndPoints.integrationIdCard,
-
+              integrationId: isWallet?KEndPoints.integrationIdWallet:KEndPoints.integrationIdCard,
               billingData: BillingData(
-                email: userData?.user?.email??'uhuhu',
+                email: userData?.user?.email ?? 'uhuhu',
                 country: "userData.country",
                 state: 'asd ad',
                 apartment: 'da sdada sd ',
@@ -93,9 +91,9 @@ class PaymentBloc extends Cubit<PaymentState> {
                 city: 'gf gg f',
                 floor: 'hg hg h',
                 street: 'ewewewe',
-                firstName: userData?.user?.name??'uhuhu',
-                lastName: userData?.user?.username??'uhuhu',
-                phoneNumber: userData?.user?.phone??'01067667676',
+                firstName: userData?.user?.name ?? 'uhuhu',
+                lastName: userData?.user?.username ?? 'uhuhu',
+                phoneNumber: userData?.user?.phone ?? '01067667676',
               ),
             ),
           );
@@ -120,7 +118,14 @@ class PaymentBloc extends Cubit<PaymentState> {
           emit(PaymentState.error(error: KFailure.toError(l)));
         },
         (r) {
-          emit(PaymentState.successPaymentKey(r));
+          debugPrint('=================token ${r.token} : ');
+
+          if (isWallet) {
+            getWalletUrl(finalToken: r.token);
+          } else {
+            emit(PaymentState.successPaymentKey(r));
+          }
+
           priceController.clear();
         },
       );
@@ -129,5 +134,45 @@ class PaymentBloc extends Cubit<PaymentState> {
       emit(PaymentState.error(error: Tr.get.try_again));
       rethrow;
     }
+  }
+
+  getWalletUrl({
+    required String finalToken,
+  }) async {
+    try {
+      emit(const PaymentState.loading());
+      final result = await paymentRepoImp.getWalletUrl(
+          finalToken: finalToken, number: walletNumberController.text);
+      result.fold(
+        (l) {
+          debugPrint(
+              '================= PaymentBloc  getWalletUrl: ${KFailure.toError(l)}');
+          emit(PaymentState.error(error: KFailure.toError(l)));
+        },
+        (r) {
+          emit(PaymentState.successWalletUrl(r));
+        },
+      );
+    } catch (e) {
+      debugPrint('================= Auth Bloc (Catch): ${e.toString()} ');
+      emit(PaymentState.error(error: Tr.get.try_again));
+      rethrow;
+    }
+  }
+
+  bool isWallet = false;
+
+  setPaymentType({required KSlugModel type}) {
+    if (type.slug == KSlugModel.wallet) {
+      isWallet = true;
+    } else {
+      isWallet = false;
+    }
+    _update;
+  }
+
+  get _update {
+    emit(const PaymentState.loading());
+    emit(const PaymentState.initial());
   }
 }

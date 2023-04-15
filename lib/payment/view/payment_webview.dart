@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:resala/payment/auth_payment/auth_payment_bloc.dart';
-import 'package:resala/payment/auth_payment/auth_payment_state.dart';
+import 'package:resala/payment/auth_payment/payment_bloc.dart';
+import 'package:resala/payment/auth_payment/payment_state.dart';
 import 'package:resala/payment/data/model/transaction_response_model.dart';
 import 'package:resala/shared/api_client/api_client/endpoints.dart';
 import 'package:resala/shared/theme/helper.dart';
@@ -17,7 +17,7 @@ class PaymentWebView extends StatelessWidget {
   const PaymentWebView({Key? key, required this.child, required this.onSuccess})
       : super(key: key);
 
-  void navigateToWebView(BuildContext context,{required String finalToken}) {
+  void navigateToWebView(BuildContext context,{required String url}) {
 
     Navigator.push(
       context,
@@ -25,7 +25,7 @@ class PaymentWebView extends StatelessWidget {
         builder: (payContext) => Scaffold(
           appBar: const KAppBar(),
           body: WebView(
-            initialUrl: KEndPoints.visaUrl+finalToken,
+            initialUrl: url,
             javascriptMode: JavascriptMode.unrestricted,
             onPageFinished: (url) async {
               if (url.contains('success=true')) {
@@ -60,7 +60,11 @@ class PaymentWebView extends StatelessWidget {
         state.whenOrNull(
           successPaymentKey: (response) {
             // debugPrint("KEndPoints.finalToken${KEndPoints.finalToken}");
-            navigateToWebView(context, finalToken: response.token);
+            navigateToWebView(context, url: KEndPoints.visaUrl+response.token);
+          },
+          successWalletUrl: (response) {
+            // debugPrint("KEndPoints.finalToken${KEndPoints.finalToken}");
+            navigateToWebView(context, url: response.redirectUrl);
           },
         );
       },

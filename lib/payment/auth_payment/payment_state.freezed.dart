@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'auth_payment_state.dart';
+part of 'payment_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -25,6 +25,7 @@ mixin _$PaymentState {
     required TResult Function(OrderResponse orderResponse) successOrder,
     required TResult Function(PaymentKeyResponse paymentKeyResponse)
         successPaymentKey,
+    required TResult Function(WalletResponse response) successWalletUrl,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +36,7 @@ mixin _$PaymentState {
     TResult? Function(String error)? error,
     TResult? Function(OrderResponse orderResponse)? successOrder,
     TResult? Function(PaymentKeyResponse paymentKeyResponse)? successPaymentKey,
+    TResult? Function(WalletResponse response)? successWalletUrl,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -45,6 +47,7 @@ mixin _$PaymentState {
     TResult Function(String error)? error,
     TResult Function(OrderResponse orderResponse)? successOrder,
     TResult Function(PaymentKeyResponse paymentKeyResponse)? successPaymentKey,
+    TResult Function(WalletResponse response)? successWalletUrl,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -56,6 +59,7 @@ mixin _$PaymentState {
     required TResult Function(PaymentStateError value) error,
     required TResult Function(OrderStateSuccess value) successOrder,
     required TResult Function(PaymentKeySuccess value) successPaymentKey,
+    required TResult Function(PaymentWalletUrl value) successWalletUrl,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -66,6 +70,7 @@ mixin _$PaymentState {
     TResult? Function(PaymentStateError value)? error,
     TResult? Function(OrderStateSuccess value)? successOrder,
     TResult? Function(PaymentKeySuccess value)? successPaymentKey,
+    TResult? Function(PaymentWalletUrl value)? successWalletUrl,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -76,6 +81,7 @@ mixin _$PaymentState {
     TResult Function(PaymentStateError value)? error,
     TResult Function(OrderStateSuccess value)? successOrder,
     TResult Function(PaymentKeySuccess value)? successPaymentKey,
+    TResult Function(PaymentWalletUrl value)? successWalletUrl,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -144,6 +150,7 @@ class _$PaymentStateInitial implements PaymentStateInitial {
     required TResult Function(OrderResponse orderResponse) successOrder,
     required TResult Function(PaymentKeyResponse paymentKeyResponse)
         successPaymentKey,
+    required TResult Function(WalletResponse response) successWalletUrl,
   }) {
     return initial();
   }
@@ -157,6 +164,7 @@ class _$PaymentStateInitial implements PaymentStateInitial {
     TResult? Function(String error)? error,
     TResult? Function(OrderResponse orderResponse)? successOrder,
     TResult? Function(PaymentKeyResponse paymentKeyResponse)? successPaymentKey,
+    TResult? Function(WalletResponse response)? successWalletUrl,
   }) {
     return initial?.call();
   }
@@ -170,6 +178,7 @@ class _$PaymentStateInitial implements PaymentStateInitial {
     TResult Function(String error)? error,
     TResult Function(OrderResponse orderResponse)? successOrder,
     TResult Function(PaymentKeyResponse paymentKeyResponse)? successPaymentKey,
+    TResult Function(WalletResponse response)? successWalletUrl,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -187,6 +196,7 @@ class _$PaymentStateInitial implements PaymentStateInitial {
     required TResult Function(PaymentStateError value) error,
     required TResult Function(OrderStateSuccess value) successOrder,
     required TResult Function(PaymentKeySuccess value) successPaymentKey,
+    required TResult Function(PaymentWalletUrl value) successWalletUrl,
   }) {
     return initial(this);
   }
@@ -200,6 +210,7 @@ class _$PaymentStateInitial implements PaymentStateInitial {
     TResult? Function(PaymentStateError value)? error,
     TResult? Function(OrderStateSuccess value)? successOrder,
     TResult? Function(PaymentKeySuccess value)? successPaymentKey,
+    TResult? Function(PaymentWalletUrl value)? successWalletUrl,
   }) {
     return initial?.call(this);
   }
@@ -213,6 +224,7 @@ class _$PaymentStateInitial implements PaymentStateInitial {
     TResult Function(PaymentStateError value)? error,
     TResult Function(OrderStateSuccess value)? successOrder,
     TResult Function(PaymentKeySuccess value)? successPaymentKey,
+    TResult Function(PaymentWalletUrl value)? successWalletUrl,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -271,6 +283,7 @@ class _$PaymentStateLoading implements PaymentStateLoading {
     required TResult Function(OrderResponse orderResponse) successOrder,
     required TResult Function(PaymentKeyResponse paymentKeyResponse)
         successPaymentKey,
+    required TResult Function(WalletResponse response) successWalletUrl,
   }) {
     return loading();
   }
@@ -284,6 +297,7 @@ class _$PaymentStateLoading implements PaymentStateLoading {
     TResult? Function(String error)? error,
     TResult? Function(OrderResponse orderResponse)? successOrder,
     TResult? Function(PaymentKeyResponse paymentKeyResponse)? successPaymentKey,
+    TResult? Function(WalletResponse response)? successWalletUrl,
   }) {
     return loading?.call();
   }
@@ -297,6 +311,7 @@ class _$PaymentStateLoading implements PaymentStateLoading {
     TResult Function(String error)? error,
     TResult Function(OrderResponse orderResponse)? successOrder,
     TResult Function(PaymentKeyResponse paymentKeyResponse)? successPaymentKey,
+    TResult Function(WalletResponse response)? successWalletUrl,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -314,6 +329,7 @@ class _$PaymentStateLoading implements PaymentStateLoading {
     required TResult Function(PaymentStateError value) error,
     required TResult Function(OrderStateSuccess value) successOrder,
     required TResult Function(PaymentKeySuccess value) successPaymentKey,
+    required TResult Function(PaymentWalletUrl value) successWalletUrl,
   }) {
     return loading(this);
   }
@@ -327,6 +343,7 @@ class _$PaymentStateLoading implements PaymentStateLoading {
     TResult? Function(PaymentStateError value)? error,
     TResult? Function(OrderStateSuccess value)? successOrder,
     TResult? Function(PaymentKeySuccess value)? successPaymentKey,
+    TResult? Function(PaymentWalletUrl value)? successWalletUrl,
   }) {
     return loading?.call(this);
   }
@@ -340,6 +357,7 @@ class _$PaymentStateLoading implements PaymentStateLoading {
     TResult Function(PaymentStateError value)? error,
     TResult Function(OrderStateSuccess value)? successOrder,
     TResult Function(PaymentKeySuccess value)? successPaymentKey,
+    TResult Function(PaymentWalletUrl value)? successWalletUrl,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -426,6 +444,7 @@ class _$PaymentStateSuccess implements PaymentStateSuccess {
     required TResult Function(OrderResponse orderResponse) successOrder,
     required TResult Function(PaymentKeyResponse paymentKeyResponse)
         successPaymentKey,
+    required TResult Function(WalletResponse response) successWalletUrl,
   }) {
     return success(paymentAuthResponse);
   }
@@ -439,6 +458,7 @@ class _$PaymentStateSuccess implements PaymentStateSuccess {
     TResult? Function(String error)? error,
     TResult? Function(OrderResponse orderResponse)? successOrder,
     TResult? Function(PaymentKeyResponse paymentKeyResponse)? successPaymentKey,
+    TResult? Function(WalletResponse response)? successWalletUrl,
   }) {
     return success?.call(paymentAuthResponse);
   }
@@ -452,6 +472,7 @@ class _$PaymentStateSuccess implements PaymentStateSuccess {
     TResult Function(String error)? error,
     TResult Function(OrderResponse orderResponse)? successOrder,
     TResult Function(PaymentKeyResponse paymentKeyResponse)? successPaymentKey,
+    TResult Function(WalletResponse response)? successWalletUrl,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -469,6 +490,7 @@ class _$PaymentStateSuccess implements PaymentStateSuccess {
     required TResult Function(PaymentStateError value) error,
     required TResult Function(OrderStateSuccess value) successOrder,
     required TResult Function(PaymentKeySuccess value) successPaymentKey,
+    required TResult Function(PaymentWalletUrl value) successWalletUrl,
   }) {
     return success(this);
   }
@@ -482,6 +504,7 @@ class _$PaymentStateSuccess implements PaymentStateSuccess {
     TResult? Function(PaymentStateError value)? error,
     TResult? Function(OrderStateSuccess value)? successOrder,
     TResult? Function(PaymentKeySuccess value)? successPaymentKey,
+    TResult? Function(PaymentWalletUrl value)? successWalletUrl,
   }) {
     return success?.call(this);
   }
@@ -495,6 +518,7 @@ class _$PaymentStateSuccess implements PaymentStateSuccess {
     TResult Function(PaymentStateError value)? error,
     TResult Function(OrderStateSuccess value)? successOrder,
     TResult Function(PaymentKeySuccess value)? successPaymentKey,
+    TResult Function(PaymentWalletUrl value)? successWalletUrl,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -585,6 +609,7 @@ class _$PaymentStateError implements PaymentStateError {
     required TResult Function(OrderResponse orderResponse) successOrder,
     required TResult Function(PaymentKeyResponse paymentKeyResponse)
         successPaymentKey,
+    required TResult Function(WalletResponse response) successWalletUrl,
   }) {
     return error(this.error);
   }
@@ -598,6 +623,7 @@ class _$PaymentStateError implements PaymentStateError {
     TResult? Function(String error)? error,
     TResult? Function(OrderResponse orderResponse)? successOrder,
     TResult? Function(PaymentKeyResponse paymentKeyResponse)? successPaymentKey,
+    TResult? Function(WalletResponse response)? successWalletUrl,
   }) {
     return error?.call(this.error);
   }
@@ -611,6 +637,7 @@ class _$PaymentStateError implements PaymentStateError {
     TResult Function(String error)? error,
     TResult Function(OrderResponse orderResponse)? successOrder,
     TResult Function(PaymentKeyResponse paymentKeyResponse)? successPaymentKey,
+    TResult Function(WalletResponse response)? successWalletUrl,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -628,6 +655,7 @@ class _$PaymentStateError implements PaymentStateError {
     required TResult Function(PaymentStateError value) error,
     required TResult Function(OrderStateSuccess value) successOrder,
     required TResult Function(PaymentKeySuccess value) successPaymentKey,
+    required TResult Function(PaymentWalletUrl value) successWalletUrl,
   }) {
     return error(this);
   }
@@ -641,6 +669,7 @@ class _$PaymentStateError implements PaymentStateError {
     TResult? Function(PaymentStateError value)? error,
     TResult? Function(OrderStateSuccess value)? successOrder,
     TResult? Function(PaymentKeySuccess value)? successPaymentKey,
+    TResult? Function(PaymentWalletUrl value)? successWalletUrl,
   }) {
     return error?.call(this);
   }
@@ -654,6 +683,7 @@ class _$PaymentStateError implements PaymentStateError {
     TResult Function(PaymentStateError value)? error,
     TResult Function(OrderStateSuccess value)? successOrder,
     TResult Function(PaymentKeySuccess value)? successPaymentKey,
+    TResult Function(PaymentWalletUrl value)? successWalletUrl,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -745,6 +775,7 @@ class _$OrderStateSuccess implements OrderStateSuccess {
     required TResult Function(OrderResponse orderResponse) successOrder,
     required TResult Function(PaymentKeyResponse paymentKeyResponse)
         successPaymentKey,
+    required TResult Function(WalletResponse response) successWalletUrl,
   }) {
     return successOrder(orderResponse);
   }
@@ -758,6 +789,7 @@ class _$OrderStateSuccess implements OrderStateSuccess {
     TResult? Function(String error)? error,
     TResult? Function(OrderResponse orderResponse)? successOrder,
     TResult? Function(PaymentKeyResponse paymentKeyResponse)? successPaymentKey,
+    TResult? Function(WalletResponse response)? successWalletUrl,
   }) {
     return successOrder?.call(orderResponse);
   }
@@ -771,6 +803,7 @@ class _$OrderStateSuccess implements OrderStateSuccess {
     TResult Function(String error)? error,
     TResult Function(OrderResponse orderResponse)? successOrder,
     TResult Function(PaymentKeyResponse paymentKeyResponse)? successPaymentKey,
+    TResult Function(WalletResponse response)? successWalletUrl,
     required TResult orElse(),
   }) {
     if (successOrder != null) {
@@ -788,6 +821,7 @@ class _$OrderStateSuccess implements OrderStateSuccess {
     required TResult Function(PaymentStateError value) error,
     required TResult Function(OrderStateSuccess value) successOrder,
     required TResult Function(PaymentKeySuccess value) successPaymentKey,
+    required TResult Function(PaymentWalletUrl value) successWalletUrl,
   }) {
     return successOrder(this);
   }
@@ -801,6 +835,7 @@ class _$OrderStateSuccess implements OrderStateSuccess {
     TResult? Function(PaymentStateError value)? error,
     TResult? Function(OrderStateSuccess value)? successOrder,
     TResult? Function(PaymentKeySuccess value)? successPaymentKey,
+    TResult? Function(PaymentWalletUrl value)? successWalletUrl,
   }) {
     return successOrder?.call(this);
   }
@@ -814,6 +849,7 @@ class _$OrderStateSuccess implements OrderStateSuccess {
     TResult Function(PaymentStateError value)? error,
     TResult Function(OrderStateSuccess value)? successOrder,
     TResult Function(PaymentKeySuccess value)? successPaymentKey,
+    TResult Function(PaymentWalletUrl value)? successWalletUrl,
     required TResult orElse(),
   }) {
     if (successOrder != null) {
@@ -905,6 +941,7 @@ class _$PaymentKeySuccess implements PaymentKeySuccess {
     required TResult Function(OrderResponse orderResponse) successOrder,
     required TResult Function(PaymentKeyResponse paymentKeyResponse)
         successPaymentKey,
+    required TResult Function(WalletResponse response) successWalletUrl,
   }) {
     return successPaymentKey(paymentKeyResponse);
   }
@@ -918,6 +955,7 @@ class _$PaymentKeySuccess implements PaymentKeySuccess {
     TResult? Function(String error)? error,
     TResult? Function(OrderResponse orderResponse)? successOrder,
     TResult? Function(PaymentKeyResponse paymentKeyResponse)? successPaymentKey,
+    TResult? Function(WalletResponse response)? successWalletUrl,
   }) {
     return successPaymentKey?.call(paymentKeyResponse);
   }
@@ -931,6 +969,7 @@ class _$PaymentKeySuccess implements PaymentKeySuccess {
     TResult Function(String error)? error,
     TResult Function(OrderResponse orderResponse)? successOrder,
     TResult Function(PaymentKeyResponse paymentKeyResponse)? successPaymentKey,
+    TResult Function(WalletResponse response)? successWalletUrl,
     required TResult orElse(),
   }) {
     if (successPaymentKey != null) {
@@ -948,6 +987,7 @@ class _$PaymentKeySuccess implements PaymentKeySuccess {
     required TResult Function(PaymentStateError value) error,
     required TResult Function(OrderStateSuccess value) successOrder,
     required TResult Function(PaymentKeySuccess value) successPaymentKey,
+    required TResult Function(PaymentWalletUrl value) successWalletUrl,
   }) {
     return successPaymentKey(this);
   }
@@ -961,6 +1001,7 @@ class _$PaymentKeySuccess implements PaymentKeySuccess {
     TResult? Function(PaymentStateError value)? error,
     TResult? Function(OrderStateSuccess value)? successOrder,
     TResult? Function(PaymentKeySuccess value)? successPaymentKey,
+    TResult? Function(PaymentWalletUrl value)? successWalletUrl,
   }) {
     return successPaymentKey?.call(this);
   }
@@ -974,6 +1015,7 @@ class _$PaymentKeySuccess implements PaymentKeySuccess {
     TResult Function(PaymentStateError value)? error,
     TResult Function(OrderStateSuccess value)? successOrder,
     TResult Function(PaymentKeySuccess value)? successPaymentKey,
+    TResult Function(PaymentWalletUrl value)? successWalletUrl,
     required TResult orElse(),
   }) {
     if (successPaymentKey != null) {
@@ -990,5 +1032,171 @@ abstract class PaymentKeySuccess implements PaymentState {
   PaymentKeyResponse get paymentKeyResponse;
   @JsonKey(ignore: true)
   _$$PaymentKeySuccessCopyWith<_$PaymentKeySuccess> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PaymentWalletUrlCopyWith<$Res> {
+  factory _$$PaymentWalletUrlCopyWith(
+          _$PaymentWalletUrl value, $Res Function(_$PaymentWalletUrl) then) =
+      __$$PaymentWalletUrlCopyWithImpl<$Res>;
+  @useResult
+  $Res call({WalletResponse response});
+}
+
+/// @nodoc
+class __$$PaymentWalletUrlCopyWithImpl<$Res>
+    extends _$PaymentStateCopyWithImpl<$Res, _$PaymentWalletUrl>
+    implements _$$PaymentWalletUrlCopyWith<$Res> {
+  __$$PaymentWalletUrlCopyWithImpl(
+      _$PaymentWalletUrl _value, $Res Function(_$PaymentWalletUrl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? response = null,
+  }) {
+    return _then(_$PaymentWalletUrl(
+      null == response
+          ? _value.response
+          : response // ignore: cast_nullable_to_non_nullable
+              as WalletResponse,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PaymentWalletUrl implements PaymentWalletUrl {
+  const _$PaymentWalletUrl(this.response);
+
+  @override
+  final WalletResponse response;
+
+  @override
+  String toString() {
+    return 'PaymentState.successWalletUrl(response: $response)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PaymentWalletUrl &&
+            (identical(other.response, response) ||
+                other.response == response));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, response);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PaymentWalletUrlCopyWith<_$PaymentWalletUrl> get copyWith =>
+      __$$PaymentWalletUrlCopyWithImpl<_$PaymentWalletUrl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(PaymentAuthResponse paymentAuthResponse) success,
+    required TResult Function(String error) error,
+    required TResult Function(OrderResponse orderResponse) successOrder,
+    required TResult Function(PaymentKeyResponse paymentKeyResponse)
+        successPaymentKey,
+    required TResult Function(WalletResponse response) successWalletUrl,
+  }) {
+    return successWalletUrl(response);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(PaymentAuthResponse paymentAuthResponse)? success,
+    TResult? Function(String error)? error,
+    TResult? Function(OrderResponse orderResponse)? successOrder,
+    TResult? Function(PaymentKeyResponse paymentKeyResponse)? successPaymentKey,
+    TResult? Function(WalletResponse response)? successWalletUrl,
+  }) {
+    return successWalletUrl?.call(response);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(PaymentAuthResponse paymentAuthResponse)? success,
+    TResult Function(String error)? error,
+    TResult Function(OrderResponse orderResponse)? successOrder,
+    TResult Function(PaymentKeyResponse paymentKeyResponse)? successPaymentKey,
+    TResult Function(WalletResponse response)? successWalletUrl,
+    required TResult orElse(),
+  }) {
+    if (successWalletUrl != null) {
+      return successWalletUrl(response);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(PaymentStateInitial value) initial,
+    required TResult Function(PaymentStateLoading value) loading,
+    required TResult Function(PaymentStateSuccess value) success,
+    required TResult Function(PaymentStateError value) error,
+    required TResult Function(OrderStateSuccess value) successOrder,
+    required TResult Function(PaymentKeySuccess value) successPaymentKey,
+    required TResult Function(PaymentWalletUrl value) successWalletUrl,
+  }) {
+    return successWalletUrl(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(PaymentStateInitial value)? initial,
+    TResult? Function(PaymentStateLoading value)? loading,
+    TResult? Function(PaymentStateSuccess value)? success,
+    TResult? Function(PaymentStateError value)? error,
+    TResult? Function(OrderStateSuccess value)? successOrder,
+    TResult? Function(PaymentKeySuccess value)? successPaymentKey,
+    TResult? Function(PaymentWalletUrl value)? successWalletUrl,
+  }) {
+    return successWalletUrl?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PaymentStateInitial value)? initial,
+    TResult Function(PaymentStateLoading value)? loading,
+    TResult Function(PaymentStateSuccess value)? success,
+    TResult Function(PaymentStateError value)? error,
+    TResult Function(OrderStateSuccess value)? successOrder,
+    TResult Function(PaymentKeySuccess value)? successPaymentKey,
+    TResult Function(PaymentWalletUrl value)? successWalletUrl,
+    required TResult orElse(),
+  }) {
+    if (successWalletUrl != null) {
+      return successWalletUrl(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PaymentWalletUrl implements PaymentState {
+  const factory PaymentWalletUrl(final WalletResponse response) =
+      _$PaymentWalletUrl;
+
+  WalletResponse get response;
+  @JsonKey(ignore: true)
+  _$$PaymentWalletUrlCopyWith<_$PaymentWalletUrl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -14,7 +14,7 @@ import 'package:resala/logic/my_participation/my_participation_bloc.dart';
 import 'package:resala/logic/rec_donations/get/get_rec_donation_bloc.dart';
 import 'package:resala/logic/register/register_bloc.dart';
 import 'package:resala/logic/store_donation/store_donation_bloc.dart';
-import 'package:resala/payment/auth_payment/auth_payment_bloc.dart';
+import 'package:resala/payment/auth_payment/payment_bloc.dart';
 import 'package:resala/payment/data/payment_repo.dart';
 import 'logic/core/api_client/api_client_bloc.dart';
 import 'logic/human_case_donation/human_case_donation_bloc.dart';

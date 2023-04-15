@@ -25,7 +25,7 @@ class DynamicCard extends StatelessWidget {
     this.kTextController,
     this.onChanged,
     this.onListSelected,
-    this.enabled = true,
+    this.enabled = true, this.keyboardType,
   }) : super(key: key);
   final String title;
   final List<CommonData>? dropDownList;
@@ -33,6 +33,7 @@ class DynamicCard extends StatelessWidget {
   final bool showSuffix;
   final bool enabled;
   final TextEditingController? kTextController;
+  final TextInputType? keyboardType;
   final Function(String?)? onChanged;
   final Function(CommonData?)? onListSelected;
 
@@ -53,6 +54,7 @@ class DynamicCard extends StatelessWidget {
                 showSuffix ? const Icon(Icons.monetization_on_rounded) : null,
             controller: kTextController,
             enabled: enabled,
+            keyboardType: keyboardType??TextInputType.text,
             validator: (p0) {
               if (p0!.isEmpty) {
                 return "الحقل مطلوب";

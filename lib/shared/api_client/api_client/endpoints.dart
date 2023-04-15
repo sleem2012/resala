@@ -24,7 +24,7 @@ abstract class KEndPoints {
   static const String getAuthToken = '$paymentBase/auth/tokens';
   static const getOrderId = '$paymentBase/ecommerce/orders';
   static const getPaymentRequest = '$paymentBase/acceptance/payment_keys';
-  static const getRefCode = '$paymentBase/acceptance/payments/pay';
+  static const getWalletUrl = '$paymentBase/acceptance/payments/pay';
   static String visaUrl = '$paymentBase/acceptance/iframes/744903?payment_token=';
   static String paymentFirstToken = '';
 
@@ -32,5 +32,5 @@ abstract class KEndPoints {
   // static String finalToken = '';
 
   static const int integrationIdCard = 3682800;
-  static const String integrationIdKiosk = 'ENTER_YOUR_INTEGRATION_ID';
+  static const int integrationIdWallet = 3731401;
 }
