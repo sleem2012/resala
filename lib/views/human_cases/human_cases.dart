@@ -56,23 +56,20 @@ class HumanCasesList extends StatelessWidget {
                             Get.bottomSheet(
                               BlocProvider(
                                 create: (context) => Di.humanCaseDonation,
-                                child: Builder(
-                                  builder: (_) {
-                                    return PaymentBottomSheet(
-                                      onSuccess: (url) {
-                                        HumanCaseDonationBloc.of(_)
-                                            .humanCaseDonation(
-                                                amount: url.amountParam ~/ 100
-                                                    ,
-                                                transactionId:
-                                                    url.transactionId ?? '',
-                                                humanId: human.commonDataModel
-                                                        ?.data?[index].id ??
-                                                    -1);
-                                      },
-                                    );
-                                  }
-                                ),
+                                child: Builder(builder: (_) {
+                                  return PaymentBottomSheet(
+                                    onSuccess: (url) {
+                                      HumanCaseDonationBloc.of(_)
+                                          .humanCaseDonation(
+                                              amount: url.amountParam ~/ 100,
+                                              transactionId:
+                                                  url.transactionId ?? '',
+                                              humanId: human.commonDataModel
+                                                      ?.data?[index].id ??
+                                                  -1);
+                                    },
+                                  );
+                                }),
                               ),
                             );
                           },
