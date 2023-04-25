@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:resala/di.dart';
 import 'package:resala/logic/login/login_bloc.dart';
 import 'package:resala/logic/login/login_state.dart';
+import 'package:resala/shared/constant.dart';
 import 'package:resala/shared/localization/trans.dart';
 import 'package:resala/shared/theme/helper.dart';
 import 'package:resala/shared/theme/text_theme.dart';
@@ -46,8 +47,12 @@ class LoginView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      SvgPicture.asset("assets/image/Resala Logo.svg"),
-                      const SizedBox(height: 18),
+                      Image.asset(
+                        Constant.logo,
+                        // fit: BoxFit.fitHeight,
+
+                      ),
+                      // const SizedBox(height: 10),
                       Text(
                         "متعـــــــــــة العطــــــــاء",
                         style: KTextStyle.of(context).logo,

@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:resala/di.dart';
 import 'package:resala/logic/register/register_bloc.dart';
 import 'package:resala/logic/register/register_state.dart';
+import 'package:resala/shared/constant.dart';
 import 'package:resala/shared/localization/trans.dart';
 import 'package:resala/shared/theme/helper.dart';
 import 'package:resala/shared/theme/text_theme.dart';
@@ -28,7 +29,7 @@ class RegisterView extends StatelessWidget {
           listener: (context, state) {
             state.whenOrNull(
               success: () async {
-                // await Di.reset(context);
+                KHelper.showSnackBar("تم التسجيل بنجاح", isTop: true);
                 Get.offAll(() => const LoginView());
               },
             );
@@ -45,13 +46,16 @@ class RegisterView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      SvgPicture.asset("assets/image/Resala Logo.svg"),
-                      const SizedBox(height: 18),
+                      Image.asset(
+                        Constant.logo,
+                        // fit: BoxFit.fitHeight,
+
+                      ),
                       Text(
                         "متعـــــــــــة العطــــــــاء",
                         style: KTextStyle.of(context).logo,
                       ),
-                      const SizedBox(height: 44),
+                      const SizedBox(height: 25),
                       KTextFormField(
                         hintText: Tr.get.full_name,
                         prefixIcon: const Icon(Icons.person),

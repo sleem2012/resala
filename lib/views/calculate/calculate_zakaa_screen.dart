@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:resala/logic/calculator/calculate_zakaa_bloc.dart';
 import 'package:resala/payment/auth_payment/payment_bloc.dart';
+import 'package:resala/shared/cache/storage.dart';
 import 'package:resala/shared/theme/helper.dart';
 import 'package:resala/shared/theme/text_theme.dart';
 import 'package:resala/views/digital_donation/digital_donation_screen.dart';
@@ -25,14 +26,36 @@ class _CalculateZakaaScreenState extends State<CalculateZakaaScreen> {
         builder: (context, state) {
           final calculate = CalculateZakaaBloc.of(context);
           return SingleChildScrollView(
-            padding: EdgeInsets.symmetric(horizontal: KHelper.hPadding, vertical: 120),
+            padding: EdgeInsets.symmetric(
+                horizontal: KHelper.hPadding, vertical: 120),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Center(
+                //   child: Text(
+                //     "سعر جرام الذهب اليوم : ${KStorage.i.getSetting?.data?.info?.goldPrice ?? ''} ج",
+                //     style: KTextStyle.of(context).subtitle,
+                //   ),
+                // ),
+                 Text(
+
+                  'شروط الزكاة: إذا كان عندك ما يقدر في الذهب ب 85 جرام  أو ذا كان عندك ما يقدر في الفضة ب 595 جرام و مر عليه عام كامل لم ينقص فيه وجبت الزكاة',
+                textAlign: TextAlign.center,
+                    style: KTextStyle.of(context).subtitle,
+
+                ),
+
+                SizedBox(
+                  height: KHelper.hPadding,
+                ),
                 Text(
                   "زكاة المال",
                   style: KTextStyle.of(context).subtitle,
                 ),
+                // Text(
+                //   calculate.lessZakaa,
+                //   style: KTextStyle.of(context).subtitle,
+                // ),
                 DynamicCard(
                   title: "قيمة المال الذي املكه",
                   type: FieldTypes.textFiled,
@@ -68,7 +91,11 @@ class _CalculateZakaaScreenState extends State<CalculateZakaaScreen> {
                 SizedBox(
                   height: KHelper.hPadding,
                 ),
-                DynamicCard(title: "قيمة الأرباح التي حصلت عليها", type: FieldTypes.textFiled, showSuffix: true, kTextController: calculate.arpahController),
+                DynamicCard(
+                    title: "قيمة الأرباح التي حصلت عليها",
+                    type: FieldTypes.textFiled,
+                    showSuffix: true,
+                    kTextController: calculate.arpahController),
                 SizedBox(
                   height: KHelper.hPadding,
                 ),
@@ -80,16 +107,27 @@ class _CalculateZakaaScreenState extends State<CalculateZakaaScreen> {
                   "زكاة الذهب",
                   style: KTextStyle.of(context).subtitle,
                 ),
-                const DynamicCard(
+                 DynamicCard(
                   title: "وزن الذهب الذي تملكة من عيار 18",
                   type: FieldTypes.textFiled,
+                  kTextController: calculate.eighteenGoldController,
                 ),
                 SizedBox(
                   height: KHelper.hPadding,
                 ),
-                const DynamicCard(
+                 DynamicCard(
                   title: "وزن الذهب الذي تملكة من عيار 21",
                   type: FieldTypes.textFiled,
+                  kTextController: calculate.twenyOneGoldController,
+
+                ),   SizedBox(
+                  height: KHelper.hPadding,
+                ),
+                 DynamicCard(
+                  title: "وزن الذهب الذي تملكة من عيار 24",
+                  type: FieldTypes.textFiled,
+                  kTextController: calculate.twenyFourGoldController,
+
                 ),
                 SizedBox(
                   height: KHelper.hPadding,
@@ -114,9 +152,7 @@ class _CalculateZakaaScreenState extends State<CalculateZakaaScreen> {
                 KButton(
                   title: "قيمة الزكاة",
                   onPressed: () {
-setState(() {
-
-});
+                    setState(() {});
                     calculate.calculateZakaa();
                   },
                   isFlat: true,
@@ -130,7 +166,7 @@ setState(() {
                           "زكاة المال",
                           style: KTextStyle.of(context).body,
                         ),
-                        trailing: Text('${calculate.moneyResult } ج.م'),
+                        trailing: Text('${calculate.moneyResult} ج.م'),
                       ),
                       ListTile(
                         title: Text(
@@ -144,14 +180,14 @@ setState(() {
                           "زكاة الذهب",
                           style: KTextStyle.of(context).body,
                         ),
-                        trailing: const Text('0 ج.م'),
+                        trailing: Text('${calculate.goldResult} ج.م'),
                       ),
                       ListTile(
                         title: Text(
                           "زكاة العقارات المملوكة",
                           style: KTextStyle.of(context).body,
                         ),
-                        trailing: Text('${calculate.realEstateResult } ج.م'),
+                        trailing: Text('${calculate.realEstateResult} ج.م'),
                       ),
                       const Divider(color: Colors.grey, height: 3),
                       ListTile(
@@ -159,7 +195,7 @@ setState(() {
                           "إجمالي مبلغ الزكاة",
                           style: KTextStyle.of(context).subtitle,
                         ),
-                        trailing: Text('${calculate.totalResult } ج.م'),
+                        trailing: Text('${calculate.totalResult} ج.م'),
                       ),
                     ],
                   ),
@@ -167,11 +203,21 @@ setState(() {
                 KButton(
                   title: "تبرع الأن",
                   onPressed: () {
-                    PaymentBloc.of(context).priceController.text=calculate.totalResult.toString();
-                    Get.to( ()=>const DigitalDonationScreen());
+                    if(calculate.canDonate){
+                      PaymentBloc.of(context).priceController.text =
+                          calculate.totalResult.toString();
+                      Get.to(() => const DigitalDonationScreen());
+                    }
+                    else{
+                      KHelper.showSnackBar("لم تتخطي حد الزكاه بعد");
+                    }
+
                   },
                   isFlat: true,
                 ),
+                // const SizedBox(
+                //   height: 20,
+                // ),
                 const SizedBox(
                   height: 100,
                 ),

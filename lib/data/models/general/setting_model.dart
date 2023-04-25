@@ -61,6 +61,7 @@ class Info {
   String? mandobImage;
   String? recycleImage;
   String? donationImage;
+  num? goldPrice;
 
   Info(
       {this.description,
@@ -75,6 +76,7 @@ class Info {
         this.volunteerImage,
         this.mandobImage,
         this.recycleImage,
+        this.goldPrice,
         this.donationImage});
 
   Info.fromJson(Map<String, dynamic> json) {
@@ -91,6 +93,7 @@ class Info {
     mandobImage = json['mandob_image'];
     recycleImage = json['recycle_image'];
     donationImage = json['donation_image'];
+    goldPrice = json['gold_price'];
   }
 
   Map<String, dynamic> toJson() {
@@ -108,6 +111,7 @@ class Info {
     data['mandob_image'] = mandobImage;
     data['recycle_image'] = recycleImage;
     data['donation_image'] = donationImage;
+    data['gold_price'] = goldPrice;
     return data;
   }
 }

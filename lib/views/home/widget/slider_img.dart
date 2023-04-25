@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:resala/data/models/general/setting_model.dart';
+import 'package:resala/views/widgets/photo_viewer.dart';
 
 class SliderImage extends StatelessWidget {
   const SliderImage({Key? key, required this.img}) : super(key: key);
@@ -17,7 +18,7 @@ class SliderImage extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: CarouselSlider(
             options: CarouselOptions(
-              autoPlay: kDebugMode ? false : true,
+              autoPlay:  true,
               pauseAutoPlayOnTouch: true,
               viewportFraction: .9,
               enlargeStrategy: CenterPageEnlargeStrategy.scale,

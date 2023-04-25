@@ -30,6 +30,7 @@ dependencies:
   syncfusion_flutter_datepicker: '20.4.43'
   url_launcher:
   photo_view: ^0.14.0
+  readmore: ^2.2.0
 
 
 

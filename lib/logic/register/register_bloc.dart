@@ -30,7 +30,7 @@ class RegisterBloc extends Cubit<RegisterState> {
       registerModel = registerModel.copyWith(
         name: nameController.text,
         email: emailController.text,
-        password: int.parse(passController.text),
+        password: passController.text,
         phone: int.parse(phoneController.text),
         username: userNameController.text,
       );

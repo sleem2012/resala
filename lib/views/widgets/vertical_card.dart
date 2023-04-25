@@ -10,7 +10,8 @@ import 'package:resala/views/widgets/custom_button.dart';
 class VerticalCard extends StatelessWidget {
   const VerticalCard({
     super.key,
-    required this.model, required this.onPressed,
+    required this.model,
+    required this.onPressed,
   });
 
   final CommonData model;
@@ -29,7 +30,9 @@ class VerticalCard extends StatelessWidget {
             height: Get.height * .17,
             child: CachedNetworkImage(
               imageUrl: model.image ?? dummyNetImg,
-              imageBuilder: (BuildContext context, ImageProvider imageProvider) => Container(
+              imageBuilder:
+                  (BuildContext context, ImageProvider imageProvider) =>
+                      Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.circular(KHelper.btnRadius),
@@ -39,8 +42,10 @@ class VerticalCard extends StatelessWidget {
                   ),
                 ),
               ),
-              placeholder: (BuildContext context, String url) => const CircularProgressIndicator(),
-              errorWidget: (BuildContext context, String url, dynamic error) => const Icon(Icons.error),
+              placeholder: (BuildContext context, String url) =>
+                  const CircularProgressIndicator(),
+              errorWidget: (BuildContext context, String url, dynamic error) =>
+                  const Icon(Icons.error),
             ),
           ),
 
@@ -55,18 +60,30 @@ class VerticalCard extends StatelessWidget {
           //   height: 4,
           // ),
           Expanded(
-            child: Text(
-              (model.description ?? ''),
-              style: KTextStyle.of(context).body,
-              softWrap: true,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 3,
+            child: InkWell(
+              onTap: () {
+                Get.bottomSheet(Container(
+                    decoration: KHelper.of(context).elevatedBox,
+                    child: Padding(
+                      padding: const EdgeInsets.all(25.0),
+                      child: Text(model.description ?? ''),
+                    )));
+              },
+              child: Text(
+                (model.description ?? ''),
+                style: KTextStyle.of(context).body,
+                softWrap: true,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 4,
+              ),
             ),
           ),
           if (model.totalCost != null) ...[
             Align(
               child: LinearProgressIndicator(
-                value: ((model.totalCost ?? 0.0) - (model.reamainingCost ?? 0.0)) / (model.totalCost ?? 0.0),
+                value:
+                    ((model.totalCost ?? 0.0) - (model.reamainingCost ?? 0.0)) /
+                        (model.totalCost ?? 0.0),
                 color: KColors.of(context).accentColor,
                 backgroundColor: KColors.of(context).background,
               ),

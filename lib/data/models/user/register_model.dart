@@ -2,7 +2,7 @@ class RegisterModel {
   String? name;
   String? email;
   int? phone;
-  int? password;
+  String? password;
   String? username;
 
   RegisterModel({
@@ -35,7 +35,7 @@ class RegisterModel {
     String? name,
     String? email,
     int? phone,
-    int? password,
+    String? password,
     String? username,
   }) {
     return RegisterModel(

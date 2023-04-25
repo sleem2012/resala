@@ -20,16 +20,16 @@ abstract class KEndPoints {
   static const String paymentBase = 'https://accept.paymob.com/api';
 
   static const String paymentApiKey =
-      "ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SmpiR0Z6Y3lJNklrMWxjbU5vWVc1MElpd2ljSEp2Wm1sc1pWOXdheUk2TnpRME56QTVMQ0p1WVcxbElqb2lhVzVwZEdsaGJDSjkuWVpvWGtDZFdxV2JhM0RiUWNoZm9qMnkwTWFfNXotamdjRFBMSHV2dTV4NnhLZnR2STZqUjVRVXROTDdVVW5OMHBZTzJndUJZRGN6UGJOMGwyVHpaeFE=";
+      "ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SmpiR0Z6Y3lJNklrMWxjbU5vWVc1MElpd2ljSEp2Wm1sc1pWOXdheUk2TnpJMU56UXpMQ0p1WVcxbElqb2lNVFkzT1RRek9EUXdNQzR4TXpVM056WWlmUS5tUjRDWTJXb3M3Ry1vSEdVV3AteWRFY2hHTG9jd01YTkFzSzJvU3FVUWtrYW5sTUVLbFlZRGVKakpZT3J0TzRPbUtSNUx1UUxBT01mQkdwWVFhN0lzQQ==";
   static const String getAuthToken = '$paymentBase/auth/tokens';
   static const getOrderId = '$paymentBase/ecommerce/orders';
   static const getPaymentRequest = '$paymentBase/acceptance/payment_keys';
   static const getWalletUrl = '$paymentBase/acceptance/payments/pay';
   static String visaUrl =
-      '$paymentBase/acceptance/iframes/753199?payment_token=';
+      '$paymentBase/acceptance/iframes/744903?payment_token=';
 
   // static String finalToken = '';
 
-  static const int integrationIdCard = 3736268;
-  static const int integrationIdWallet = 3737971;
+  static const int integrationIdCard = 3682800;
+  static const int integrationIdWallet = 3731401;
 }
