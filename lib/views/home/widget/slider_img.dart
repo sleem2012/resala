@@ -18,7 +18,7 @@ class SliderImage extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: CarouselSlider(
             options: CarouselOptions(
-              autoPlay:  true,
+              autoPlay:  kDebugMode?false:true,
               pauseAutoPlayOnTouch: true,
               viewportFraction: .9,
               enlargeStrategy: CenterPageEnlargeStrategy.scale,

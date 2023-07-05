@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:resala/logic/calculator/calculate_zakaa_bloc.dart';
+import 'package:resala/logic/calculator/calculate_zakaa_state.dart';
 import 'package:resala/payment/auth_payment/payment_bloc.dart';
 import 'package:resala/shared/cache/storage.dart';
 import 'package:resala/shared/theme/helper.dart';
@@ -10,19 +12,14 @@ import 'package:resala/views/digital_donation/digital_donation_screen.dart';
 import 'package:resala/views/widgets/custom_button.dart';
 import 'package:resala/views/widgets/dynamic_card.dart';
 
-class CalculateZakaaScreen extends StatefulWidget {
+class CalculateZakaaScreen extends StatelessWidget {
   const CalculateZakaaScreen({Key? key}) : super(key: key);
 
   @override
-  State<CalculateZakaaScreen> createState() => _CalculateZakaaScreenState();
-}
-
-class _CalculateZakaaScreenState extends State<CalculateZakaaScreen> {
-  @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => CalculateZakaaBloc(0),
-      child: BlocBuilder<CalculateZakaaBloc, num>(
+      create: (context) => CalculateZakaaBloc(),
+      child: BlocBuilder<CalculateZakaaBloc, ValueKey>(
         builder: (context, state) {
           final calculate = CalculateZakaaBloc.of(context);
           return SingleChildScrollView(
@@ -152,7 +149,7 @@ class _CalculateZakaaScreenState extends State<CalculateZakaaScreen> {
                 KButton(
                   title: "قيمة الزكاة",
                   onPressed: () {
-                    setState(() {});
+                    // setState(() {});
                     calculate.calculateZakaa();
                   },
                   isFlat: true,

@@ -4,8 +4,8 @@ import 'package:resala/shared/cache/storage.dart';
 
 final num goldPrice = KStorage.i.getSetting?.data?.info?.goldPrice ?? 0.0;
 
-class CalculateZakaaBloc extends Cubit<double> {
-  CalculateZakaaBloc(super.initialState);
+class CalculateZakaaBloc extends Cubit<ValueKey> {
+  CalculateZakaaBloc():super(const ValueKey(0));
 
   static CalculateZakaaBloc of(BuildContext context) {
     return BlocProvider.of<CalculateZakaaBloc>(context);
@@ -53,6 +53,6 @@ class CalculateZakaaBloc extends Cubit<double> {
 // print(totalOwn);
     totalResult =
         (moneyResult + realEstateResult + propertiesResult + goldResult) * .025;
-    emit(state);
+    emit(ValueKey(state));
   }
 }
