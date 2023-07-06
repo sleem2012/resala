@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:resala/shared/cache/storage.dart';
 import 'package:resala/shared/constant.dart';
-import 'package:resala/shared/theme/helper.dart';
 import 'package:resala/views/about/about_us_screen.dart';
 import 'package:resala/views/auth/login/login_view.dart';
 import 'package:resala/views/main_screen/main_screen.dart';

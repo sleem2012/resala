@@ -35,11 +35,14 @@ class DioClientImpl {
   );
 
   final _dio = Dio(options);
+  final _dioStatusCodeCheck = Dio(options);
 
   Future<Response> get(String path, {Map<String, dynamic>? params, Options? options }) {
     return _dio.get(path, queryParameters: params, options: options);
   }
-
+  Future<Response> statusCodeCheck(String path, {Map<String, dynamic>? params, Options? options}) {
+    return _dioStatusCodeCheck.get(path, queryParameters: params, options: options);
+  }
   Future<Response> post(String path, {Map<String, dynamic>? params, Options? options, data}) {
     return _dio.post(path, data: data, queryParameters: params, options: options);
   }

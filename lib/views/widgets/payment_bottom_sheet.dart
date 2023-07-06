@@ -6,7 +6,6 @@ import 'package:resala/payment/auth_payment/payment_bloc.dart';
 import 'package:resala/payment/auth_payment/payment_state.dart';
 import 'package:resala/payment/data/model/transaction_response_model.dart';
 import 'package:resala/payment/view/payment_webview.dart';
-import 'package:resala/shared/theme/colors.dart';
 import 'package:resala/shared/theme/helper.dart';
 import 'package:resala/views/widgets/custom_button.dart';
 import 'package:resala/views/widgets/dynamic_card.dart';

@@ -6,6 +6,7 @@ import 'package:resala/shared/theme/colors.dart';
 import 'package:resala/shared/theme/helper.dart';
 import 'package:resala/shared/theme/text_theme.dart';
 import 'package:resala/views/widgets/custom_button.dart';
+import 'package:resala/views/widgets/image_widget.dart';
 
 class VerticalCard extends StatelessWidget {
   const VerticalCard({
@@ -28,25 +29,27 @@ class VerticalCard extends StatelessWidget {
         children: [
           SizedBox(
             height: Get.height * .17,
-            child: CachedNetworkImage(
-              imageUrl: model.image ?? dummyNetImg,
-              imageBuilder:
-                  (BuildContext context, ImageProvider imageProvider) =>
-                      Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(KHelper.btnRadius),
-                  image: DecorationImage(
-                    image: imageProvider,
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-              placeholder: (BuildContext context, String url) =>
-                  const CircularProgressIndicator(),
-              errorWidget: (BuildContext context, String url, dynamic error) =>
-                  const Icon(Icons.error),
-            ),
+            child:KImageWidget(imageUrl: model.image??dummyNetImg ,fit:BoxFit.fill,)
+
+            // CachedNetworkImage(
+            //   imageUrl: model.image ?? dummyNetImg,
+            //   imageBuilder:
+            //       (BuildContext context, ImageProvider imageProvider) =>
+            //           Container(
+            //     decoration: BoxDecoration(
+            //       shape: BoxShape.rectangle,
+            //       borderRadius: BorderRadius.circular(KHelper.btnRadius),
+            //       image: DecorationImage(
+            //         image: imageProvider,
+            //         fit: BoxFit.fill,
+            //       ),
+            //     ),
+            //   ),
+            //   placeholder: (BuildContext context, String url) =>
+            //       const CircularProgressIndicator(),
+            //   errorWidget: (BuildContext context, String url, dynamic error) =>
+            //       const Icon(Icons.error),
+            // ),
           ),
 
           // const SizedBox(

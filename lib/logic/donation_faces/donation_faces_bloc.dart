@@ -8,18 +8,15 @@ import 'package:resala/shared/localization/trans.dart';
 import 'donation_faces_state.dart';
 
 class DonationFacesBloc extends Cubit<DonationFacesState> {
-  DonationFacesBloc({required this.repoImp}) : super(const DonationFacesState.loading());
+  DonationFacesBloc({required this.repoImp})
+      : super(const DonationFacesState.loading());
 
   static DonationFacesBloc of(BuildContext context) {
     return BlocProvider.of<DonationFacesBloc>(context);
   }
 
   final GetDataRepoImp repoImp;
-  CommonDataModel?  commonDataModel;
-
-
-
-
+  CommonDataModel? commonDataModel;
 
   get() async {
     try {
@@ -33,14 +30,13 @@ class DonationFacesBloc extends Cubit<DonationFacesState> {
         (r) {
           debugPrint('================= human Bloc : ${r.toString()}  ');
           commonDataModel = r;
-          emit( DonationFacesState.success(model: commonDataModel!));
+          emit(DonationFacesState.success(model: commonDataModel!));
         },
       );
     } catch (e) {
       debugPrint('================= human Bloc (Catch): ${e.toString()} ');
-      emit(  DonationFacesState.error(failure: Tr.get.try_later));
+      emit(DonationFacesState.error(failure: Tr.get.try_later));
       rethrow;
     }
   }
-
 }

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:resala/shared/theme/colors.dart';
-import 'package:resala/shared/theme/helper.dart';
 
 import 'appbar.dart';
 

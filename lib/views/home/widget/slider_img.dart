@@ -4,7 +4,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:resala/data/models/general/setting_model.dart';
-import 'package:resala/views/widgets/photo_viewer.dart';
 
 class SliderImage extends StatelessWidget {
   const SliderImage({Key? key, required this.img}) : super(key: key);

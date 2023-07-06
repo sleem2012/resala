@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:resala/logic/calculator/calculate_zakaa_bloc.dart';
-import 'package:resala/logic/calculator/calculate_zakaa_state.dart';
 import 'package:resala/payment/auth_payment/payment_bloc.dart';
-import 'package:resala/shared/cache/storage.dart';
 import 'package:resala/shared/theme/helper.dart';
 import 'package:resala/shared/theme/text_theme.dart';
 import 'package:resala/views/digital_donation/digital_donation_screen.dart';

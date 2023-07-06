@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:resala/shared/constant.dart';
 
 class SplashBody extends StatelessWidget {
